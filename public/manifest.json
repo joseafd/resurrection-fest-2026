@@ -1,0 +1,24 @@
+{
+  "short_name": "Resu 2026",
+  "name": "Resurrection Fest 2026 Schedule",
+  "description": "Agenda y horarios interactivos para el Resurrection Fest 2026",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#08090d",
+  "theme_color": "#ff003c",
+  "display": "standalone",
+  "orientation": "portrait"
+}
