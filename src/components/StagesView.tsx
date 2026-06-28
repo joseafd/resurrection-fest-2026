@@ -37,15 +37,20 @@ export const StagesView: React.FC<StagesViewProps> = ({
     }
   }, [acts]);
 
-  // Generate hour marks for the header and vertical grid lines
+  // Generate half-hour marks for the header and vertical grid lines
   const hourMarks = [];
-  for (let i = 0; i <= TOTAL_HOURS; i++) {
-    const adjustedHour = TIMELINE_START_HOUR + i;
+  const HALF_HOUR_WIDTH = 30 * MINUTE_WIDTH; // 30 minutes = 75px
+  const TOTAL_HALF_HOURS = TOTAL_HOURS * 2; // 28 half-hour blocks
+  for (let i = 0; i <= TOTAL_HALF_HOURS; i++) {
+    const totalMinutes = i * 30;
+    const adjustedHour = TIMELINE_START_HOUR + Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
     const displayHour = adjustedHour >= 24 ? adjustedHour - 24 : adjustedHour;
-    const timeStr = `${displayHour.toString().padStart(2, '0')}:00`;
+    const timeStr = `${displayHour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
     hourMarks.push({
       timeStr,
-      offset: i * HOUR_WIDTH,
+      offset: i * HALF_HOUR_WIDTH,
+      isHalfHour: minutes === 30,
     });
   }
 
@@ -62,10 +67,7 @@ export const StagesView: React.FC<StagesViewProps> = ({
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        backgroundImage: 'linear-gradient(rgba(8, 9, 13, 0.88), rgba(8, 9, 13, 0.88)), url("./images/FONDO.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'local',
+        background: 'rgba(27, 29, 36, 0.7)', /* Gris al 70% */
       }}
       className="animate-fade-in"
     >
@@ -124,10 +126,10 @@ export const StagesView: React.FC<StagesViewProps> = ({
                     position: 'absolute',
                     left: `${mark.offset}px`,
                     transform: 'translateX(-50%)',
-                    top: '10px',
-                    fontSize: '0.85rem', /* Aumentado */
-                    fontWeight: '800',
-                    color: '#ffffff', /* Alto contraste */
+                    top: mark.isHalfHour ? '12px' : '10px',
+                    fontSize: mark.isHalfHour ? '0.75rem' : '0.85rem',
+                    fontWeight: mark.isHalfHour ? '500' : '800',
+                    color: mark.isHalfHour ? 'rgba(255, 255, 255, 0.6)' : '#ffffff',
                     letterSpacing: '0.5px',
                   }}
                 >
@@ -161,7 +163,9 @@ export const StagesView: React.FC<StagesViewProps> = ({
                     top: 0,
                     bottom: 0,
                     width: '1px',
-                    borderLeft: '1px dashed rgba(255, 255, 255, 0.15)', /* Línea discontinua más marcada */
+                    borderLeft: mark.isHalfHour
+                      ? '1px dashed rgba(255, 255, 255, 0.12)' // Línea discontinua para las medias horas
+                      : '1px solid rgba(255, 255, 255, 0.22)', // Línea sólida para las horas enteras
                   }}
                 />
               ))}
