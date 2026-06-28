@@ -429,16 +429,17 @@ export default function App() {
             gap: '24px',
           }}
         >
-          {/* Credits Image */}
+          {/* Credits Image Container with Overlaid Buttons */}
           <div
             style={{
               maxWidth: '320px',
               width: '100%',
-              borderRadius: '12px',
+              borderRadius: '16px',
               overflow: 'hidden',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+              border: '2px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 15px 35px rgba(0,0,0,0.7)',
               background: '#12141c',
+              position: 'relative',
             }}
           >
             <img
@@ -450,28 +451,32 @@ export default function App() {
                 display: 'block',
               }}
             />
-          </div>
 
-          {/* Clickable Social Media Links */}
-          <div
-            className="glass"
-            style={{
-              width: '100%',
-              maxWidth: '320px',
-              padding: '16px 20px',
-              borderRadius: '16px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '14px',
-              border: '1px solid var(--border-color)',
-            }}
-          >
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '1px', textTransform: 'uppercase' }}>
-              Redes Sociales Oficiales
-            </span>
-            
-            <div style={{ display: 'flex', gap: '14px', width: '100%' }}>
+            {/* Linear dark gradient overlay */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: '90px',
+                background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0) 100%)',
+                zIndex: 5,
+              }}
+            />
+
+            {/* Overlaid buttons at bottom inside image */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '16px',
+                left: '12px',
+                right: '12px',
+                display: 'flex',
+                gap: '8px',
+                zIndex: 10,
+              }}
+            >
               {/* Instagram Link */}
               <a
                 href="https://www.instagram.com/joseantoniofd.photo/"
@@ -483,19 +488,21 @@ export default function App() {
                   color: '#ffffff',
                   textDecoration: 'none',
                   borderRadius: '10px',
-                  padding: '12px',
+                  padding: '10px',
                   fontSize: '0.88rem',
                   fontWeight: '800',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
-                  boxShadow: '0 4px 12px rgba(220, 39, 67, 0.25)',
+                  gap: '6px',
+                  boxShadow: '0 4px 10px rgba(220, 39, 67, 0.3)',
                   transition: 'transform 0.1s',
                 }}
                 className="btn-interactive"
+                onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+                onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                 Instagram
               </a>
 
@@ -510,19 +517,21 @@ export default function App() {
                   color: '#ffffff',
                   textDecoration: 'none',
                   borderRadius: '10px',
-                  padding: '12px',
+                  padding: '10px',
                   fontSize: '0.88rem',
                   fontWeight: '800',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
+                  gap: '6px',
                   boxShadow: '0 4px 12px rgba(24, 119, 242, 0.25)',
                   transition: 'transform 0.1s',
                 }}
                 className="btn-interactive"
+                onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+                onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 Facebook
               </a>
             </div>

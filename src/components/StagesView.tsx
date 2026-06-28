@@ -19,12 +19,12 @@ export const StagesView: React.FC<StagesViewProps> = ({
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const MINUTE_WIDTH = 2.5; // 1 minute = 2.5px
-  const HOUR_WIDTH = 60 * MINUTE_WIDTH; // 1 hour = 150px
+  const MINUTE_WIDTH = 3.6; // Aumentado para dar más espacio horizontal (1 min = 3.6px, 40 min = 144px)
+  const HOUR_WIDTH = 60 * MINUTE_WIDTH; // 1 hora = 216px
   const TIMELINE_START_HOUR = 14; // Start at 14:00
   const TIMELINE_END_HOUR = 28; // End at 04:00 next morning (28:00)
   const TOTAL_HOURS = TIMELINE_END_HOUR - TIMELINE_START_HOUR; // 14 hours
-  const TIMELINE_WIDTH = TOTAL_HOURS * HOUR_WIDTH; // 2100px
+  const TIMELINE_WIDTH = TOTAL_HOURS * HOUR_WIDTH; // 3024px
 
   // Auto-scroll to the first act of the day when day changes
   useEffect(() => {
@@ -271,14 +271,17 @@ export const StagesView: React.FC<StagesViewProps> = ({
                           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '4px' }}>
                             <span
                               style={{
-                                fontSize: '0.90rem', /* Aumentado */
+                                fontSize: '0.85rem',
                                 fontWeight: '800',
                                 color: '#ffffff',
-                                whiteSpace: 'nowrap',
+                                display: '-webkit-box',
+                                WebkitLineClamp: 2,
+                                WebkitBoxOrient: 'vertical',
+                                whiteSpace: 'normal', /* Permitir salto de línea */
                                 overflow: 'hidden',
-                                textOverflow: 'ellipsis',
+                                lineHeight: 1.1,
                                 flex: 1,
-                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                                textShadow: '0 1px 2px rgba(0,0,0,0.6)',
                               }}
                             >
                               {act.band}
