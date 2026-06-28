@@ -45,7 +45,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             borderRadius: '10px',
             padding: '10px 36px 10px 36px',
             color: 'var(--text-primary)',
-            fontSize: '0.85rem',
+            fontSize: '0.98rem', /* Aumentado */
             outline: 'none',
             transition: 'border-color 0.2s',
           }}
@@ -81,7 +81,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             background: 'none',
             border: 'none',
             color: searchGlobal ? 'var(--accent-red)' : 'var(--text-secondary)',
-            fontSize: '0.72rem',
+            fontSize: '0.85rem', /* Aumentado */
             fontWeight: '600',
             cursor: 'pointer',
             display: 'flex',

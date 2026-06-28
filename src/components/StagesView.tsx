@@ -121,10 +121,10 @@ export const StagesView: React.FC<StagesViewProps> = ({
                     position: 'absolute',
                     left: `${mark.offset}px`,
                     transform: 'translateX(-50%)',
-                    top: '12px',
-                    fontSize: '0.7rem',
-                    fontWeight: '700',
-                    color: 'var(--text-secondary)',
+                    top: '10px',
+                    fontSize: '0.85rem', /* Aumentado */
+                    fontWeight: '800',
+                    color: '#ffffff', /* Alto contraste */
                     letterSpacing: '0.5px',
                   }}
                 >
@@ -158,8 +158,7 @@ export const StagesView: React.FC<StagesViewProps> = ({
                     top: 0,
                     bottom: 0,
                     width: '1px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    borderLeft: '1px dashed rgba(255, 255, 255, 0.02)',
+                    borderLeft: '1px dashed rgba(255, 255, 255, 0.15)', /* Línea discontinua más marcada */
                   }}
                 />
               ))}
@@ -228,6 +227,7 @@ export const StagesView: React.FC<StagesViewProps> = ({
                       const isFavorite = favorites.includes(act.id);
                       const leftPos = act.startMinutes * MINUTE_WIDTH;
                       const blockWidth = act.duration * MINUTE_WIDTH;
+                      const stageColor = `var(--color-${stage.toLowerCase()})`;
 
                       return (
                         <div
@@ -239,44 +239,39 @@ export const StagesView: React.FC<StagesViewProps> = ({
                             width: `${blockWidth - 8}px`, // small offset spacing
                             top: '12px',
                             height: '70px',
-                            background: isFavorite ? 'rgba(255, 0, 60, 0.06)' : 'rgba(18, 20, 28, 0.45)',
-                            backdropFilter: 'blur(4px)',
+                            background: stageColor, /* Solid Stage Color Background */
+                            color: '#ffffff', /* High-contrast white text */
                             border: isFavorite
-                              ? '1px solid var(--accent-red)'
-                              : '1px solid rgba(255, 255, 255, 0.05)',
+                              ? '2px solid #ffffff' /* White border for active favorites to pop */
+                              : '1px solid rgba(255, 255, 255, 0.15)',
                             borderRadius: '10px',
                             padding: '8px 10px',
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'space-between',
                             cursor: 'pointer',
-                            transition: 'border-color 0.2s, background-color 0.2s, box-shadow 0.2s',
-                            boxShadow: isFavorite ? '0 0 10px rgba(255, 0, 60, 0.15)' : 'none',
+                            transition: 'transform 0.15s, filter 0.15s, box-shadow 0.15s',
+                            boxShadow: isFavorite 
+                              ? '0 0 12px rgba(255, 255, 255, 0.35)' 
+                              : '0 4px 8px rgba(0,0,0,0.25)',
                             zIndex: isFavorite ? 5 : 2,
                             overflow: 'hidden',
                           }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = isFavorite
-                              ? 'rgba(255, 0, 60, 0.09)'
-                              : 'rgba(255, 255, 255, 0.02)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = isFavorite
-                              ? 'rgba(255, 0, 60, 0.06)'
-                              : 'rgba(18, 20, 28, 0.45)';
-                          }}
+                          onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.15)'; }}
+                          onMouseLeave={(e) => { e.currentTarget.style.filter = 'none'; }}
                         >
                           {/* Card header: Band Name & Favorite Button */}
                           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '4px' }}>
                             <span
                               style={{
-                                fontSize: '0.78rem',
+                                fontSize: '0.90rem', /* Aumentado */
                                 fontWeight: '800',
                                 color: '#ffffff',
                                 whiteSpace: 'nowrap',
                                 overflow: 'hidden',
                                 textOverflow: 'ellipsis',
                                 flex: 1,
+                                textShadow: '0 1px 2px rgba(0,0,0,0.5)',
                               }}
                             >
                               {act.band}
@@ -287,7 +282,7 @@ export const StagesView: React.FC<StagesViewProps> = ({
                               style={{
                                 background: 'none',
                                 border: 'none',
-                                color: isFavorite ? 'var(--accent-red)' : 'var(--text-muted)',
+                                color: isFavorite ? '#ffd600' : 'rgba(255, 255, 255, 0.8)',
                                 cursor: 'pointer',
                                 padding: '2px',
                                 display: 'flex',
@@ -296,11 +291,12 @@ export const StagesView: React.FC<StagesViewProps> = ({
                               }}
                             >
                               <Zap
-                                size={12}
-                                fill={isFavorite ? 'var(--accent-red)' : 'none'}
+                                size={14}
+                                fill={isFavorite ? '#ffd600' : 'none'}
+                                stroke={isFavorite ? '#ffd600' : '#ffffff'}
                                 strokeWidth={2.5}
                                 style={{
-                                  filter: isFavorite ? 'drop-shadow(0 0 3px rgba(255, 0, 60, 0.5))' : 'none',
+                                  filter: isFavorite ? 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))' : 'none',
                                 }}
                               />
                             </button>
@@ -309,18 +305,19 @@ export const StagesView: React.FC<StagesViewProps> = ({
                           {/* Card Footer: Set Times */}
                           <div
                             style={{
-                              fontSize: '0.62rem',
+                              fontSize: '0.75rem', /* Aumentado */
                               fontWeight: '700',
-                              color: 'var(--text-secondary)',
+                              color: 'rgba(255, 255, 255, 0.9)',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'space-between',
+                              textShadow: '0 1px 2px rgba(0,0,0,0.4)',
                             }}
                           >
                             <span>
                               {act.start} - {act.end}
                             </span>
-                            <span style={{ fontSize: '0.55rem', color: 'var(--text-muted)' }}>
+                            <span style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.7)' }}>
                               {act.duration} min
                             </span>
                           </div>

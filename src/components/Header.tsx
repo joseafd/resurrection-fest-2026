@@ -60,8 +60,8 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           <div style={{ textAlign: 'center' }}>
-            <h1 className="font-metal" style={{ fontSize: '1.15rem', lineHeight: 1.1 }}>RESURRECTION</h1>
-            <span style={{ fontSize: '0.65rem', letterSpacing: '3px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
+            <h1 className="font-metal" style={{ fontSize: '1.3rem', lineHeight: 1.1 }}>RESURRECTION</h1>
+            <span style={{ fontSize: '0.75rem', letterSpacing: '3px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
           </div>
 
           <button
@@ -127,8 +127,8 @@ export const Header: React.FC<HeaderProps> = ({
                   background: isActive ? 'var(--accent-red)' : 'transparent',
                   color: isActive ? '#ffffff' : 'var(--text-secondary)',
                   fontWeight: isActive ? '700' : '500',
-                  fontSize: '0.82rem',
-                  padding: '9px 4px',
+                  fontSize: '0.95rem', /* Aumentado */
+                  padding: '10px 4px', /* Aumentado */
                   borderRadius: '11px',
                   cursor: 'pointer',
                   transition: 'background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease',

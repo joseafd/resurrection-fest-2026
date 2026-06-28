@@ -81,19 +81,20 @@ export const HoursView: React.FC<HoursViewProps> = ({
         const hourActs = groupedActs[hour].sort((a, b) => a.startMinutes - b.startMinutes);
 
         return (
-          <div key={hour} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {/* Hour Block Header */}
+          <div key={hour} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {/* Hour Block Header - More defined and marked */}
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
-                paddingBottom: '4px',
+                gap: '10px',
+                borderBottom: '2px solid var(--accent-red)',
+                paddingBottom: '6px',
+                marginTop: '8px',
               }}
             >
-              <Clock size={14} color="var(--accent-red)" />
-              <h3 style={{ fontSize: '0.85rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '0.5px' }}>
+              <Clock size={16} color="var(--accent-red)" />
+              <h3 style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '0.5px' }}>
                 {formatHourLabel(hour)}
               </h3>
             </div>
@@ -102,40 +103,43 @@ export const HoursView: React.FC<HoursViewProps> = ({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {hourActs.map((act) => {
                 const isFavorite = favorites.includes(act.id);
+                const stageColor = `var(--color-${act.stage.toLowerCase()})`;
 
                 return (
                   <div
                     key={act.id}
                     onClick={() => onSelectAct(act)}
-                    className="glass"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      padding: '12px 14px',
+                      padding: '14px 16px',
                       borderRadius: '12px',
                       cursor: 'pointer',
-                      borderLeft: `4px solid var(--color-${act.stage.toLowerCase()})`,
-                      transition: 'transform 0.15s, background-color 0.15s',
+                      background: stageColor, /* Solid Stage Color Background */
+                      color: '#ffffff', /* High-contrast white text */
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
+                      transition: 'transform 0.15s, filter 0.15s, box-shadow 0.15s',
                     }}
-                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.02)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-surface)'; }}
+                    className="btn-interactive"
+                    onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.15)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.filter = 'none'; }}
                   >
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', flex: 1, marginRight: '12px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '0.95rem', fontWeight: '700', color: '#fff' }}>
+                        <span style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
                           {act.band}
                         </span>
                         {/* Day badge for global search results */}
                         {showGlobalDayBadge && (
                           <span
                             style={{
-                              fontSize: '0.62rem',
-                              background: '#2b3040',
-                              color: 'var(--text-secondary)',
-                              padding: '1px 6px',
+                              fontSize: '0.72rem',
+                              background: 'rgba(0, 0, 0, 0.3)',
+                              color: '#ffffff',
+                              padding: '2px 8px',
                               borderRadius: '4px',
-                              fontWeight: '600',
+                              fontWeight: '700',
                             }}
                           >
                             {act.id.startsWith('2026-07-01') && 'Miércoles 1'}
@@ -146,13 +150,13 @@ export const HoursView: React.FC<HoursViewProps> = ({
                         )}
                       </div>
                       
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                        <span style={{ fontWeight: '600' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.9)', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                        <span style={{ fontWeight: '700' }}>
                           {act.start} - {act.end}
                         </span>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'var(--text-muted)' }}>
-                          <MapPin size={10} />
-                          {act.stage}
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'rgba(255, 255, 255, 0.75)' }}>
+                          <MapPin size={12} />
+                          {act.stage} Stage
                         </span>
                       </div>
                     </div>
@@ -163,23 +167,24 @@ export const HoursView: React.FC<HoursViewProps> = ({
                       style={{
                         background: 'none',
                         border: 'none',
-                        color: isFavorite ? 'var(--accent-red)' : 'var(--text-muted)',
+                        color: isFavorite ? '#ffd600' : 'rgba(255, 255, 255, 0.7)',
                         cursor: 'pointer',
                         padding: '6px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        transition: 'color 0.2s, transform 0.1s',
+                        transition: 'transform 0.1s, color 0.2s',
                       }}
                       onMouseDown={(e) => { e.stopPropagation(); e.currentTarget.style.transform = 'scale(0.85)'; }}
                       onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
                     >
                       <Zap
-                        size={18}
-                        fill={isFavorite ? 'var(--accent-red)' : 'none'}
-                        strokeWidth={2}
+                        size={20}
+                        fill={isFavorite ? '#ffd600' : 'none'}
+                        stroke={isFavorite ? '#ffd600' : '#ffffff'}
+                        strokeWidth={2.2}
                         style={{
-                          filter: isFavorite ? 'drop-shadow(0 0 4px rgba(255, 0, 60, 0.5))' : 'none',
+                          filter: isFavorite ? 'drop-shadow(0 0 6px rgba(255, 255, 255, 0.8))' : 'none',
                         }}
                       />
                     </button>

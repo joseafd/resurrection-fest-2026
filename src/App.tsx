@@ -144,10 +144,10 @@ export default function App() {
           style={{
             background: 'rgba(255, 0, 60, 0.05)',
             borderBottom: '1px solid rgba(255, 0, 60, 0.1)',
-            padding: '6px 16px',
-            fontSize: '0.72rem',
+            padding: '8px 16px',
+            fontSize: '0.85rem', /* Aumentado */
             color: 'var(--accent-red)',
-            fontWeight: '600',
+            fontWeight: '700',
             textAlign: 'center',
           }}
         >

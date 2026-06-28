@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Zap, Clock, Calendar, MapPin } from 'lucide-react';
 import type { Act } from '../data/festivalData';
 
@@ -17,11 +17,18 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
   isFavorite,
   onToggleFavorite,
 }) => {
+  const [imgError, setImgError] = useState<boolean>(false);
+
+  // Reset image error status when another act is clicked
+  useEffect(() => {
+    setImgError(false);
+  }, [act]);
+
   if (!isOpen || !act) return null;
 
   const stageColor = `var(--color-${act.stage.toLowerCase()})`;
 
-  // Generate initials for the image placeholder (e.g. "Iron Maiden" -> "IM")
+  // Convert "Iron Maiden" to "IM" for the fallback gradient placeholder
   const getInitials = (name: string): string => {
     return name
       .split(' ')
@@ -29,6 +36,17 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
       .map((word) => word[0])
       .join('')
       .toUpperCase();
+  };
+
+  // Convert band name to standardized uppercase filename (e.g. "P.O.D." -> "POD.jpg", "A Day To Remember" -> "A DAY TO REMEMBER.jpg")
+  const getBandImageName = (name: string): string => {
+    return name
+      .toUpperCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // remove accent diacritics
+      .replace(/[^A-Z0-9\s-]/g, "") // remove dots/special characters
+      .trim()
+      .replace(/[\s-]+/g, " "); // preserve spaces and clean multiple spacing
   };
 
   // Helper to format Spanish weekday name
@@ -39,6 +57,8 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
     if (id.startsWith('2026-07-04')) return 'Sábado 4 de Julio';
     return '';
   };
+
+  const imageName = getBandImageName(act.band);
 
   return (
     <div
@@ -63,7 +83,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
       <div
         style={{
           width: '100%',
-          maxWidth: '400px',
+          maxWidth: '420px',
           maxHeight: '85vh',
           background: '#0d0f14',
           borderRadius: '20px',
@@ -77,10 +97,10 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
         onClick={(e) => e.stopPropagation()} // Prevent close on tap inside card
       >
         
-        {/* 1. HERO PLACEHOLDER HEADER */}
+        {/* 1. HERO PLACEHOLDER/IMAGE HEADER */}
         <div
           style={{
-            height: '180px',
+            height: '190px',
             position: 'relative',
             background: `linear-gradient(135deg, #18090d 0%, #08090e 100%)`,
             display: 'flex',
@@ -101,23 +121,57 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               opacity: 0.05,
               background: 'radial-gradient(circle, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent) 25px 25px',
               backgroundSize: '50px 50px',
+              zIndex: 1,
             }}
           />
 
-          {/* Giant initials placeholder */}
+          {/* Fallback Giant initials placeholder (rendered in background) */}
           <span
             style={{
-              fontSize: '5rem',
+              fontSize: '5.5rem',
               fontWeight: '900',
               color: 'rgba(255, 255, 255, 0.03)',
               fontFamily: 'var(--font-display)',
               letterSpacing: '10px',
               userSelect: 'none',
               transform: 'scale(1.2)',
+              zIndex: 1,
             }}
           >
             {getInitials(act.band)}
           </span>
+
+          {/* Dynamic Band Image (Loads if no error) */}
+          {!imgError && (
+            <img
+              src={`./images/${imageName}.jpg`}
+              alt={act.band}
+              onError={() => setImgError(true)}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: 2,
+                transition: 'opacity 0.3s ease',
+              }}
+            />
+          )}
+
+          {/* Dark gradient overlay on bottom of image for label legibility */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '90px',
+              background: 'linear-gradient(to top, rgba(13, 15, 20, 1) 0%, rgba(13, 15, 20, 0) 100%)',
+              zIndex: 3,
+            }}
+          />
 
           {/* Close button inside hero */}
           <button
@@ -127,20 +181,22 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               position: 'absolute',
               top: '12px',
               right: '12px',
-              width: '32px',
-              height: '32px',
+              width: '34px',
+              height: '34px',
               borderRadius: '50%',
-              background: 'rgba(0, 0, 0, 0.5)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'rgba(0, 0, 0, 0.6)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
               color: '#ffffff',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 10,
+              transition: 'background-color 0.2s',
             }}
+            className="btn-interactive"
           >
-            <X size={16} />
+            <X size={18} />
           </button>
 
           {/* Band Name overlaid at bottom of hero */}
@@ -150,14 +206,15 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               bottom: '16px',
               left: '20px',
               right: '20px',
+              zIndex: 4,
             }}
           >
             <h2
               style={{
-                fontSize: '1.4rem',
+                fontSize: '1.65rem', /* Aumentado 2pt */
                 fontWeight: '800',
                 color: '#ffffff',
-                textShadow: '0 2px 10px rgba(0,0,0,0.8)',
+                textShadow: '0 2px 10px rgba(0,0,0,0.95)',
               }}
             >
               {act.band}
@@ -166,41 +223,45 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
         </div>
 
         {/* 2. MODAL BODY */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '24px', display: 'flex', flexDirection: 'column', gap: '22px' }}>
           
           {/* Gig details row */}
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
-              gap: '12px',
+              gap: '14px',
               background: 'rgba(255,255,255,0.02)',
-              padding: '12px',
+              padding: '14px',
               borderRadius: '12px',
               border: '1px solid var(--border-color)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
-              <Calendar size={14} color="var(--accent-red)" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.90rem', color: 'var(--text-secondary)' }}>
+              <Calendar size={16} color="var(--accent-red)" />
               <div>
-                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Día</div>
-                <div style={{ fontWeight: '700', color: '#fff' }}>{getDayDescription(act.id)}</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '600' }}>Día</div>
+                <div style={{ fontWeight: '800', color: '#fff' }}>{getDayDescription(act.id)}</div>
               </div>
             </div>
             
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
-              <Clock size={14} color="var(--accent-red)" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.90rem', color: 'var(--text-secondary)' }}>
+              <Clock size={16} color="var(--accent-red)" />
               <div>
-                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Horario</div>
-                <div style={{ fontWeight: '700', color: '#fff' }}>{act.start} - {act.end} <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>({act.duration}m)</span></div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '600' }}>Horario</div>
+                <div style={{ fontWeight: '800', color: '#fff' }}>
+                  {act.start} - {act.end} <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 'normal' }}>({act.duration}m)</span>
+                </div>
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: 'var(--text-secondary)', gridColumn: 'span 2', marginTop: '4px', borderTop: '1px solid rgba(255, 255, 255, 0.04)', paddingTop: '8px' }}>
-              <MapPin size={14} color={stageColor} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.90rem', color: 'var(--text-secondary)', gridColumn: 'span 2', marginTop: '4px', borderTop: '1px solid rgba(255, 255, 255, 0.04)', paddingTop: '10px' }}>
+              <MapPin size={16} color={stageColor} />
               <div>
-                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Escenario</div>
-                <div style={{ fontWeight: '700', color: stageColor, textTransform: 'uppercase', letterSpacing: '0.5px' }}>{act.stage} Stage</div>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '600' }}>Escenario</div>
+                <div style={{ fontWeight: '800', color: stageColor, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  {act.stage} Stage
+                </div>
               </div>
             </div>
           </div>
@@ -214,14 +275,14 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               color: '#ffffff',
               border: isFavorite ? '2px solid var(--accent-red)' : 'none',
               borderRadius: '14px',
-              padding: '12px',
-              fontSize: '0.88rem',
-              fontWeight: '700',
+              padding: '14px', /* Aumentado padding */
+              fontSize: '1.05rem', /* Aumentado 2pt */
+              fontWeight: '800',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '10px',
               boxShadow: isFavorite ? 'none' : '0 4px 15px rgba(255, 0, 60, 0.3)',
               transition: 'background 0.2s, border-color 0.2s, transform 0.1s',
             }}
@@ -229,29 +290,29 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
             onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
             onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
           >
-            <Zap size={16} fill={isFavorite ? 'var(--accent-red)' : 'none'} />
+            <Zap size={18} fill={isFavorite ? '#ffd600' : 'none'} stroke={isFavorite ? '#ffd600' : '#ffffff'} />
             {isFavorite ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
           </button>
 
           {/* Description Section */}
           <div>
-            <h3 style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '8px' }}>
+            <h3 style={{ fontSize: '0.88rem', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '10px' }}>
               Información de la Banda
             </h3>
 
             {act.bio ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {act.bio.title && (
-                  <h4 style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--accent-red)', borderLeft: '2px solid var(--accent-red)', paddingLeft: '8px', lineHeight: 1.3 }}>
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: '800', color: 'var(--accent-red)', borderLeft: '3px solid var(--accent-red)', paddingLeft: '10px', lineHeight: 1.3 }}>
                     {act.bio.title}
                   </h4>
                 )}
-                <p style={{ fontSize: '0.82rem', lineHeight: '1.5', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>
+                <p style={{ fontSize: '0.95rem', lineHeight: '1.6', color: 'var(--text-secondary)', whiteSpace: 'pre-wrap' }}>
                   {act.bio.description}
                 </p>
               </div>
             ) : (
-              <p style={{ fontSize: '0.82rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
+              <p style={{ fontSize: '0.95rem', fontStyle: 'italic', color: 'var(--text-muted)' }}>
                 Información no disponible.
               </p>
             )}
