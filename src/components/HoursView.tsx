@@ -74,8 +74,16 @@ export const HoursView: React.FC<HoursViewProps> = ({
   });
 
   return (
-    <div className="responsive-content animate-fade-in" style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      {sortedHourKeys.map((hourKey) => {
+    <div
+      style={{
+        flex: 1,
+        overflowY: 'auto',
+        width: '100%',
+      }}
+      className="animate-fade-in"
+    >
+      <div className="responsive-content" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
+        {sortedHourKeys.map((hourKey) => {
         const hourActs = hourBlocks[hourKey].sort((a, b) => a.startMinutes - b.startMinutes);
 
         return (
@@ -278,6 +286,7 @@ export const HoursView: React.FC<HoursViewProps> = ({
           </div>
         );
       })}
+      </div>
     </div>
   );
 };

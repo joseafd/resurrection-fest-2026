@@ -816,10 +816,11 @@ export default function App() {
                   padding: '12px',
                   fontWeight: '800',
                   cursor: 'pointer',
+                  boxShadow: '0 4px 10px rgba(255, 0, 60, 0.25)',
                 }}
                 className="btn-interactive"
               >
-                Importar (Combinar)
+                Importar (Combinar con mis favoritos)
               </button>
               
               <button
@@ -831,17 +832,18 @@ export default function App() {
                   setTimeout(() => setToastMessage(null), 2500);
                 }}
                 style={{
-                  background: '#1b1d24',
-                  color: '#ffffff',
-                  border: '1px solid var(--border-color)',
+                  background: 'rgba(255, 0, 60, 0.05)',
+                  color: 'rgba(255, 255, 255, 0.65)',
+                  border: '1px solid rgba(255, 0, 60, 0.3)',
                   borderRadius: '10px',
                   padding: '12px',
-                  fontWeight: '700',
+                  fontSize: '0.82rem',
+                  fontWeight: '600',
                   cursor: 'pointer',
                 }}
                 className="btn-interactive"
               >
-                Reemplazar mi Agenda
+                Reemplazar (Borrará mis favoritos actuales)
               </button>
 
               <button
