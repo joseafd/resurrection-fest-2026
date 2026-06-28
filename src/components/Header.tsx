@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, LayoutGrid, SlidersHorizontal, Home } from 'lucide-react';
+import { Clock, LayoutGrid, SlidersHorizontal, Home, Share2 } from 'lucide-react';
 import type { FestivalDay } from '../data/festivalData';
 
 interface HeaderProps {
@@ -11,6 +11,7 @@ interface HeaderProps {
   onOpenFilters: () => void;
   hasActiveFilters: boolean;
   onGoHome: () => void;
+  onShare: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -22,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenFilters,
   hasActiveFilters,
   onGoHome,
+  onShare,
 }) => {
   return (
     <header
@@ -68,8 +70,31 @@ export const Header: React.FC<HeaderProps> = ({
             <span style={{ fontSize: '0.75rem', letterSpacing: '3px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
           </div>
 
-          {/* Right: View Toggle + Filters Button Container */}
+          {/* Right: Share + View Toggle + Filters Button Container */}
           <div style={{ display: 'flex', gap: '8px' }}>
+            {/* Share Button */}
+            <button
+              onClick={onShare}
+              aria-label="Compartir favoritos"
+              style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-primary)',
+                padding: '10px',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background 0.2s, transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <Share2 size={18} />
+            </button>
+
             {/* View Toggle */}
             <button
               onClick={onToggleViewMode}

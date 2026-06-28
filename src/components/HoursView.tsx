@@ -9,6 +9,9 @@ interface HoursViewProps {
   onToggleFavorite: (id: string, e: React.MouseEvent) => void;
   onSelectAct: (act: Act) => void;
   showGlobalDayBadge?: boolean;
+  currentTimeMinutes: number;
+  shouldShowLive: boolean;
+  conflictActIds: Set<string>;
 }
 
 export const HoursView: React.FC<HoursViewProps> = ({
@@ -17,6 +20,9 @@ export const HoursView: React.FC<HoursViewProps> = ({
   onToggleFavorite,
   onSelectAct,
   showGlobalDayBadge = false,
+  currentTimeMinutes,
+  shouldShowLive,
+  conflictActIds,
 }) => {
   const [imgErrors, setImgErrors] = React.useState<Record<string, boolean>>({});
 
@@ -39,70 +45,55 @@ export const HoursView: React.FC<HoursViewProps> = ({
           gap: '12px',
         }}
       >
-        <Zap size={32} style={{ opacity: 0.3 }} />
-        <p style={{ fontSize: '0.9rem' }}>No se encontraron conciertos con los filtros actuales.</p>
+        <Clock size={48} strokeWidth={1.5} />
+        <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>No hay actuaciones que coincidan con los filtros</span>
       </div>
     );
   }
 
-  // Helper to get adjusted hour (e.g. 15 for 15:25, 25 for 01:10)
-  const getAdjustedHour = (act: Act): number => {
-    const absoluteMinutes = act.startMinutes + (DAY_START_HOUR * 60);
-    return Math.floor(absoluteMinutes / 60);
-  };
-
-  // Group acts by adjusted hour
-  const groupedActs: Record<number, Act[]> = {};
+  // Group acts by start hour (same day acts are grouped)
+  const hourBlocks: Record<string, Act[]> = {};
   acts.forEach((act) => {
-    const hour = getAdjustedHour(act);
-    if (!groupedActs[hour]) {
-      groupedActs[hour] = [];
+    // Group key is the starting hour e.g. "14:00" -> "14"
+    const startHour = act.start.split(':')[0];
+    const groupKey = `${startHour}:00`;
+    if (!hourBlocks[groupKey]) {
+      hourBlocks[groupKey] = [];
     }
-    groupedActs[hour].push(act);
+    hourBlocks[groupKey].push(act);
   });
 
-  // Sort the hours chronologically
-  const sortedHours = Object.keys(groupedActs)
-    .map(Number)
-    .sort((a, b) => a - b);
-
-  // Helper to format hour key for display (e.g. 25 -> "01:00")
-  const formatHourLabel = (hour: number): string => {
-    const displayHour = hour >= 24 ? hour - 24 : hour;
-    return `${displayHour.toString().padStart(2, '0')}:00`;
-  };
+  // Sort hour keys chronologically
+  const sortedHourKeys = Object.keys(hourBlocks).sort((a, b) => {
+    const aHour = parseInt(a.split(':')[0]);
+    const bHour = parseInt(b.split(':')[0]);
+    // Adjust for post-midnight hours (e.g. 02:00 -> 26:00) so they go last
+    const adjA = aHour < DAY_START_HOUR ? aHour + 24 : aHour;
+    const adjB = bHour < DAY_START_HOUR ? bHour + 24 : bHour;
+    return adjA - adjB;
+  });
 
   return (
-    <div
-      style={{
-        flex: 1,
-        overflowY: 'auto',
-        padding: '16px 8px',
-        width: '100%',
-      }}
-      className="animate-fade-in-up"
-    >
-      <div className="responsive-content" style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%' }}>
-        {sortedHours.map((hour) => {
-        const hourActs = groupedActs[hour].sort((a, b) => a.startMinutes - b.startMinutes);
+    <div className="responsive-content animate-fade-in" style={{ flex: 1, padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      {sortedHourKeys.map((hourKey) => {
+        const hourActs = hourBlocks[hourKey].sort((a, b) => a.startMinutes - b.startMinutes);
 
         return (
-          <div key={hour} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {/* Hour Block Header - More defined and marked */}
+          <div key={hourKey} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {/* Hour Block Header */}
             <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                borderBottom: '2px solid var(--accent-red)',
-                paddingBottom: '6px',
-                marginTop: '8px',
+                fontSize: '1.1rem',
+                fontWeight: '900',
+                color: 'var(--accent-red)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                paddingBottom: '4px',
+                marginTop: '4px',
+                letterSpacing: '1px',
+                fontFamily: 'var(--font-display)',
               }}
             >
-              <Clock size={16} color="var(--accent-red)" />
-              <h3 style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '0.5px' }}>
-                {formatHourLabel(hour)}
-              </h3>
+              {hourKey}
             </div>
 
             {/* Acts inside this hour block */}
@@ -110,6 +101,10 @@ export const HoursView: React.FC<HoursViewProps> = ({
               {hourActs.map((act) => {
                 const isFavorite = favorites.includes(act.id);
                 const stageColor = `var(--color-${act.stage.toLowerCase()})`;
+                const hasConflict = isFavorite && conflictActIds.has(act.id);
+                const isPlayingNow = shouldShowLive && currentTimeMinutes >= act.startMinutes && currentTimeMinutes < act.endMinutes;
+                const minToStart = act.startMinutes - currentTimeMinutes;
+                const showCountdown = isFavorite && shouldShowLive && minToStart > 0 && minToStart <= 120;
 
                 return (
                   <div
@@ -122,8 +117,8 @@ export const HoursView: React.FC<HoursViewProps> = ({
                       padding: '14px 16px',
                       borderRadius: '12px',
                       cursor: 'pointer',
-                      background: stageColor, /* Solid Stage Color Background */
-                      color: '#ffffff', /* High-contrast white text */
+                      background: stageColor,
+                      color: '#ffffff',
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
                       transition: 'transform 0.15s, filter 0.15s, box-shadow 0.15s',
                     }}
@@ -132,7 +127,6 @@ export const HoursView: React.FC<HoursViewProps> = ({
                     onMouseLeave={(e) => { e.currentTarget.style.filter = 'none'; }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', flex: 1, marginRight: '12px', overflow: 'hidden' }}>
-                      {/* Band Thumbnail with fallback */}
                       <div
                         style={{
                           width: '46px',
@@ -172,6 +166,35 @@ export const HoursView: React.FC<HoursViewProps> = ({
                           <span style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
                             {act.band}
                           </span>
+                          
+                          {/* Live Mode Badge */}
+                          {isPlayingNow && (
+                            <span className="pulse-badge">
+                              ● DIRECTO
+                            </span>
+                          )}
+
+                          {/* Conflict Alert Warning Badge */}
+                          {hasConflict && (
+                            <span
+                              className="conflict-warning"
+                              style={{
+                                padding: '2px 6px',
+                                fontSize: '0.7rem',
+                                color: '#0d0f14',
+                                borderRadius: '4px',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '3px',
+                                textTransform: 'uppercase'
+                              }}
+                              title="Coincide en horario con otra banda favorita"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              ⚠️ Solape
+                            </span>
+                          )}
+
                           {/* Day badge for global search results */}
                           {showGlobalDayBadge && (
                             <span
@@ -192,10 +215,27 @@ export const HoursView: React.FC<HoursViewProps> = ({
                           )}
                         </div>
                         
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.9)', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.9)', textShadow: '0 1px 2px rgba(0,0,0,0.3)', flexWrap: 'wrap' }}>
                           <span style={{ fontWeight: '700' }}>
                             {act.start} - {act.end}
                           </span>
+
+                          {/* Countdown Badge */}
+                          {showCountdown && (
+                            <span
+                              style={{
+                                color: '#ffd600',
+                                fontWeight: '800',
+                                background: 'rgba(0, 0, 0, 0.35)',
+                                padding: '1px 6px',
+                                borderRadius: '4px',
+                                fontSize: '0.75rem',
+                              }}
+                            >
+                              En {minToStart} min
+                            </span>
+                          )}
+
                           <span style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'rgba(255, 255, 255, 0.75)' }}>
                             <MapPin size={12} />
                             {act.stage} Stage
@@ -238,7 +278,6 @@ export const HoursView: React.FC<HoursViewProps> = ({
           </div>
         );
       })}
-      </div>
     </div>
   );
 };

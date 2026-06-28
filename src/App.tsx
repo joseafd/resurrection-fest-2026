@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { SearchBar } from './components/SearchBar';
 import { HoursView } from './components/HoursView';
@@ -8,7 +8,7 @@ import { BandDetailModal } from './components/BandDetailModal';
 import { festivalData } from './data/festivalData';
 import type { Act } from './data/festivalData';
 import { useLocalStorage } from './hooks/useLocalStorage';
-import { Calendar, Map, ArrowLeft, Info } from 'lucide-react';
+import { Calendar, Map, ArrowLeft, Info, Share2 } from 'lucide-react';
 
 export default function App() {
   const defaultStages = ["Main", "Ritual", "Chaos", "Desert"];
@@ -24,12 +24,14 @@ export default function App() {
   const [stagesOrder, setStagesOrder] = useLocalStorage<string[]>('rf_stages_order', defaultStages);
   const [onlyFavorites, setOnlyFavorites] = useLocalStorage<boolean>('rf_only_favorites', false);
 
-  // 3. UI State
+  // 3. UI & Notification State
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchGlobal, setSearchGlobal] = useState<boolean>(false);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
   const [selectedAct, setSelectedAct] = useState<Act | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [pendingImport, setPendingImport] = useState<string[] | null>(null);
 
   // 4. Days list shortcut
   const days = festivalData.days;
@@ -37,7 +39,118 @@ export default function App() {
     return days.find((day) => day.id === selectedDayId) || days[0];
   }, [days, selectedDayId]);
 
-  // 5. Time filtering / sorting helpers
+  // 5. URL query string import checker (runs on load)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('favs')) {
+      const favsStr = params.get('favs');
+      if (favsStr) {
+        const sharedIds = favsStr.split(',').filter(id => id.trim() !== '');
+        if (sharedIds.length > 0) {
+          setPendingImport(sharedIds);
+        }
+      }
+    }
+  }, []);
+
+  // 6. Current Festival Time Simulator Logic
+  // Minute 0 of festival day starts at 14:00 (2:00 PM). Ends at 28:00 (4:00 AM next morning).
+  const getFestivalMinutes = () => {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    let displayHour = hours;
+    if (hours < 4) {
+      displayHour = hours + 24; // Treat 01:00 as 25:00
+    }
+
+    if (displayHour >= 14 && displayHour < 28) {
+      return (displayHour - 14) * 60 + minutes;
+    }
+    return -1; // Outside active timeline hours
+  };
+
+  const [currentFestivalMinutes, setCurrentFestivalMinutes] = useState<number>(getFestivalMinutes());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentFestivalMinutes(getFestivalMinutes());
+    }, 30000); // Update every 30 seconds
+    return () => clearInterval(timer);
+  }, []);
+
+  // Determine if we should show active live indicators
+  // For testing: if outside July 1-4, 2026, always show live line using system clock on selected day.
+  // In July 2026: only show it on the matching day.
+  const shouldShowLive = useMemo(() => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    const dateStr = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    
+    const isFestivalPeriod = dateStr >= '2026-07-01' && dateStr <= '2026-07-04';
+    if (isFestivalPeriod) {
+      return selectedDayId === dateStr;
+    }
+    return true; // Simulate live mode on any selected day outside festival dates
+  }, [selectedDayId]);
+
+  // 7. Favorite Timing Conflicts Detector
+  const conflictActIds = useMemo(() => {
+    const conflicts = new Set<string>();
+    
+    // Group favorites by day
+    const favsByDay: Record<string, Act[]> = {};
+    days.forEach((day) => {
+      favsByDay[day.id] = day.acts.filter((act) => favorites.includes(act.id));
+    });
+
+    // Check adjacent overlaps per day
+    Object.values(favsByDay).forEach((dayActs) => {
+      const sorted = [...dayActs].sort((a, b) => a.startMinutes - b.startMinutes);
+      for (let i = 0; i < sorted.length; i++) {
+        for (let j = i + 1; j < sorted.length; j++) {
+          const actA = sorted[i];
+          const actB = sorted[j];
+          // If Act B starts before Act A ends, we have an overlap!
+          if (actB.startMinutes < actA.endMinutes) {
+            conflicts.add(actA.id);
+            conflicts.add(actB.id);
+          } else {
+            break; // Sorted by start time, so no subsequent band can start before A ends
+          }
+        }
+      }
+    });
+
+    return conflicts;
+  }, [days, favorites]);
+
+  // 8. Share Favorites Handler
+  const handleShareFavorites = () => {
+    if (favorites.length === 0) {
+      setToastMessage('Añade primero alguna banda a favoritos para compartir');
+      setTimeout(() => setToastMessage(null), 2500);
+      return;
+    }
+
+    const baseUrl = window.location.origin + window.location.pathname;
+    const shareUrl = `${baseUrl}?favs=${encodeURIComponent(favorites.join(','))}`;
+
+    navigator.clipboard.writeText(shareUrl)
+      .then(() => {
+        setToastMessage('🔗 ¡Enlace de tu agenda copiado al portapapeles!');
+        setTimeout(() => setToastMessage(null), 2500);
+      })
+      .catch(() => {
+        setToastMessage('No se pudo copiar el enlace de forma automática');
+        setTimeout(() => setToastMessage(null), 2500);
+      });
+  };
+
+  // 9. Time filtering / sorting helpers
   const handleToggleFavorite = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation(); // prevent opening details when favoriting
     setFavorites((prev) =>
@@ -68,7 +181,7 @@ export default function App() {
     return onlyFavorites || isStagesModified;
   }, [onlyFavorites, visibleStages, stagesOrder, defaultStages]);
 
-  // 6. Filtered acts computation
+  // 10. Filtered acts computation
   const filteredActs = useMemo(() => {
     // Determine scope of acts to filter (all days if searchGlobal is on, else current day)
     let actsPool: Act[] = [];
@@ -104,6 +217,9 @@ export default function App() {
           onToggleFavorite={handleToggleFavorite}
           onSelectAct={handleSelectAct}
           showGlobalDayBadge={searchGlobal && searchQuery.trim() !== ''}
+          currentTimeMinutes={currentFestivalMinutes}
+          shouldShowLive={shouldShowLive}
+          conflictActIds={conflictActIds}
         />
       );
     } else {
@@ -116,6 +232,9 @@ export default function App() {
           favorites={favorites}
           onToggleFavorite={handleToggleFavorite}
           onSelectAct={handleSelectAct}
+          currentTimeMinutes={currentFestivalMinutes}
+          shouldShowLive={shouldShowLive}
+          conflictActIds={conflictActIds}
         />
       );
     }
@@ -161,7 +280,7 @@ export default function App() {
           {/* Cover image */}
           <img
             src="./images/PORTADA_RR.jpg"
-            alt="Ressec 2026 Portada"
+            alt="Resurrection Fest Portada"
             style={{
               width: '100%',
               height: 'auto',
@@ -556,6 +675,7 @@ export default function App() {
         onOpenFilters={() => setIsFilterOpen(true)}
         hasActiveFilters={hasActiveFilters}
         onGoHome={() => setActiveTab('home')}
+        onShare={handleShareFavorites}
       />
 
       {/* Sleek Search Bar */}
@@ -609,7 +729,142 @@ export default function App() {
         }}
         isFavorite={selectedAct ? favorites.includes(selectedAct.id) : false}
         onToggleFavorite={(id) => handleToggleFavorite(id)}
+        conflictActIds={conflictActIds}
+        favorites={favorites}
       />
+
+      {/* Toast Notification Container */}
+      {toastMessage && (
+        <div
+          className="glass animate-fade-in"
+          style={{
+            position: 'fixed',
+            bottom: '24px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'rgba(13, 15, 20, 0.95)',
+            border: '1px solid var(--accent-red)',
+            color: '#ffffff',
+            padding: '12px 24px',
+            borderRadius: '12px',
+            boxShadow: '0 8px 24px rgba(255, 0, 60, 0.25)',
+            zIndex: 1000,
+            fontSize: '0.9rem',
+            fontWeight: '700',
+            textAlign: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          {toastMessage}
+        </div>
+      )}
+
+      {/* Shared Favorites Import Dialog */}
+      {pendingImport && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.85)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1100,
+            padding: '20px',
+          }}
+          className="animate-fade-in"
+        >
+          <div
+            className="glass"
+            style={{
+              width: '100%',
+              maxWidth: '320px',
+              padding: '24px',
+              borderRadius: '20px',
+              border: '1px solid var(--border-color)',
+              textAlign: 'center',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
+            }}
+          >
+            <div style={{ color: 'var(--accent-red)', marginBottom: '14px' }}>
+              <Share2 size={36} style={{ margin: '0 auto' }} />
+            </div>
+            <h2 className="font-metal" style={{ fontSize: '1.25rem', marginBottom: '8px' }}>
+              IMPORTAR AGENDA
+            </h2>
+            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginBottom: '20px', lineHeight: 1.4 }}>
+              Te han compartido un itinerario con <strong>{pendingImport.length}</strong> bandas favoritas. ¿Qué deseas hacer?
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button
+                onClick={() => {
+                  setFavorites((prev) => Array.from(new Set([...prev, ...pendingImport])));
+                  window.history.replaceState({}, document.title, window.location.pathname);
+                  setPendingImport(null);
+                  setToastMessage('✅ ¡Favoritos combinados con éxito!');
+                  setTimeout(() => setToastMessage(null), 2500);
+                }}
+                style={{
+                  background: 'var(--accent-red)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '10px',
+                  padding: '12px',
+                  fontWeight: '800',
+                  cursor: 'pointer',
+                }}
+                className="btn-interactive"
+              >
+                Importar (Combinar)
+              </button>
+              
+              <button
+                onClick={() => {
+                  setFavorites(pendingImport);
+                  window.history.replaceState({}, document.title, window.location.pathname);
+                  setPendingImport(null);
+                  setToastMessage('✅ Tu agenda ha sido reemplazada');
+                  setTimeout(() => setToastMessage(null), 2500);
+                }}
+                style={{
+                  background: '#1b1d24',
+                  color: '#ffffff',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: '10px',
+                  padding: '12px',
+                  fontWeight: '700',
+                  cursor: 'pointer',
+                }}
+                className="btn-interactive"
+              >
+                Reemplazar mi Agenda
+              </button>
+
+              <button
+                onClick={() => {
+                  window.history.replaceState({}, document.title, window.location.pathname);
+                  setPendingImport(null);
+                }}
+                style={{
+                  background: 'transparent',
+                  color: 'var(--text-secondary)',
+                  border: 'none',
+                  borderRadius: '10px',
+                  padding: '10px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                }}
+              >
+                Descartar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

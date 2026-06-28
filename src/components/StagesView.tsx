@@ -8,6 +8,9 @@ interface StagesViewProps {
   favorites: string[];
   onToggleFavorite: (id: string, e: React.MouseEvent) => void;
   onSelectAct: (act: Act) => void;
+  currentTimeMinutes: number;
+  shouldShowLive: boolean;
+  conflictActIds: Set<string>;
 }
 
 export const StagesView: React.FC<StagesViewProps> = ({
@@ -16,6 +19,9 @@ export const StagesView: React.FC<StagesViewProps> = ({
   favorites,
   onToggleFavorite,
   onSelectAct,
+  currentTimeMinutes,
+  shouldShowLive,
+  conflictActIds,
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -169,6 +175,22 @@ export const StagesView: React.FC<StagesViewProps> = ({
                   }}
                 />
               ))}
+
+              {/* Red vertical time line representing current time */}
+              {shouldShowLive && currentTimeMinutes >= 0 && currentTimeMinutes < (14 * 60) && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: `${currentTimeMinutes * MINUTE_WIDTH}px`,
+                    top: 0,
+                    bottom: 0,
+                    width: '2px',
+                    backgroundColor: '#ff003c',
+                    boxShadow: '0 0 8px #ff003c',
+                    zIndex: 10,
+                  }}
+                />
+              )}
             </div>
 
             {/* Stage lanes */}
@@ -235,6 +257,10 @@ export const StagesView: React.FC<StagesViewProps> = ({
                       const leftPos = act.startMinutes * MINUTE_WIDTH;
                       const blockWidth = act.duration * MINUTE_WIDTH;
                       const stageColor = `var(--color-${stage.toLowerCase()})`;
+                      const hasConflict = isFavorite && conflictActIds.has(act.id);
+                      const isPlayingNow = shouldShowLive && currentTimeMinutes >= act.startMinutes && currentTimeMinutes < act.endMinutes;
+                      const minToStart = act.startMinutes - currentTimeMinutes;
+                      const showCountdown = isFavorite && shouldShowLive && minToStart > 0 && minToStart <= 120;
 
                       return (
                         <div
@@ -248,9 +274,11 @@ export const StagesView: React.FC<StagesViewProps> = ({
                             height: '70px',
                             background: stageColor, /* Solid Stage Color Background */
                             color: '#ffffff', /* High-contrast white text */
-                            border: isFavorite
-                              ? '2px solid #ffffff' /* White border for active favorites to pop */
-                              : '1px solid rgba(255, 255, 255, 0.15)',
+                            border: isPlayingNow
+                              ? '2px solid #ff003c' /* Glowing red border for active sets */
+                              : (isFavorite
+                                ? '2px solid #ffffff' /* White border for active favorites to pop */
+                                : '1px solid rgba(255, 255, 255, 0.15)'),
                             borderRadius: '10px',
                             padding: '8px 10px',
                             display: 'flex',
@@ -258,10 +286,12 @@ export const StagesView: React.FC<StagesViewProps> = ({
                             justifyContent: 'space-between',
                             cursor: 'pointer',
                             transition: 'transform 0.15s, filter 0.15s, box-shadow 0.15s',
-                            boxShadow: isFavorite 
-                              ? '0 0 12px rgba(255, 255, 255, 0.35)' 
-                              : '0 4px 8px rgba(0,0,0,0.25)',
-                            zIndex: isFavorite ? 5 : 2,
+                            boxShadow: isPlayingNow
+                              ? '0 0 14px rgba(255, 0, 60, 0.65)'
+                              : (isFavorite
+                                ? '0 0 12px rgba(255, 255, 255, 0.35)' 
+                                : '0 4px 8px rgba(0,0,0,0.25)'),
+                            zIndex: isPlayingNow ? 6 : (isFavorite ? 5 : 2),
                             overflow: 'hidden',
                           }}
                           onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.15)'; }}
@@ -315,7 +345,7 @@ export const StagesView: React.FC<StagesViewProps> = ({
                           {/* Card Footer: Set Times */}
                           <div
                             style={{
-                              fontSize: '0.75rem', /* Aumentado */
+                              fontSize: '0.75rem',
                               fontWeight: '700',
                               color: 'rgba(255, 255, 255, 0.9)',
                               display: 'flex',
@@ -324,9 +354,26 @@ export const StagesView: React.FC<StagesViewProps> = ({
                               textShadow: '0 1px 2px rgba(0,0,0,0.4)',
                             }}
                           >
-                            <span>
-                              {act.start} - {act.end}
-                            </span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                              <span>
+                                {act.start} - {act.end}
+                              </span>
+                              {isPlayingNow && (
+                                <span className="pulse-badge" style={{ fontSize: '0.55rem', padding: '1px 3px', transform: 'scale(0.85)', transformOrigin: 'left' }}>
+                                  ● LIVE
+                                </span>
+                              )}
+                              {showCountdown && (
+                                <span style={{ color: '#ffd600', fontWeight: '800', fontSize: '0.62rem', background: 'rgba(0,0,0,0.3)', padding: '1px 4px', borderRadius: '3px' }}>
+                                  {minToStart}'
+                                </span>
+                              )}
+                              {hasConflict && (
+                                <span style={{ color: '#ffd600', fontWeight: '800', fontSize: '0.75rem' }} title="Conflicto de horario (se solapa con otra favorita)">
+                                  ⚠️
+                                </span>
+                              )}
+                            </div>
                             <span style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.7)' }}>
                               {act.duration} min
                             </span>

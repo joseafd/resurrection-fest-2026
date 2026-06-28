@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { X, Zap, Clock, Calendar, MapPin } from 'lucide-react';
 import type { Act } from '../data/festivalData';
 
+import { festivalData } from '../data/festivalData';
+
 interface BandDetailModalProps {
   act: Act | null;
   isOpen: boolean;
   onClose: () => void;
   isFavorite: boolean;
   onToggleFavorite: (id: string) => void;
+  conflictActIds?: Set<string>;
+  favorites?: string[];
 }
 
 export const BandDetailModal: React.FC<BandDetailModalProps> = ({
@@ -16,6 +20,8 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
   onClose,
   isFavorite,
   onToggleFavorite,
+  conflictActIds = new Set(),
+  favorites = [],
 }) => {
   const [imgError, setImgError] = useState<boolean>(false);
 
@@ -23,6 +29,24 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
   useEffect(() => {
     setImgError(false);
   }, [act]);
+
+  // Find other favorited acts that overlap with this one
+  const conflictingActs = React.useMemo(() => {
+    if (!act || !isFavorite || !conflictActIds || !favorites) return [];
+    
+    const dayId = act.id.substring(0, 10);
+    const day = festivalData.days.find(d => d.id === dayId);
+    if (!day) return [];
+
+    return day.acts.filter(a => {
+      if (a.id === act.id) return false;
+      if (!favorites.includes(a.id)) return false;
+      
+      const startOverlap = Math.max(act.startMinutes, a.startMinutes);
+      const endOverlap = Math.min(act.endMinutes, a.endMinutes);
+      return startOverlap < endOverlap;
+    });
+  }, [act, isFavorite, conflictActIds, favorites]);
 
   if (!isOpen || !act) return null;
 
@@ -293,6 +317,41 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
             <Zap size={18} fill={isFavorite ? '#ffd600' : 'none'} stroke={isFavorite ? '#ffd600' : '#ffffff'} />
             {isFavorite ? 'Quitar de Favoritos' : 'Añadir a Favoritos'}
           </button>
+
+          {/* Timing Conflict Alert */}
+          {isFavorite && conflictingActs.length > 0 && (
+            <div
+              className="glass"
+              style={{
+                background: 'rgba(255, 214, 0, 0.08)',
+                border: '1px solid #ffd600',
+                borderRadius: '12px',
+                padding: '12px 16px',
+                display: 'flex',
+                gap: '12px',
+                alignItems: 'flex-start',
+                marginTop: '4px',
+                boxShadow: '0 4px 15px rgba(255, 214, 0, 0.1)',
+                animation: 'pulseYellow 2.5s infinite ease-in-out',
+              }}
+            >
+              <span style={{ fontSize: '1.25rem', lineHeight: 1 }}>⚠️</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'left' }}>
+                <span style={{ color: '#ffd600', fontWeight: '900', fontSize: '0.82rem', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                  Conflicto de Horario
+                </span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-primary)', lineHeight: 1.35 }}>
+                  Coincide en tiempo con tu favorita:{' '}
+                  {conflictingActs.map((c, idx) => (
+                    <span key={c.id}>
+                      <strong>{c.band}</strong> ({c.start} - {c.end} en {c.stage} Stage)
+                      {idx < conflictingActs.length - 1 ? ', ' : ''}
+                    </span>
+                  ))}
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* Description Section */}
           <div>
