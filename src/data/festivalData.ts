@@ -225,7 +225,7 @@ const rawFestivalData = {
       "doors": "15:00",
       "stages": ["Main", "Ritual", "Chaos", "Desert"],
       "acts": [
-        { "band": "Band Contest", "stage": "Desert", "start": "15:20", "end": "16:00" },
+        { "band": "Arson Tides", "stage": "Desert", "start": "15:20", "end": "16:00" },
         { "band": "Fallen At Dawn", "stage": "Main", "start": "15:25", "end": "16:10" },
         { "band": "Fuet!", "stage": "Chaos", "start": "15:45", "end": "16:35" },
         { "band": "Her Anxiety", "stage": "Ritual", "start": "16:10", "end": "16:50" },
@@ -259,7 +259,7 @@ const rawFestivalData = {
       "stages": ["Main", "Ritual", "Chaos", "Desert"],
       "acts": [
         { "band": "Nukore", "stage": "Ritual", "start": "15:05", "end": "15:50" },
-        { "band": "Band Contest", "stage": "Desert", "start": "15:05", "end": "15:45" },
+        { "band": "The Fall Of Atlantis", "stage": "Desert", "start": "15:05", "end": "15:45" },
         { "band": "Blaze The Trail", "stage": "Main", "start": "15:50", "end": "16:35" },
         { "band": "Pants Off", "stage": "Chaos", "start": "15:50", "end": "16:35" },
         { "band": "Not Yet", "stage": "Ritual", "start": "16:35", "end": "17:20" },
@@ -293,7 +293,7 @@ const rawFestivalData = {
       "stages": ["Main", "Ritual", "Chaos", "Desert"],
       "acts": [
         { "band": "I Scream Never Ground", "stage": "Main", "start": "14:50", "end": "15:40" },
-        { "band": "Band Contest", "stage": "Desert", "start": "14:50", "end": "15:30" },
+        { "band": "Down To Suffer", "stage": "Desert", "start": "14:50", "end": "15:30" },
         { "band": "Stellvris", "stage": "Ritual", "start": "15:40", "end": "16:25" },
         { "band": "Donuts Hole", "stage": "Chaos", "start": "15:40", "end": "16:25" },
         { "band": "Hamlet", "stage": "Main", "start": "16:25", "end": "17:15" },

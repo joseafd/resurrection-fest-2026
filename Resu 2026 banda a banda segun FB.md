@@ -68,7 +68,7 @@ Garaje cavernícola psicodelicioso
 
 PRESIDENT apareció de la nada en 2025, y en cuestión de semanas se convirtió en uno de los fenómenos virales más duros del metal moderno. El colectivo británico dirigido por su líder homónimo The President se suma a esta edición para captar devotos en su genial propuesta 🤫
 
-Con más de 50 millones de reproducciones en plataformas, es la nueva sensación que lo está petando entre curiosxs y fans de Dayseeker, Sleep Theory o Bad Omens. Metalcore y post-hardcore de primera con una chispa de R&B y pop que lo hace único 🙌 ¡No te puedes perder esta locura el primer día de festi en el Main Stage! 🔥
+Con más de 50 millones de reproducciones en plataformas, es la nueva sensación que lo está petando entre curiosxs y fans de Dayseeker, Sleep Theory o Bad Omens. Metalcore y post-hardcore de primera con una chispa de R\&B y pop que lo hace único 🙌 ¡No te puedes perder esta locura el primer día de festi en el Main Stage! 🔥
 
 
 
@@ -200,6 +200,12 @@ JUEVES 2
 
 
 
+**ARSON TIDES** 
+
+📌 La banda  Arson Tides, ha sido una de las tres elegidas para la gloria en el concurso de bandas del Resurrection Fest. La joven banda tiene entre sus filas a al vocalista cangués Orlando Soage, el guitarrista de Bueu Víctor Gómez y al benjamín del festival, Mateo, el joven baterista vigués de 16 años
+
+
+
 **FALLEN AT DAWN** - ¡LOS MADRILEÑOS FALLEN AT DAWN REGRESAN AL RESU ESTE 2026! 🔥 SP 5K
 
 Con su estilo entre el post-hardcore y metalcore, la banda madrileña es un ejemplo de constancia y amor por la música. Desde su creación hace aproximadamente una década hasta hoy, y con dos discos por medio, su música ha llegado tanto a varios países de Europa como Latinoamérica gracias a dos álbumes top publicados en 2018 y 2025 🙌
@@ -294,8 +300,6 @@ Dentro de 1 mes celebraremos la cuarta visita de los Maiden a Galicia. Primera e
 
 Las leyendas del heavy metal ya llevan casi un par de semanas con su gira europea celebrando sus 50 años de historia, y aunque os pueda sorprender a muchxs, están sonando más fuertes y contundentes que nunca. Damos fe de que el tiempo no pasa por los británicos
 
-SCREAM FOR ME, VIVEIRO!! 🔥 ¡IRON MAIDEN Iron Maiden VOLVERÁN AL RESURRECTION FEST 10 AÑOS DESPUÉS!
-
 ¡La Dama de Hierro vuelve a casa! Ya ha pasado una década tras su última e inolvidable actuación en el festival, la banda más grande de la historia del heavy metal vuelve a Viveiro. ¡IRON MAIDEN serán el segundo cabeza de cartel para nuestra próxima edición!
 
 ¡Y no vuelven de cualquier manera! Los británicos darán en el Resurrection Fest EG uno de los dos únicos conciertos en España en 2026 con su gira "Run For Your Lives" celebrando sus 50 años de historia con un setlist de locos en el que recorrerán todos los himnos de sus primeros 9 discos de estudios, desde "Iron Maiden" hasta "Fear Of The Dark", un “greatest hits” en toda regla.
@@ -369,6 +373,12 @@ El sexteto comandado por Peter Hanrici (Hauptmann Feuerschwanz) ha logrado pasar
 
 
 VIERNES 3
+
+
+
+**THE FALL OF ATLANTIS**
+
+The Fall Of Atlantis se creó en Madrid en el año 2012, la banda se caracteriza por tener un estilo Metalcore poco corriente con influencias del Deathcore y la música electrónica, donde podemos encontrar desde los breakdowns más potentes y rompedores a melodías pegadizas
 
 
 
@@ -571,6 +581,12 @@ Con su mezcla de punk, metal y rock electrónico, House of Protection promete ha
 
 
 SABADO 4
+
+
+
+**DOWN TO SUFFER**
+
+Down to Suffer es una banda joven cántabra de cinco integrantes (Julen, Dabi, Jesús, Mario y Samu) que nace para renovar el proyecto Burning the Waves. Con tres singles publicados, sacan a primeros de 2026 el que es su primer EP "Eclipse"
 
 
 
@@ -785,3 +801,4 @@ Formados en la ciudad industrial de Essen hace una década, ELWOOD STRAY han ido
 El quinteto es una de las propuestas más viscerales y sofisticadas del metal contemporáneo europeo. Se dejará caer por Viveiro para presentar su nuevo y segundo álbum "Descending", estrenado a comienzos de año, el sábado 4 de julio 🤘
 
 Como ya sabréis, el pasado mes de abril sufrimos la pérdida de Bo Lueders, miembro de Harm's Way, guitarrista, amante empedernido de la música e icono del hardcore contemporáneo. Por motivos evidentes, Harm's Way no actuarán en Europa este año y Elwood Stray nos acompañarán el sábado en el Chaos. Todo nuestro apoyo y amor a la familia y compañeros de Bo 🖤
+
