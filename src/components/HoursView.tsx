@@ -18,6 +18,12 @@ export const HoursView: React.FC<HoursViewProps> = ({
   onSelectAct,
   showGlobalDayBadge = false,
 }) => {
+  const [imgErrors, setImgErrors] = React.useState<Record<string, boolean>>({});
+
+  const handleImgError = (id: string) => {
+    setImgErrors((prev) => ({ ...prev, [id]: true }));
+  };
+
   if (acts.length === 0) {
     return (
       <div
@@ -125,39 +131,76 @@ export const HoursView: React.FC<HoursViewProps> = ({
                     onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.15)'; }}
                     onMouseLeave={(e) => { e.currentTarget.style.filter = 'none'; }}
                   >
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', flex: 1, marginRight: '12px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
-                          {act.band}
-                        </span>
-                        {/* Day badge for global search results */}
-                        {showGlobalDayBadge && (
-                          <span
+                    <div style={{ display: 'flex', alignItems: 'center', flex: 1, marginRight: '12px', overflow: 'hidden' }}>
+                      {/* Band Thumbnail with fallback */}
+                      <div
+                        style={{
+                          width: '46px',
+                          height: '46px',
+                          borderRadius: '8px',
+                          overflow: 'hidden',
+                          background: 'rgba(0, 0, 0, 0.25)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          marginRight: '12px',
+                          flexShrink: 0,
+                          position: 'relative',
+                          border: '1px solid rgba(255, 255, 255, 0.15)',
+                        }}
+                      >
+                        {!imgErrors[act.id] ? (
+                          <img
+                            src={`./images/${act.band.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Z0-9\s-]/g, "").trim().replace(/[\s-]+/g, " ")}.jpg`}
+                            alt=""
+                            onError={() => handleImgError(act.id)}
                             style={{
-                              fontSize: '0.72rem',
-                              background: 'rgba(0, 0, 0, 0.3)',
-                              color: '#ffffff',
-                              padding: '2px 8px',
-                              borderRadius: '4px',
-                              fontWeight: '700',
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
                             }}
-                          >
-                            {act.id.startsWith('2026-07-01') && 'Miércoles 1'}
-                            {act.id.startsWith('2026-07-02') && 'Jueves 2'}
-                            {act.id.startsWith('2026-07-03') && 'Viernes 3'}
-                            {act.id.startsWith('2026-07-04') && 'Sábado 4'}
+                          />
+                        ) : (
+                          <span style={{ fontSize: '0.85rem', fontWeight: '800', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-display)' }}>
+                            {act.band.substring(0, 2).toUpperCase()}
                           </span>
                         )}
                       </div>
-                      
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.9)', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
-                        <span style={{ fontWeight: '700' }}>
-                          {act.start} - {act.end}
-                        </span>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'rgba(255, 255, 255, 0.75)' }}>
-                          <MapPin size={12} />
-                          {act.stage} Stage
-                        </span>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', flex: 1, overflow: 'hidden' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                            {act.band}
+                          </span>
+                          {/* Day badge for global search results */}
+                          {showGlobalDayBadge && (
+                            <span
+                              style={{
+                                fontSize: '0.72rem',
+                                background: 'rgba(0, 0, 0, 0.3)',
+                                color: '#ffffff',
+                                padding: '2px 8px',
+                                borderRadius: '4px',
+                                fontWeight: '700',
+                              }}
+                            >
+                              {act.id.startsWith('2026-07-01') && 'Miércoles 1'}
+                              {act.id.startsWith('2026-07-02') && 'Jueves 2'}
+                              {act.id.startsWith('2026-07-03') && 'Viernes 3'}
+                              {act.id.startsWith('2026-07-04') && 'Sábado 4'}
+                            </span>
+                          )}
+                        </div>
+                        
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.9)', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                          <span style={{ fontWeight: '700' }}>
+                            {act.start} - {act.end}
+                          </span>
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '3px', color: 'rgba(255, 255, 255, 0.75)' }}>
+                            <MapPin size={12} />
+                            {act.stage} Stage
+                          </span>
+                        </div>
                       </div>
                     </div>
 

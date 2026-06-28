@@ -62,7 +62,10 @@ export const StagesView: React.FC<StagesViewProps> = ({
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        background: '#090a0f',
+        backgroundImage: 'linear-gradient(rgba(8, 9, 13, 0.88), rgba(8, 9, 13, 0.88)), url("./images/FONDO.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'local',
       }}
       className="animate-fade-in"
     >

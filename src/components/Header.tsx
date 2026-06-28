@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, LayoutGrid, SlidersHorizontal } from 'lucide-react';
+import { Clock, LayoutGrid, SlidersHorizontal, Home } from 'lucide-react';
 import type { FestivalDay } from '../data/festivalData';
 
 interface HeaderProps {
@@ -10,6 +10,7 @@ interface HeaderProps {
   onToggleViewMode: () => void;
   onOpenFilters: () => void;
   hasActiveFilters: boolean;
+  onGoHome: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleViewMode,
   onOpenFilters,
   hasActiveFilters,
+  onGoHome,
 }) => {
   return (
     <header
@@ -35,11 +37,12 @@ export const Header: React.FC<HeaderProps> = ({
       }}
     >
       <div className="responsive-content" style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
-        {/* Top row: View toggle, Logo, Filter trigger */}
+        {/* Top row: Home button, Logo, Action buttons container */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          {/* Left: Home Button */}
           <button
-            onClick={onToggleViewMode}
-            aria-label={viewMode === 'hours' ? 'Ver cuadrícula de escenarios' : 'Ver lista por horas'}
+            onClick={onGoHome}
+            aria-label="Volver al inicio"
             style={{
               background: 'rgba(255, 255, 255, 0.04)',
               border: '1px solid var(--border-color)',
@@ -56,50 +59,78 @@ export const Header: React.FC<HeaderProps> = ({
             onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
             onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
           >
-            {viewMode === 'hours' ? <LayoutGrid size={18} /> : <Clock size={18} />}
+            <Home size={18} />
           </button>
 
+          {/* Center: Logo */}
           <div style={{ textAlign: 'center' }}>
             <h1 className="font-metal" style={{ fontSize: '1.3rem', lineHeight: 1.1 }}>RESURRECTION</h1>
             <span style={{ fontSize: '0.75rem', letterSpacing: '3px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
           </div>
 
-          <button
-            onClick={onOpenFilters}
-            aria-label="Abrir filtros y ordenar escenarios"
-            style={{
-              background: hasActiveFilters ? 'rgba(255, 0, 60, 0.15)' : 'rgba(255, 255, 255, 0.04)',
-              border: `1px solid ${hasActiveFilters ? 'var(--accent-red)' : 'var(--border-color)'}`,
-              color: hasActiveFilters ? 'var(--accent-red)' : 'var(--text-primary)',
-              padding: '10px',
-              borderRadius: '12px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              transition: 'background 0.2s, border-color 0.2s, transform 0.1s',
-            }}
-            className="btn-interactive"
-            onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
-            onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            <SlidersHorizontal size={18} />
-            {hasActiveFilters && (
-              <span
-                style={{
-                  position: 'absolute',
-                  top: '4px',
-                  right: '4px',
-                  width: '6px',
-                  height: '6px',
-                  backgroundColor: 'var(--accent-red)',
-                  borderRadius: '50%',
-                  boxShadow: '0 0 6px var(--accent-red)',
-                }}
-              />
-            )}
-          </button>
+          {/* Right: View Toggle + Filters Button Container */}
+          <div style={{ display: 'flex', gap: '8px' }}>
+            {/* View Toggle */}
+            <button
+              onClick={onToggleViewMode}
+              aria-label={viewMode === 'hours' ? 'Ver cuadrícula de escenarios' : 'Ver lista por horas'}
+              style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-primary)',
+                padding: '10px',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background 0.2s, transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              {viewMode === 'hours' ? <LayoutGrid size={18} /> : <Clock size={18} />}
+            </button>
+
+            {/* Filter Drawer Trigger */}
+            <button
+              onClick={onOpenFilters}
+              aria-label="Abrir filtros y ordenar escenarios"
+              style={{
+                background: hasActiveFilters ? 'rgba(255, 0, 60, 0.15)' : 'rgba(255, 255, 255, 0.04)',
+                border: `1px solid ${hasActiveFilters ? 'var(--accent-red)' : 'var(--border-color)'}`,
+                color: hasActiveFilters ? 'var(--accent-red)' : 'var(--text-primary)',
+                padding: '10px',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                transition: 'background 0.2s, border-color 0.2s, transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <SlidersHorizontal size={18} />
+              {hasActiveFilters && (
+                <span
+                  style={{
+                    position: 'absolute',
+                    top: '4px',
+                    right: '4px',
+                    width: '6px',
+                    height: '6px',
+                    backgroundColor: 'var(--accent-red)',
+                    borderRadius: '50%',
+                    boxShadow: '0 0 6px var(--accent-red)',
+                  }}
+                />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Day Selector Segmented Control */}
