@@ -8,13 +8,13 @@ import { BandDetailModal } from './components/BandDetailModal';
 import { festivalData } from './data/festivalData';
 import type { Act } from './data/festivalData';
 import { useLocalStorage } from './hooks/useLocalStorage';
-import { Calendar, Map, ArrowLeft } from 'lucide-react';
+import { Calendar, Map, ArrowLeft, Info } from 'lucide-react';
 
 export default function App() {
   const defaultStages = ["Main", "Ritual", "Chaos", "Desert"];
 
-  // 1. App Navigation State (home, agenda, map)
-  const [activeTab, setActiveTab] = useState<'home' | 'agenda' | 'map'>('home');
+  // 1. App Navigation State (home, agenda, map, credits)
+  const [activeTab, setActiveTab] = useState<'home' | 'agenda' | 'map' | 'credits'>('home');
 
   // 2. Persistent State
   const [selectedDayId, setSelectedDayId] = useLocalStorage<string>('rf_selected_day', '2026-07-01');
@@ -133,95 +133,151 @@ export default function App() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '24px',
+          padding: '20px',
           backgroundImage: 'linear-gradient(rgba(8, 9, 13, 0.92), rgba(8, 9, 13, 0.92)), url("./images/FONDO.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           overflowY: 'auto',
         }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <h1 className="font-metal" style={{ fontSize: '2.1rem', lineHeight: 1.1 }}>RESURRECTION</h1>
           <span style={{ fontSize: '0.85rem', letterSpacing: '4px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
         </div>
 
-        {/* Portada Cover Poster */}
+        {/* Portada Cover Container with Overlaid Buttons */}
         <div
           style={{
-            maxWidth: '300px',
+            maxWidth: '320px',
             width: '100%',
             borderRadius: '16px',
             overflow: 'hidden',
             border: '2px solid rgba(255, 255, 255, 0.08)',
             boxShadow: '0 15px 35px rgba(0,0,0,0.7)',
-            marginBottom: '36px',
             background: '#12141c',
+            position: 'relative',
           }}
         >
+          {/* Cover image */}
           <img
             src="./images/PORTADA_RR.jpg"
-            alt="Resurrection Fest 2026 Portada"
+            alt="Ressec 2026 Portada"
             style={{
               width: '100%',
               height: 'auto',
               display: 'block',
             }}
           />
-        </div>
 
-        {/* Action Menu Options */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%', maxWidth: '290px' }}>
-          <button
-            onClick={() => setActiveTab('agenda')}
+          {/* Linear dark gradient overlay to ensure text contrast for bottom buttons */}
+          <div
             style={{
-              background: 'var(--accent-red)',
-              color: '#ffffff',
-              border: 'none',
-              borderRadius: '14px',
-              padding: '16px',
-              fontSize: '1.05rem',
-              fontWeight: '800',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              boxShadow: '0 6px 20px rgba(255, 0, 60, 0.35)',
-              transition: 'transform 0.1s, filter 0.1s',
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '110px',
+              background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 100%)',
+              zIndex: 5,
             }}
-            className="btn-interactive"
-            onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
-            onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            <Calendar size={20} />
-            Ver Agenda / Horarios
-          </button>
+          />
 
-          <button
-            onClick={() => setActiveTab('map')}
+          {/* Horizontally aligned interior buttons */}
+          <div
             style={{
-              background: '#151722',
-              color: '#ffffff',
-              border: '1px solid var(--border-color)',
-              borderRadius: '14px',
-              padding: '16px',
-              fontSize: '1.05rem',
-              fontWeight: '800',
-              cursor: 'pointer',
+              position: 'absolute',
+              bottom: '16px',
+              left: '12px',
+              right: '12px',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4)',
-              transition: 'transform 0.1s, filter 0.1s',
+              gap: '8px',
+              zIndex: 10,
             }}
-            className="btn-interactive"
-            onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
-            onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
           >
-            <Map size={20} color="var(--accent-red)" />
-            Ver Mapa del Recinto
-          </button>
+            {/* 1. Agenda Button */}
+            <button
+              onClick={() => setActiveTab('agenda')}
+              style={{
+                flex: 1,
+                background: 'var(--accent-red)',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '10px',
+                padding: '10px 4px',
+                fontSize: '0.88rem',
+                fontWeight: '800',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                boxShadow: '0 4px 10px rgba(255, 0, 60, 0.3)',
+                transition: 'transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <Calendar size={14} />
+              Agenda
+            </button>
+
+            {/* 2. Map Button */}
+            <button
+              onClick={() => setActiveTab('map')}
+              style={{
+                flex: 1,
+                background: 'rgba(13, 15, 20, 0.85)',
+                backdropFilter: 'blur(8px)',
+                color: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '10px',
+                padding: '10px 4px',
+                fontSize: '0.88rem',
+                fontWeight: '800',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                transition: 'transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <Map size={14} color="var(--accent-red)" />
+              Mapa
+            </button>
+
+            {/* 3. Credits Button */}
+            <button
+              onClick={() => setActiveTab('credits')}
+              style={{
+                flex: 1,
+                background: 'rgba(13, 15, 20, 0.85)',
+                backdropFilter: 'blur(8px)',
+                color: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '10px',
+                padding: '10px 4px',
+                fontSize: '0.88rem',
+                fontWeight: '800',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                transition: 'transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <Info size={14} color="#ffd600" />
+              Créditos
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -309,7 +365,175 @@ export default function App() {
   }
 
   // ----------------------------------------------------
-  // VIEW 3: AGENDA (SCHEDULER)
+  // VIEW 3: CREDITS VIEWER
+  // ----------------------------------------------------
+  if (activeTab === 'credits') {
+    return (
+      <div className="app-container animate-fade-in">
+        {/* Header for Credits Viewer */}
+        <header
+          className="glass"
+          style={{
+            position: 'sticky',
+            top: 0,
+            zIndex: 50,
+            padding: '12px 16px',
+            borderBottom: '1px solid var(--border-color)',
+            borderTop: 'var(--safe-top) solid transparent',
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <button
+            onClick={() => setActiveTab('home')}
+            aria-label="Volver al inicio"
+            style={{
+              background: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid var(--border-color)',
+              color: 'var(--text-primary)',
+              padding: '10px',
+              borderRadius: '12px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'background 0.2s, transform 0.1s',
+            }}
+            className="btn-interactive"
+            onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
+            onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+          >
+            <ArrowLeft size={18} />
+          </button>
+
+          <div style={{ textAlign: 'center' }}>
+            <h1 className="font-metal" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>CRÉDITOS</h1>
+            <span style={{ fontSize: '0.62rem', letterSpacing: '2px', color: 'var(--text-secondary)', fontWeight: 800 }}>RESURRECTION FEST</span>
+          </div>
+
+          <div style={{ width: '38px' }} />
+        </header>
+
+        {/* Scrollable Container with Credits Image & Clickable Social Icons */}
+        <main
+          style={{
+            flex: 1,
+            overflowY: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: '24px',
+            background: '#08090d',
+            gap: '24px',
+          }}
+        >
+          {/* Credits Image */}
+          <div
+            style={{
+              maxWidth: '320px',
+              width: '100%',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+              background: '#12141c',
+            }}
+          >
+            <img
+              src="./images/CREDITOS.jpg"
+              alt="Créditos del Resurrection Fest"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+          </div>
+
+          {/* Clickable Social Media Links */}
+          <div
+            className="glass"
+            style={{
+              width: '100%',
+              maxWidth: '320px',
+              padding: '16px 20px',
+              borderRadius: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '14px',
+              border: '1px solid var(--border-color)',
+            }}
+          >
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: '700', letterSpacing: '1px', textTransform: 'uppercase' }}>
+              Redes Sociales Oficiales
+            </span>
+            
+            <div style={{ display: 'flex', gap: '14px', width: '100%' }}>
+              {/* Instagram Link */}
+              <a
+                href="https://www.instagram.com/joseantoniofd.photo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  flex: 1,
+                  background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                  color: '#ffffff',
+                  textDecoration: 'none',
+                  borderRadius: '10px',
+                  padding: '12px',
+                  fontSize: '0.88rem',
+                  fontWeight: '800',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 12px rgba(220, 39, 67, 0.25)',
+                  transition: 'transform 0.1s',
+                }}
+                className="btn-interactive"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                Instagram
+              </a>
+
+              {/* Facebook Link */}
+              <a
+                href="https://www.facebook.com/joseantoniofernandezphoto"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  flex: 1,
+                  background: '#1877f2',
+                  color: '#ffffff',
+                  textDecoration: 'none',
+                  borderRadius: '10px',
+                  padding: '12px',
+                  fontSize: '0.88rem',
+                  fontWeight: '800',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 12px rgba(24, 119, 242, 0.25)',
+                  transition: 'transform 0.1s',
+                }}
+                className="btn-interactive"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  // ----------------------------------------------------
+  // VIEW 4: AGENDA (SCHEDULER)
   // ----------------------------------------------------
   return (
     <div className="app-container">
