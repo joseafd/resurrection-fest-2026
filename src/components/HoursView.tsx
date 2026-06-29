@@ -143,6 +143,7 @@ export const HoursView: React.FC<HoursViewProps> = ({
                 return (
                   <div
                     key={act.id}
+                    id={isPlayingNow ? "act-playing-now" : undefined}
                     onClick={() => onSelectAct(act)}
                     style={{
                       display: 'flex',

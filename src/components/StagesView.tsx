@@ -206,6 +206,7 @@ export const StagesView: React.FC<StagesViewProps> = ({
               {/* Red vertical time line representing current time */}
               {shouldShowLive && currentTimeMinutes >= 0 && currentTimeMinutes < (14 * 60) && (
                 <div
+                  id="timeline-now-marker"
                   style={{
                     position: 'absolute',
                     left: `${currentTimeMinutes * MINUTE_WIDTH}px`,

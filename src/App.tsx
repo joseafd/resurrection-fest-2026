@@ -179,6 +179,45 @@ export default function App() {
       });
   };
 
+  // 10. Clear Favorites Handler
+  const handleClearFavorites = () => {
+    setFavorites([]);
+    setToastMessage('🗑️ Se han borrado todos tus favoritos');
+    setTimeout(() => setToastMessage(null), 2500);
+  };
+
+  // 11. Locate Stage in Map Handler
+  const handleLocateStage = (stageName: string) => {
+    setActiveTab('map');
+    setToastMessage(`📍 Escenario ${stageName} ubicado en el mapa`);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  // 12. Scroll to Current Time Handler
+  const handleScrollToCurrentTime = () => {
+    if (viewMode === 'hours') {
+      const element = document.getElementById('act-playing-now');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setToastMessage('⏳ Desplazado al concierto actual');
+        setTimeout(() => setToastMessage(null), 2000);
+      } else {
+        setToastMessage('No hay ningún concierto activo en este momento');
+        setTimeout(() => setToastMessage(null), 2500);
+      }
+    } else {
+      const redLine = document.getElementById('timeline-now-marker');
+      if (redLine) {
+        redLine.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        setToastMessage('⏳ Desplazado a la hora actual');
+        setTimeout(() => setToastMessage(null), 2000);
+      } else {
+        setToastMessage('Fuera de horario de festival');
+        setTimeout(() => setToastMessage(null), 2500);
+      }
+    }
+  };
+
   // 9. Time filtering / sorting helpers
   const handleToggleFavorite = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation(); // prevent opening details when favoriting
@@ -760,6 +799,50 @@ export default function App() {
           <main style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative' }}>
             {renderView()}
           </main>
+
+          {/* Floating Action Button: Go to Current Time */}
+          {shouldShowLive && (
+            <button
+              onClick={handleScrollToCurrentTime}
+              style={{
+                position: 'fixed',
+                bottom: '24px',
+                right: '24px',
+                zIndex: 90,
+                background: 'rgba(15, 17, 24, 0.9)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 42, 133, 0.6)',
+                color: '#ffffff',
+                borderRadius: '24px',
+                padding: '10px 16px',
+                fontSize: '0.80rem',
+                fontWeight: '800',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                boxShadow: '0 4px 16px rgba(255, 42, 133, 0.25)',
+                transition: 'transform 0.1s, background-color 0.2s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#ff2a85',
+                  boxShadow: '0 0 8px #ff2a85',
+                  animation: 'pulseYellow 1.5s infinite ease-in-out',
+                }}
+              />
+              AHORA
+            </button>
+          )}
         </div>
       )}
 
@@ -772,6 +855,7 @@ export default function App() {
         stagesOrder={stagesOrder}
         onSave={handleSaveFilters}
         defaultStages={defaultStages}
+        onClearFavorites={handleClearFavorites}
       />
 
       <BandDetailModal
@@ -785,6 +869,7 @@ export default function App() {
         onToggleFavorite={(id) => handleToggleFavorite(id)}
         conflictActIds={conflictActIds}
         favorites={favorites}
+        onLocateStage={handleLocateStage}
       />
 
       {toastMessage && (

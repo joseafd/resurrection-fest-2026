@@ -32,6 +32,7 @@ interface BandDetailModalProps {
   onToggleFavorite: (id: string) => void;
   conflictActIds?: Set<string>;
   favorites?: string[];
+  onLocateStage?: (stage: string) => void; // New optional prop
 }
 
 export const BandDetailModal: React.FC<BandDetailModalProps> = ({
@@ -42,6 +43,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
   onToggleFavorite,
   conflictActIds = new Set(),
   favorites = [],
+  onLocateStage,
 }) => {
   const [imgError, setImgError] = useState<boolean>(false);
 
@@ -295,14 +297,52 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.90rem', color: 'var(--text-secondary)', gridColumn: 'span 2', marginTop: '4px', borderTop: '1px solid rgba(255, 255, 255, 0.04)', paddingTop: '10px' }}>
-              <MapPin size={16} color={stageColor} />
-              <div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '600' }}>Escenario</div>
-                <div style={{ fontWeight: '800', color: stageColor, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  {act.stage} Stage
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '10px',
+                fontSize: '0.90rem',
+                color: 'var(--text-secondary)',
+                gridColumn: 'span 2',
+                marginTop: '4px',
+                borderTop: '1px solid rgba(255, 255, 255, 0.04)',
+                paddingTop: '10px',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <MapPin size={16} color={stageColor} />
+                <div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: '600' }}>Escenario</div>
+                  <div style={{ fontWeight: '800', color: stageColor, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    {act.stage} Stage
+                  </div>
                 </div>
               </div>
+
+              {onLocateStage && (
+                <button
+                  onClick={() => {
+                    onLocateStage(act.stage);
+                    onClose();
+                  }}
+                  style={{
+                    background: 'rgba(255, 42, 133, 0.08)',
+                    border: '1px solid rgba(255, 42, 133, 0.35)',
+                    color: '#ff2a85',
+                    borderRadius: '8px',
+                    padding: '6px 12px',
+                    fontSize: '0.72rem',
+                    fontWeight: '800',
+                    cursor: 'pointer',
+                    transition: 'background 0.2s',
+                  }}
+                  className="btn-interactive"
+                >
+                  📍 Ubicar
+                </button>
+              )}
             </div>
           </div>
 

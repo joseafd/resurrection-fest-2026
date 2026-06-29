@@ -11,6 +11,7 @@ interface FilterDrawerProps {
   // Save callbacks
   onSave: (onlyFavorites: boolean, visibleStages: string[], stagesOrder: string[]) => void;
   defaultStages: string[];
+  onClearFavorites?: () => void; // New optional prop
 }
 
 export const FilterDrawer: React.FC<FilterDrawerProps> = ({
@@ -21,6 +22,7 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
   stagesOrder: propStagesOrder,
   onSave,
   defaultStages,
+  onClearFavorites,
 }) => {
   // Local state to manage changes before committing on "Guardar"
   const [localOnlyFavorites, setLocalOnlyFavorites] = useState(propOnlyFavorites);
@@ -170,6 +172,38 @@ export const FilterDrawer: React.FC<FilterDrawerProps> = ({
                 <span className="slider"></span>
               </label>
             </div>
+
+            {onClearFavorites && (
+              <button
+                onClick={() => {
+                  if (window.confirm("¿Seguro que deseas borrar todas las bandas de tus favoritos? Esta acción no se puede deshacer.")) {
+                    onClearFavorites();
+                    onClose();
+                  }
+                }}
+                style={{
+                  marginTop: '14px',
+                  width: '100%',
+                  background: 'rgba(255, 0, 60, 0.05)',
+                  border: '1px solid rgba(255, 0, 60, 0.25)',
+                  color: '#ff2a85',
+                  borderRadius: '12px',
+                  padding: '10px 14px',
+                  fontSize: '0.82rem',
+                  fontWeight: '700',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  transition: 'background 0.2s',
+                }}
+                className="btn-interactive"
+              >
+                <RefreshCw size={12} />
+                Borrar todos mis favoritos
+              </button>
+            )}
           </div>
 
           {/* Stages Configuration Section (Visibility & Reordering) */}
