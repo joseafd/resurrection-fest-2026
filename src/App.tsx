@@ -254,356 +254,41 @@ export default function App() {
     }
   };
 
-  // ----------------------------------------------------
-  // VIEW 1: HOME PAGE (PORTADA)
-  // ----------------------------------------------------
-  if (activeTab === 'home') {
-    return (
-      <div
-        className="app-container animate-fade-in"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '20px',
-          background: 'var(--bg-primary)',
-          overflowY: 'auto',
-        }}
-      >
-        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <h1 className="font-metal neon-text-glow" style={{ fontSize: '2.1rem', lineHeight: 1.1 }}>RESURRECTION</h1>
-          <span style={{ fontSize: '0.85rem', letterSpacing: '4px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
-        </div>
-
-        {/* Portada Cover Container with Overlaid Buttons */}
+  return (
+    <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
+      
+      {/* VIEW 1: HOME PAGE (PORTADA) */}
+      {activeTab === 'home' && (
         <div
-          className="glass-gradient-border-portada neon-glow"
+          className="app-container animate-fade-in"
           style={{
-            maxWidth: '320px',
-            width: '100%',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          {/* Cover image */}
-          <img
-            src="./images/PORTADA_RR.jpg"
-            alt="Resurrection Fest Portada"
-            style={{
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-            }}
-          />
-
-          {/* Linear dark gradient overlay to ensure text contrast for bottom buttons */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: '110px',
-              background: 'linear-gradient(to top, rgba(10, 11, 16, 0.95) 0%, rgba(10, 11, 16, 0.7) 40%, rgba(10, 11, 16, 0) 100%)',
-              zIndex: 5,
-            }}
-          />
-
-          {/* Horizontally aligned interior buttons */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '16px',
-              left: '12px',
-              right: '12px',
-              display: 'flex',
-              gap: '8px',
-              zIndex: 10,
-            }}
-          >
-            {/* 1. Agenda Button */}
-            <button
-              onClick={() => setActiveTab('agenda')}
-              style={{
-                flex: 1,
-                background: 'var(--gradient-accent)',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '12px',
-                padding: '10px 4px',
-                fontSize: '0.88rem',
-                fontWeight: '800',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                boxShadow: '0 4px 15px rgba(255, 42, 133, 0.35)',
-                transition: 'transform 0.1s',
-              }}
-              className="btn-interactive"
-              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
-              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <Calendar size={14} />
-              Agenda
-            </button>
-
-            {/* 2. Map Button */}
-            <button
-              onClick={() => setActiveTab('map')}
-              style={{
-                flex: 1,
-                background: 'rgba(16, 18, 25, 0.65)',
-                backdropFilter: 'blur(12px)',
-                color: '#ffffff',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '12px',
-                padding: '10px 4px',
-                fontSize: '0.88rem',
-                fontWeight: '800',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                transition: 'transform 0.1s',
-              }}
-              className="btn-interactive"
-              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
-              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <Map size={14} color="#ff2a85" />
-              Mapa
-            </button>
-
-            {/* 3. Credits Button */}
-            <button
-              onClick={() => setActiveTab('credits')}
-              style={{
-                flex: 1,
-                background: 'rgba(16, 18, 25, 0.65)',
-                backdropFilter: 'blur(12px)',
-                color: '#ffffff',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '12px',
-                padding: '10px 4px',
-                fontSize: '0.88rem',
-                fontWeight: '800',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '6px',
-                transition: 'transform 0.1s',
-              }}
-              className="btn-interactive"
-              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
-              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <Info size={14} color="#ffd600" />
-              Créditos
-            </button>
-          </div>
-        </div>
-
-        {/* Share App Button (Difusión) */}
-        <button
-          onClick={handleShareApp}
-          style={{
-            marginTop: '24px',
-            background: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            color: '#ffffff',
-            borderRadius: '12px',
-            padding: '12px 24px',
-            fontSize: '0.92rem',
-            fontWeight: '700',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            transition: 'background 0.2s, transform 0.1s',
-            maxWidth: '320px',
-            width: '100%',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-          }}
-          className="btn-interactive"
-          onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
-          onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-        >
-          <Share2 size={16} color="#ff2a85" />
-          Compartir App con amigos
-        </button>
-      </div>
-    );
-  }
-
-  // ----------------------------------------------------
-  // VIEW 2: MAP VIEWER
-  // ----------------------------------------------------
-  if (activeTab === 'map') {
-    return (
-      <div className="app-container animate-fade-in" style={{ background: 'var(--bg-primary)' }}>
-        {/* Simple Header for Map Viewer */}
-        <header
-          style={{
-            position: 'sticky',
-            top: 0,
-            zIndex: 50,
-            padding: '12px 16px',
-            background: 'rgba(13, 15, 20, 0.75)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            borderBottom: '1px solid var(--border-color)',
-            borderTop: 'var(--safe-top) solid transparent',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <button
-            onClick={() => setActiveTab('home')}
-            aria-label="Volver al inicio"
-            style={{
-              background: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid var(--border-color)',
-              color: 'var(--text-primary)',
-              padding: '10px',
-              borderRadius: '12px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'background 0.2s, transform 0.1s',
-            }}
-            className="btn-interactive"
-            onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
-            onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            <ArrowLeft size={18} />
-          </button>
-
-          <div style={{ textAlign: 'center' }}>
-            <h1 className="font-metal neon-text-glow" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>MAPA DEL RECINTO</h1>
-            <span style={{ fontSize: '0.62rem', letterSpacing: '2px', color: 'var(--text-secondary)', fontWeight: 800 }}>RESURRECTION FEST</span>
-          </div>
-
-          {/* Invisible spacer to balance back button */}
-          <div style={{ width: '38px' }} />
-        </header>
-
-        {/* Scrollable Container with Zoomable Map wrapped in Neon Gradient Border */}
-        <main
-          style={{
-            flex: 1,
-            overflow: 'auto',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '24px',
-            background: 'var(--bg-primary)',
-          }}
-        >
-          <div className="glass-gradient-border-portada neon-glow" style={{ maxWidth: '600px', width: '100%', overflow: 'hidden' }}>
-            <img
-              src="./images/MAPA.jpg"
-              alt="Mapa del Resurrection Fest 2026"
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-              }}
-            />
-          </div>
-        </main>
-      </div>
-    );
-  }
-
-  // ----------------------------------------------------
-  // VIEW 3: CREDITS VIEWER
-  // ----------------------------------------------------
-  if (activeTab === 'credits') {
-    return (
-      <div className="app-container animate-fade-in" style={{ background: 'var(--bg-primary)' }}>
-        {/* Header for Credits Viewer */}
-        <header
-          style={{
-            position: 'sticky',
-            top: 0,
-            zIndex: 50,
-            padding: '12px 16px',
-            background: 'rgba(13, 15, 20, 0.75)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            borderBottom: '1px solid var(--border-color)',
-            borderTop: 'var(--safe-top) solid transparent',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <button
-            onClick={() => setActiveTab('home')}
-            aria-label="Volver al inicio"
-            style={{
-              background: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid var(--border-color)',
-              color: 'var(--text-primary)',
-              padding: '10px',
-              borderRadius: '12px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'background 0.2s, transform 0.1s',
-            }}
-            className="btn-interactive"
-            onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
-            onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-          >
-            <ArrowLeft size={18} />
-          </button>
-
-          <div style={{ textAlign: 'center' }}>
-            <h1 className="font-metal neon-text-glow" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>CRÉDITOS</h1>
-            <span style={{ fontSize: '0.62rem', letterSpacing: '2px', color: 'var(--text-secondary)', fontWeight: 800 }}>RESURRECTION FEST</span>
-          </div>
-
-          <div style={{ width: '38px' }} />
-        </header>
-
-        {/* Scrollable Container with Credits Image & Clickable Social Icons */}
-        <main
-          style={{
-            flex: 1,
-            overflowY: 'auto',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: '24px',
+            justifyContent: 'center',
+            padding: '20px',
             background: 'var(--bg-primary)',
-            gap: '24px',
+            overflowY: 'auto',
           }}
         >
-          {/* Credits Image Container with Overlaid Buttons */}
+          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+            <h1 className="font-metal neon-text-glow" style={{ fontSize: '2.1rem', lineHeight: 1.1 }}>RESURRECTION</h1>
+            <span style={{ fontSize: '0.85rem', letterSpacing: '4px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
+          </div>
+
+          {/* Portada Cover Container with Overlaid Buttons */}
           <div
             className="glass-gradient-border-portada neon-glow"
             style={{
               maxWidth: '320px',
               width: '100%',
-              overflow: 'hidden',
               position: 'relative',
+              overflow: 'hidden',
             }}
           >
             <img
-              src="./images/CREDITOS.jpg"
-              alt="Créditos del Resurrection Fest"
+              src="./images/PORTADA_RR.jpg"
+              alt="Cartel Resurrection Fest"
               style={{
                 width: '100%',
                 height: 'auto',
@@ -611,20 +296,20 @@ export default function App() {
               }}
             />
 
-            {/* Linear dark gradient overlay */}
+            {/* Linear dark gradient overlay to ensure text contrast for bottom buttons */}
             <div
               style={{
                 position: 'absolute',
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: '90px',
+                height: '110px',
                 background: 'linear-gradient(to top, rgba(10, 11, 16, 0.95) 0%, rgba(10, 11, 16, 0.7) 40%, rgba(10, 11, 16, 0) 100%)',
                 zIndex: 5,
               }}
             />
 
-            {/* Overlaid buttons at bottom inside image */}
+            {/* Horizontally aligned interior buttons */}
             <div
               style={{
                 position: 'absolute',
@@ -636,119 +321,400 @@ export default function App() {
                 zIndex: 10,
               }}
             >
-              {/* Instagram Link */}
-              <a
-                href="https://www.instagram.com/joseantoniofd.photo/"
-                target="_blank"
-                rel="noopener noreferrer"
+              {/* Agenda Tab */}
+              <button
+                onClick={() => setActiveTab('agenda')}
                 style={{
                   flex: 1,
-                  background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                  background: 'var(--gradient-accent)',
                   color: '#ffffff',
-                  textDecoration: 'none',
+                  border: 'none',
                   borderRadius: '12px',
                   padding: '10px',
                   fontSize: '0.88rem',
                   fontWeight: '800',
+                  cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '6px',
-                  boxShadow: '0 4px 10px rgba(220, 39, 67, 0.3)',
+                  boxShadow: '0 4px 12px rgba(255, 42, 133, 0.3)',
                   transition: 'transform 0.1s',
                 }}
                 className="btn-interactive"
                 onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
                 onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                Instagram
-              </a>
+                <Calendar size={14} />
+                Agenda
+              </button>
 
-              {/* Facebook Link */}
-              <a
-                href="https://www.facebook.com/joseantoniofernandezphoto"
-                target="_blank"
-                rel="noopener noreferrer"
+              {/* Mapa Tab */}
+              <button
+                onClick={() => setActiveTab('map')}
                 style={{
                   flex: 1,
-                  background: '#1877f2',
-                  color: '#ffffff',
-                  textDecoration: 'none',
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  color: 'var(--text-primary)',
+                  border: '1px solid var(--border-color)',
                   borderRadius: '12px',
                   padding: '10px',
                   fontSize: '0.88rem',
                   fontWeight: '800',
+                  cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '6px',
-                  boxShadow: '0 4px 12px rgba(24, 119, 242, 0.25)',
                   transition: 'transform 0.1s',
                 }}
                 className="btn-interactive"
                 onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
                 onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                Facebook
-              </a>
+                <Map size={14} color="#ffd600" />
+                Mapa
+              </button>
+
+              {/* Créditos Tab */}
+              <button
+                onClick={() => setActiveTab('credits')}
+                style={{
+                  flex: 1,
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  color: 'var(--text-primary)',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: '12px',
+                  padding: '10px',
+                  fontSize: '0.88rem',
+                  fontWeight: '800',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '6px',
+                  transition: 'transform 0.1s',
+                }}
+                className="btn-interactive"
+                onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+                onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+              >
+                <Info size={14} color="#ffd600" />
+                Créditos
+              </button>
             </div>
           </div>
-        </main>
-      </div>
-    );
-  }
 
-  // ----------------------------------------------------
-  // VIEW 4: AGENDA (SCHEDULER)
-  // ----------------------------------------------------
-  return (
-    <div className="app-container">
-      {/* Central Header */}
-      <Header
-        days={days}
-        selectedDayId={selectedDayId}
-        onSelectDay={setSelectedDayId}
-        viewMode={viewMode}
-        onToggleViewMode={() => setViewMode(viewMode === 'hours' ? 'stages' : 'hours')}
-        onOpenFilters={() => setIsFilterOpen(true)}
-        hasActiveFilters={hasActiveFilters}
-        onGoHome={() => setActiveTab('home')}
-        onShare={handleShareFavorites}
-      />
-
-      {/* Sleek Search Bar */}
-      <SearchBar
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-        searchGlobal={searchGlobal}
-        onSearchGlobalToggle={setSearchGlobal}
-      />
-
-      {/* Info indicator when searching globally */}
-      {searchGlobal && searchQuery.trim() !== '' && (
-        <div
-          style={{
-            background: 'rgba(255, 0, 60, 0.05)',
-            borderBottom: '1px solid rgba(255, 0, 60, 0.1)',
-            padding: '8px 16px',
-            fontSize: '0.85rem',
-            color: 'var(--accent-red)',
-            fontWeight: '700',
-            textAlign: 'center',
-          }}
-        >
-          Mostrando resultados de todos los días ({filteredActs.length} encontrados)
+          {/* Share App Button (Difusión) */}
+          <button
+            onClick={handleShareApp}
+            style={{
+              marginTop: '24px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              color: '#ffffff',
+              borderRadius: '12px',
+              padding: '12px 24px',
+              fontSize: '0.92rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              transition: 'background 0.2s, transform 0.1s',
+              maxWidth: '320px',
+              width: '100%',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+            }}
+            className="btn-interactive"
+            onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+            onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+          >
+            <Share2 size={16} color="#ff2a85" />
+            Compartir App con amigos
+          </button>
         </div>
       )}
 
-      {/* Main Content Area */}
-      <main style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        {renderView()}
-      </main>
+      {/* VIEW 2: MAP VIEWER */}
+      {activeTab === 'map' && (
+        <div className="app-container animate-fade-in" style={{ background: 'var(--bg-primary)' }}>
+          {/* Simple Header for Map Viewer */}
+          <header
+            style={{
+              position: 'sticky',
+              top: 0,
+              zIndex: 50,
+              padding: '12px 16px',
+              background: 'rgba(13, 15, 20, 0.75)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              borderBottom: '1px solid var(--border-color)',
+              borderTop: 'var(--safe-top) solid transparent',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <button
+              onClick={() => setActiveTab('home')}
+              aria-label="Volver al inicio"
+              style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-primary)',
+                padding: '10px',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background 0.2s, transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <ArrowLeft size={18} />
+            </button>
 
-      {/* Filter and settings sidebar drawer */}
+            <div style={{ textAlign: 'center' }}>
+              <h1 className="font-metal neon-text-glow" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>MAPA DEL RECINTO</h1>
+              <span style={{ fontSize: '0.62rem', letterSpacing: '2px', color: 'var(--text-secondary)', fontWeight: 800 }}>RESURRECTION FEST</span>
+            </div>
+
+            <div style={{ width: '38px' }} />
+          </header>
+
+          {/* Scrollable Container with Zoomable Map wrapped in Neon Gradient Border */}
+          <main
+            style={{
+              flex: 1,
+              overflow: 'auto',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '24px',
+              background: 'var(--bg-primary)',
+            }}
+          >
+            <div className="glass-gradient-border-portada neon-glow" style={{ maxWidth: '600px', width: '100%', overflow: 'hidden' }}>
+              <img
+                src="./images/MAPA.jpg"
+                alt="Mapa del Resurrection Fest 2026"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                }}
+              />
+            </div>
+          </main>
+        </div>
+      )}
+
+      {/* VIEW 3: CREDITS VIEWER */}
+      {activeTab === 'credits' && (
+        <div className="app-container animate-fade-in" style={{ background: 'var(--bg-primary)' }}>
+          {/* Header for Credits Viewer */}
+          <header
+            style={{
+              position: 'sticky',
+              top: 0,
+              zIndex: 50,
+              padding: '12px 16px',
+              background: 'rgba(13, 15, 20, 0.75)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              borderBottom: '1px solid var(--border-color)',
+              borderTop: 'var(--safe-top) solid transparent',
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <button
+              onClick={() => setActiveTab('home')}
+              aria-label="Volver al inicio"
+              style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid var(--border-color)',
+                color: 'var(--text-primary)',
+                padding: '10px',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background 0.2s, transform 0.1s',
+              }}
+              className="btn-interactive"
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.95)'; }}
+              onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+            >
+              <ArrowLeft size={18} />
+            </button>
+
+            <div style={{ textAlign: 'center' }}>
+              <h1 className="font-metal neon-text-glow" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>CRÉDITOS</h1>
+              <span style={{ fontSize: '0.62rem', letterSpacing: '2px', color: 'var(--text-secondary)', fontWeight: 800 }}>RESURRECTION FEST</span>
+            </div>
+
+            <div style={{ width: '38px' }} />
+          </header>
+
+          {/* Scrollable Container with Credits Image & Clickable Social Icons */}
+          <main
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '24px',
+              background: 'var(--bg-primary)',
+              gap: '24px',
+            }}
+          >
+            <div
+              className="glass-gradient-border-portada neon-glow"
+              style={{
+                maxWidth: '320px',
+                width: '100%',
+                overflow: 'hidden',
+                position: 'relative',
+              }}
+            >
+              <img
+                src="./images/CREDITOS.jpg"
+                alt="Créditos del Resurrection Fest"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                }}
+              />
+
+              {/* Linear dark gradient overlay */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '90px',
+                  background: 'linear-gradient(to top, rgba(10, 11, 16, 0.95) 0%, rgba(10, 11, 16, 0.7) 40%, rgba(10, 11, 16, 0) 100%)',
+                  zIndex: 5,
+                }}
+              />
+
+              {/* Overlaid buttons at bottom inside image */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '16px',
+                  left: '12px',
+                  right: '12px',
+                  display: 'flex',
+                  gap: '8px',
+                  zIndex: 10,
+                }}
+              >
+                {/* Instagram Link */}
+                <a
+                  href="https://www.instagram.com/joseantoniofd.photo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    flex: 1,
+                    background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    borderRadius: '12px',
+                    padding: '10px',
+                    fontSize: '0.88rem',
+                    fontWeight: '800',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    boxShadow: '0 4px 10px rgba(220, 39, 67, 0.3)',
+                    transition: 'transform 0.1s',
+                  }}
+                  className="btn-interactive"
+                  onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+                  onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                  Instagram
+                </a>
+
+                {/* Facebook Link */}
+                <a
+                  href="https://www.facebook.com/joseantoniofernandezphoto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    flex: 1,
+                    background: '#1877f2',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    borderRadius: '12px',
+                    padding: '10px',
+                    fontSize: '0.88rem',
+                    fontWeight: '800',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    boxShadow: '0 4px 12px rgba(24, 119, 242, 0.25)',
+                    transition: 'transform 0.1s',
+                  }}
+                  className="btn-interactive"
+                  onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+                  onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  Facebook
+                </a>
+              </div>
+            </div>
+          </main>
+        </div>
+      )}
+
+      {/* VIEW 4: AGENDA (SCHEDULER) */}
+      {activeTab === 'agenda' && (
+        <div className="app-container">
+          <Header
+            days={days}
+            selectedDayId={selectedDayId}
+            onSelectDay={setSelectedDayId}
+            viewMode={viewMode}
+            onToggleViewMode={() => setViewMode(viewMode === 'hours' ? 'stages' : 'hours')}
+            onOpenFilters={() => setIsFilterOpen(true)}
+            hasActiveFilters={hasActiveFilters}
+            onGoHome={() => setActiveTab('home')}
+            onShare={handleShareFavorites}
+          />
+
+          <SearchBar
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            searchGlobal={searchGlobal}
+            onSearchGlobalToggle={setSearchGlobal}
+          />
+
+          <main style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
+            {renderView()}
+          </main>
+        </div>
+      )}
+
+      {/* GLOBAL MODALS AND OVERLAYS (Rendered on top of any active tab) */}
       <FilterDrawer
         isOpen={isFilterOpen}
         onClose={() => setIsFilterOpen(false)}
@@ -759,7 +725,6 @@ export default function App() {
         defaultStages={defaultStages}
       />
 
-      {/* Detailed information modal for band profiles */}
       <BandDetailModal
         act={selectedAct}
         isOpen={isDetailOpen}
@@ -773,7 +738,6 @@ export default function App() {
         favorites={favorites}
       />
 
-      {/* Toast Notification Container */}
       {toastMessage && (
         <div
           className="glass animate-fade-in"
@@ -799,7 +763,6 @@ export default function App() {
         </div>
       )}
 
-      {/* Shared Favorites Import Dialog */}
       {pendingImport && (
         <div
           style={{
