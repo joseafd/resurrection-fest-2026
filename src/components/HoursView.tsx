@@ -181,6 +181,7 @@ export const HoursView: React.FC<HoursViewProps> = ({
                             src={`./images/${act.band.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Z0-9\s-]/g, "").trim().replace(/[\s-]+/g, " ")}.jpg`}
                             alt=""
                             onError={() => handleImgError(act.id)}
+                            loading="lazy"
                             style={{
                               width: '100%',
                               height: '100%',
