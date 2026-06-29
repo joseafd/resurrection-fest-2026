@@ -3,6 +3,31 @@ import { Zap, Clock, MapPin } from 'lucide-react';
 import { DAY_START_HOUR } from '../data/festivalData';
 import type { Act } from '../data/festivalData';
 
+const getStageGlassStyle = (stage: string, isPlayingNow: boolean, isFavorite: boolean) => {
+  const lower = stage.toLowerCase();
+  let rgb = "211, 19, 60"; // Main (Red)
+  let borderAlpha = isPlayingNow ? "0.8" : (isFavorite ? "0.55" : "0.3");
+  let bgAlpha = isPlayingNow ? "0.2" : "0.1";
+  
+  if (lower === 'ritual') {
+    rgb = "43, 139, 227"; // Blue
+  } else if (lower === 'chaos') {
+    rgb = "156, 31, 184"; // Purple
+  } else if (lower === 'desert') {
+    rgb = "230, 126, 34"; // Orange
+  }
+  
+  return {
+    background: `rgba(${rgb}, ${bgAlpha})`,
+    backdropFilter: 'blur(16px)',
+    WebkitBackdropFilter: 'blur(16px)',
+    border: `1px solid rgba(${rgb}, ${borderAlpha})`,
+    boxShadow: isPlayingNow 
+      ? `0 0 16px rgba(${rgb}, 0.35)` 
+      : (isFavorite ? `0 0 10px rgba(${rgb}, 0.2)` : `0 4px 12px rgba(0, 0, 0, 0.4)`),
+  };
+};
+
 interface HoursViewProps {
   acts: Act[];
   favorites: string[];
@@ -108,11 +133,12 @@ export const HoursView: React.FC<HoursViewProps> = ({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {hourActs.map((act) => {
                 const isFavorite = favorites.includes(act.id);
-                const stageColor = `var(--color-${act.stage.toLowerCase()})`;
                 const hasConflict = isFavorite && conflictActIds.has(act.id);
                 const isPlayingNow = shouldShowLive && currentTimeMinutes >= act.startMinutes && currentTimeMinutes < act.endMinutes;
                 const minToStart = act.startMinutes - currentTimeMinutes;
                 const showCountdown = isFavorite && shouldShowLive && minToStart > 0 && minToStart <= 120;
+
+                const glassStyle = getStageGlassStyle(act.stage, isPlayingNow, isFavorite);
 
                 return (
                   <div
@@ -123,12 +149,11 @@ export const HoursView: React.FC<HoursViewProps> = ({
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       padding: '14px 16px',
-                      borderRadius: '12px',
+                      borderRadius: '16px',
                       cursor: 'pointer',
-                      background: stageColor,
                       color: '#ffffff',
-                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
                       transition: 'transform 0.15s, filter 0.15s, box-shadow 0.15s',
+                      ...glassStyle,
                     }}
                     className="btn-interactive"
                     onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.15)'; }}

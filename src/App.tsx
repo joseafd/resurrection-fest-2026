@@ -253,28 +253,25 @@ export default function App() {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '20px',
-          backgroundImage: 'linear-gradient(rgba(8, 9, 13, 0.92), rgba(8, 9, 13, 0.92)), url("./images/FONDO.jpg")',
+          backgroundImage: 'linear-gradient(rgba(10, 11, 16, 0.88), rgba(10, 11, 16, 0.94)), url("./images/FONDO.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           overflowY: 'auto',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <h1 className="font-metal" style={{ fontSize: '2.1rem', lineHeight: 1.1 }}>RESURRECTION</h1>
+          <h1 className="font-metal neon-text-glow" style={{ fontSize: '2.1rem', lineHeight: 1.1 }}>RESURRECTION</h1>
           <span style={{ fontSize: '0.85rem', letterSpacing: '4px', color: 'var(--text-secondary)', fontWeight: 800 }}>FEST 2026</span>
         </div>
 
         {/* Portada Cover Container with Overlaid Buttons */}
         <div
+          className="glass-gradient-border-portada neon-glow"
           style={{
             maxWidth: '320px',
             width: '100%',
-            borderRadius: '16px',
-            overflow: 'hidden',
-            border: '2px solid rgba(255, 255, 255, 0.08)',
-            boxShadow: '0 15px 35px rgba(0,0,0,0.7)',
-            background: '#12141c',
             position: 'relative',
+            overflow: 'hidden',
           }}
         >
           {/* Cover image */}
@@ -296,7 +293,7 @@ export default function App() {
               left: 0,
               right: 0,
               height: '110px',
-              background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 100%)',
+              background: 'linear-gradient(to top, rgba(10, 11, 16, 0.95) 0%, rgba(10, 11, 16, 0.7) 40%, rgba(10, 11, 16, 0) 100%)',
               zIndex: 5,
             }}
           />
@@ -318,10 +315,10 @@ export default function App() {
               onClick={() => setActiveTab('agenda')}
               style={{
                 flex: 1,
-                background: 'var(--accent-red)',
+                background: 'var(--gradient-accent)',
                 color: '#ffffff',
                 border: 'none',
-                borderRadius: '10px',
+                borderRadius: '12px',
                 padding: '10px 4px',
                 fontSize: '0.88rem',
                 fontWeight: '800',
@@ -330,7 +327,7 @@ export default function App() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '6px',
-                boxShadow: '0 4px 10px rgba(255, 0, 60, 0.3)',
+                boxShadow: '0 4px 15px rgba(255, 42, 133, 0.35)',
                 transition: 'transform 0.1s',
               }}
               className="btn-interactive"
@@ -346,11 +343,11 @@ export default function App() {
               onClick={() => setActiveTab('map')}
               style={{
                 flex: 1,
-                background: 'rgba(13, 15, 20, 0.85)',
-                backdropFilter: 'blur(8px)',
+                background: 'rgba(16, 18, 25, 0.65)',
+                backdropFilter: 'blur(12px)',
                 color: '#ffffff',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '10px',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '12px',
                 padding: '10px 4px',
                 fontSize: '0.88rem',
                 fontWeight: '800',
@@ -365,7 +362,7 @@ export default function App() {
               onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
               onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
             >
-              <Map size={14} color="var(--accent-red)" />
+              <Map size={14} color="#ff2a85" />
               Mapa
             </button>
 
@@ -374,11 +371,11 @@ export default function App() {
               onClick={() => setActiveTab('credits')}
               style={{
                 flex: 1,
-                background: 'rgba(13, 15, 20, 0.85)',
-                backdropFilter: 'blur(8px)',
+                background: 'rgba(16, 18, 25, 0.65)',
+                backdropFilter: 'blur(12px)',
                 color: '#ffffff',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '10px',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '12px',
                 padding: '10px 4px',
                 fontSize: '0.88rem',
                 fontWeight: '800',
@@ -407,15 +404,17 @@ export default function App() {
   // ----------------------------------------------------
   if (activeTab === 'map') {
     return (
-      <div className="app-container animate-fade-in">
+      <div className="app-container animate-fade-in" style={{ background: 'var(--bg-primary)' }}>
         {/* Simple Header for Map Viewer */}
         <header
-          className="glass"
           style={{
             position: 'sticky',
             top: 0,
             zIndex: 50,
             padding: '12px 16px',
+            background: 'rgba(13, 15, 20, 0.75)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             borderBottom: '1px solid var(--border-color)',
             borderTop: 'var(--safe-top) solid transparent',
             width: '100%',
@@ -447,7 +446,7 @@ export default function App() {
           </button>
 
           <div style={{ textAlign: 'center' }}>
-            <h1 className="font-metal" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>MAPA DEL RECINTO</h1>
+            <h1 className="font-metal neon-text-glow" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>MAPA DEL RECINTO</h1>
             <span style={{ fontSize: '0.62rem', letterSpacing: '2px', color: 'var(--text-secondary)', fontWeight: 800 }}>RESURRECTION FEST</span>
           </div>
 
@@ -455,29 +454,29 @@ export default function App() {
           <div style={{ width: '38px' }} />
         </header>
 
-        {/* Scrollable Container with Zoomable Map */}
+        {/* Scrollable Container with Zoomable Map wrapped in Neon Gradient Border */}
         <main
           style={{
             flex: 1,
             overflow: 'auto',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'flex-start',
-            padding: '16px',
-            background: '#08090d',
+            alignItems: 'center',
+            padding: '24px',
+            background: 'var(--bg-primary)',
           }}
         >
-          <img
-            src="./images/MAPA.jpg"
-            alt="Mapa del Resurrection Fest 2026"
-            style={{
-              maxWidth: '100%',
-              height: 'auto',
-              borderRadius: '12px',
-              border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
-            }}
-          />
+          <div className="glass-gradient-border-portada neon-glow" style={{ maxWidth: '600px', width: '100%', overflow: 'hidden' }}>
+            <img
+              src="./images/MAPA.jpg"
+              alt="Mapa del Resurrection Fest 2026"
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+              }}
+            />
+          </div>
         </main>
       </div>
     );
@@ -488,15 +487,17 @@ export default function App() {
   // ----------------------------------------------------
   if (activeTab === 'credits') {
     return (
-      <div className="app-container animate-fade-in">
+      <div className="app-container animate-fade-in" style={{ background: 'var(--bg-primary)' }}>
         {/* Header for Credits Viewer */}
         <header
-          className="glass"
           style={{
             position: 'sticky',
             top: 0,
             zIndex: 50,
             padding: '12px 16px',
+            background: 'rgba(13, 15, 20, 0.75)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             borderBottom: '1px solid var(--border-color)',
             borderTop: 'var(--safe-top) solid transparent',
             width: '100%',
@@ -528,7 +529,7 @@ export default function App() {
           </button>
 
           <div style={{ textAlign: 'center' }}>
-            <h1 className="font-metal" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>CRÉDITOS</h1>
+            <h1 className="font-metal neon-text-glow" style={{ fontSize: '1.25rem', lineHeight: 1.1 }}>CRÉDITOS</h1>
             <span style={{ fontSize: '0.62rem', letterSpacing: '2px', color: 'var(--text-secondary)', fontWeight: 800 }}>RESURRECTION FEST</span>
           </div>
 
@@ -544,20 +545,17 @@ export default function App() {
             flexDirection: 'column',
             alignItems: 'center',
             padding: '24px',
-            background: '#08090d',
+            background: 'var(--bg-primary)',
             gap: '24px',
           }}
         >
           {/* Credits Image Container with Overlaid Buttons */}
           <div
+            className="glass-gradient-border-portada neon-glow"
             style={{
               maxWidth: '320px',
               width: '100%',
-              borderRadius: '16px',
               overflow: 'hidden',
-              border: '2px solid rgba(255, 255, 255, 0.08)',
-              boxShadow: '0 15px 35px rgba(0,0,0,0.7)',
-              background: '#12141c',
               position: 'relative',
             }}
           >
@@ -579,7 +577,7 @@ export default function App() {
                 left: 0,
                 right: 0,
                 height: '90px',
-                background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0) 100%)',
+                background: 'linear-gradient(to top, rgba(10, 11, 16, 0.95) 0%, rgba(10, 11, 16, 0.7) 40%, rgba(10, 11, 16, 0) 100%)',
                 zIndex: 5,
               }}
             />
@@ -606,7 +604,7 @@ export default function App() {
                   background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
                   color: '#ffffff',
                   textDecoration: 'none',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   padding: '10px',
                   fontSize: '0.88rem',
                   fontWeight: '800',
@@ -635,7 +633,7 @@ export default function App() {
                   background: '#1877f2',
                   color: '#ffffff',
                   textDecoration: 'none',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   padding: '10px',
                   fontSize: '0.88rem',
                   fontWeight: '800',

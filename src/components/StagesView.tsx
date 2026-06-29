@@ -2,6 +2,31 @@ import React, { useRef, useEffect } from 'react';
 import { Zap } from 'lucide-react';
 import type { Act } from '../data/festivalData';
 
+const getStageGlassStyle = (stage: string, isPlayingNow: boolean, isFavorite: boolean) => {
+  const lower = stage.toLowerCase();
+  let rgb = "211, 19, 60"; // Main (Red)
+  let borderAlpha = isPlayingNow ? "0.8" : (isFavorite ? "0.55" : "0.3");
+  let bgAlpha = isPlayingNow ? "0.2" : "0.1";
+  
+  if (lower === 'ritual') {
+    rgb = "43, 139, 227"; // Blue
+  } else if (lower === 'chaos') {
+    rgb = "156, 31, 184"; // Purple
+  } else if (lower === 'desert') {
+    rgb = "230, 126, 34"; // Orange
+  }
+  
+  return {
+    background: `rgba(${rgb}, ${bgAlpha})`,
+    backdropFilter: 'blur(16px)',
+    WebkitBackdropFilter: 'blur(16px)',
+    border: `1px solid rgba(${rgb}, ${borderAlpha})`,
+    boxShadow: isPlayingNow 
+      ? `0 0 16px rgba(${rgb}, 0.35)` 
+      : (isFavorite ? `0 0 10px rgba(${rgb}, 0.2)` : `0 4px 12px rgba(0, 0, 0, 0.4)`),
+  };
+};
+
 interface StagesViewProps {
   acts: Act[];
   stages: string[];
@@ -108,7 +133,9 @@ export const StagesView: React.FC<StagesViewProps> = ({
               position: 'sticky',
               top: 0,
               zIndex: 30,
-              background: '#0d0f14',
+              background: 'rgba(13, 15, 20, 0.85)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
               borderBottom: '1px solid var(--border-color)',
             }}
           >
@@ -116,7 +143,7 @@ export const StagesView: React.FC<StagesViewProps> = ({
             <div
               style={{
                 width: '80px',
-                background: '#0d0f14',
+                background: 'rgba(13, 15, 20, 0.95)',
                 position: 'sticky',
                 left: 0,
                 zIndex: 40,
@@ -213,8 +240,9 @@ export const StagesView: React.FC<StagesViewProps> = ({
                   <div
                     style={{
                       width: '80px',
-                      background: 'rgba(13, 15, 20, 0.95)',
-                      backdropFilter: 'blur(8px)',
+                      background: 'rgba(16, 18, 25, 0.9)',
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
                       position: 'sticky',
                       left: 0,
                       zIndex: 10,
@@ -256,11 +284,12 @@ export const StagesView: React.FC<StagesViewProps> = ({
                       const isFavorite = favorites.includes(act.id);
                       const leftPos = act.startMinutes * MINUTE_WIDTH;
                       const blockWidth = act.duration * MINUTE_WIDTH;
-                      const stageColor = `var(--color-${stage.toLowerCase()})`;
                       const hasConflict = isFavorite && conflictActIds.has(act.id);
                       const isPlayingNow = shouldShowLive && currentTimeMinutes >= act.startMinutes && currentTimeMinutes < act.endMinutes;
                       const minToStart = act.startMinutes - currentTimeMinutes;
                       const showCountdown = isFavorite && shouldShowLive && minToStart > 0 && minToStart <= 120;
+
+                      const glassStyle = getStageGlassStyle(act.stage, isPlayingNow, isFavorite);
 
                       return (
                         <div
@@ -272,27 +301,17 @@ export const StagesView: React.FC<StagesViewProps> = ({
                             width: `${blockWidth - 8}px`, // small offset spacing
                             top: '12px',
                             height: '70px',
-                            background: stageColor, /* Solid Stage Color Background */
                             color: '#ffffff', /* High-contrast white text */
-                            border: isPlayingNow
-                              ? '2px solid #ff003c' /* Glowing red border for active sets */
-                              : (isFavorite
-                                ? '2px solid #ffffff' /* White border for active favorites to pop */
-                                : '1px solid rgba(255, 255, 255, 0.15)'),
-                            borderRadius: '10px',
+                            borderRadius: '12px',
                             padding: '8px 10px',
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'space-between',
                             cursor: 'pointer',
                             transition: 'transform 0.15s, filter 0.15s, box-shadow 0.15s',
-                            boxShadow: isPlayingNow
-                              ? '0 0 14px rgba(255, 0, 60, 0.65)'
-                              : (isFavorite
-                                ? '0 0 12px rgba(255, 255, 255, 0.35)' 
-                                : '0 4px 8px rgba(0,0,0,0.25)'),
                             zIndex: isPlayingNow ? 6 : (isFavorite ? 5 : 2),
                             overflow: 'hidden',
+                            ...glassStyle,
                           }}
                           onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.15)'; }}
                           onMouseLeave={(e) => { e.currentTarget.style.filter = 'none'; }}

@@ -96,8 +96,9 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'rgba(0,0,0,0.85)',
-        backdropFilter: 'blur(8px)',
+        background: 'rgba(6, 7, 10, 0.82)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         padding: '20px',
         animation: 'fadeIn 0.2s ease-out forwards',
       }}
@@ -109,94 +110,35 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
           width: '100%',
           maxWidth: '420px',
           maxHeight: '85vh',
-          background: '#0d0f14',
-          borderRadius: '20px',
-          border: '1px solid var(--border-color)',
+          background: 'rgba(18, 20, 26, 0.72)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRadius: '24px',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          boxShadow: '0 15px 40px rgba(0,0,0,0.6)',
+          boxShadow: '0 20px 50px rgba(0, 0, 0, 0.75)',
           animation: 'fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         }}
         onClick={(e) => e.stopPropagation()} // Prevent close on tap inside card
       >
         
-        {/* 1. HERO PLACEHOLDER/IMAGE HEADER */}
+        {/* 1. HERO HEADER WITH 3D NEUMORPHIC AVATAR */}
         <div
           style={{
-            height: '190px',
+            height: '220px',
             position: 'relative',
-            background: `linear-gradient(135deg, #18090d 0%, #08090e 100%)`,
+            background: `linear-gradient(135deg, #12131a 0%, #1a1c29 100%)`,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.03)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
             overflow: 'hidden',
+            padding: '20px',
           }}
         >
-          {/* Subtle metal grid text overlay */}
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              opacity: 0.05,
-              background: 'radial-gradient(circle, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent) 25px 25px',
-              backgroundSize: '50px 50px',
-              zIndex: 1,
-            }}
-          />
-
-          {/* Fallback Giant initials placeholder (rendered in background) */}
-          <span
-            style={{
-              fontSize: '5.5rem',
-              fontWeight: '900',
-              color: 'rgba(255, 255, 255, 0.03)',
-              fontFamily: 'var(--font-display)',
-              letterSpacing: '10px',
-              userSelect: 'none',
-              transform: 'scale(1.2)',
-              zIndex: 1,
-            }}
-          >
-            {getInitials(act.band)}
-          </span>
-
-          {/* Dynamic Band Image (Loads if no error) */}
-          {!imgError && (
-            <img
-              src={`./images/${imageName}.jpg`}
-              alt={act.band}
-              onError={() => setImgError(true)}
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: 2,
-                transition: 'opacity 0.3s ease',
-              }}
-            />
-          )}
-
-          {/* Dark gradient overlay on bottom of image for label legibility */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: '90px',
-              background: 'linear-gradient(to top, rgba(13, 15, 20, 1) 0%, rgba(13, 15, 20, 0) 100%)',
-              zIndex: 3,
-            }}
-          />
-
           {/* Close button inside hero */}
           <button
             onClick={onClose}
@@ -208,8 +150,8 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               width: '34px',
               height: '34px',
               borderRadius: '50%',
-              background: 'rgba(0, 0, 0, 0.6)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              background: 'rgba(0, 0, 0, 0.5)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               color: '#ffffff',
               cursor: 'pointer',
               display: 'flex',
@@ -223,27 +165,68 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
             <X size={18} />
           </button>
 
-          {/* Band Name overlaid at bottom of hero */}
+          {/* Concentric relief circular avatar container */}
           <div
+            className="avatar-neumorphic-3d neon-glow"
             style={{
-              position: 'absolute',
-              bottom: '16px',
-              left: '20px',
-              right: '20px',
-              zIndex: 4,
+              width: '100px',
+              height: '100px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              zIndex: 5,
+              marginBottom: '14px',
             }}
           >
-            <h2
-              style={{
-                fontSize: '1.65rem', /* Aumentado 2pt */
-                fontWeight: '800',
-                color: '#ffffff',
-                textShadow: '0 2px 10px rgba(0,0,0,0.95)',
-              }}
-            >
-              {act.band}
-            </h2>
+            {!imgError ? (
+              <img
+                src={`./images/${imageName}.jpg`}
+                alt={act.band}
+                onError={() => setImgError(true)}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(135deg, #1b1d24 0%, #2c2f3b 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.85rem',
+                  fontWeight: '800',
+                  color: 'rgba(255, 255, 255, 0.35)',
+                  fontFamily: 'var(--font-sans)',
+                }}
+              >
+                {getInitials(act.band)}
+              </div>
+            )}
           </div>
+
+          {/* Band Name at the bottom of avatar */}
+          <h2
+            className="neon-text-glow"
+            style={{
+              fontSize: '1.5rem',
+              fontWeight: '800',
+              color: '#ffffff',
+              textAlign: 'center',
+              zIndex: 6,
+              letterSpacing: '0.5px',
+            }}
+          >
+            {act.band}
+          </h2>
         </div>
 
         {/* 2. MODAL BODY */}
@@ -295,9 +278,9 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
             onClick={() => onToggleFavorite(act.id)}
             style={{
               width: '100%',
-              background: isFavorite ? 'rgba(255, 0, 60, 0.1)' : 'var(--accent-red)',
+              background: isFavorite ? 'rgba(255, 42, 133, 0.08)' : 'var(--gradient-accent)',
               color: '#ffffff',
-              border: isFavorite ? '2px solid var(--accent-red)' : 'none',
+              border: isFavorite ? '1px solid rgba(255, 42, 133, 0.45)' : 'none',
               borderRadius: '14px',
               padding: '14px', /* Aumentado padding */
               fontSize: '1.05rem', /* Aumentado 2pt */
@@ -307,7 +290,7 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               alignItems: 'center',
               justifyContent: 'center',
               gap: '10px',
-              boxShadow: isFavorite ? 'none' : '0 4px 15px rgba(255, 0, 60, 0.3)',
+              boxShadow: isFavorite ? 'none' : '0 4px 15px rgba(255, 42, 133, 0.3)',
               transition: 'background 0.2s, border-color 0.2s, transform 0.1s',
             }}
             className="btn-interactive"
