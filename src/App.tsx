@@ -253,9 +253,7 @@ export default function App() {
           alignItems: 'center',
           justifyContent: 'center',
           padding: '20px',
-          backgroundImage: 'linear-gradient(rgba(10, 11, 16, 0.88), rgba(10, 11, 16, 0.94)), url("./images/FONDO.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: 'var(--bg-primary)',
           overflowY: 'auto',
         }}
       >

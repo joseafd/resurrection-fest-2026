@@ -4,6 +4,26 @@ import type { Act } from '../data/festivalData';
 
 import { festivalData } from '../data/festivalData';
 
+export function getYoutubeEmbedUrl(url: string): string | null {
+  if (!url) return null;
+  let videoId = '';
+  const watchMatch = url.match(/[?&]v=([^&#]+)/);
+  if (watchMatch) {
+    videoId = watchMatch[1];
+  } else {
+    const shortMatch = url.match(/youtu\.be\/([^&#?/]+)/);
+    if (shortMatch) {
+      videoId = shortMatch[1];
+    } else {
+      const embedMatch = url.match(/embed\/([^&#?/]+)/);
+      if (embedMatch) {
+        videoId = embedMatch[1];
+      }
+    }
+  }
+  return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+}
+
 interface BandDetailModalProps {
   act: Act | null;
   isOpen: boolean;
@@ -124,22 +144,81 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
         onClick={(e) => e.stopPropagation()} // Prevent close on tap inside card
       >
         
-        {/* 1. HERO HEADER WITH 3D NEUMORPHIC AVATAR */}
+        {/* 1. HERO HEADER - FULL BLEED PHOTO */}
         <div
           style={{
             height: '220px',
             position: 'relative',
-            background: `linear-gradient(135deg, #12131a 0%, #1a1c29 100%)`,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'flex-end',
             borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
             overflow: 'hidden',
-            padding: '20px',
+            padding: '24px 20px',
           }}
         >
-          {/* Close button inside hero */}
+          {/* Background Band Image (Loads if no error) */}
+          {!imgError ? (
+            <img
+              src={`./images/${imageName}.jpg`}
+              alt={act.band}
+              onError={() => setImgError(true)}
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: 1,
+              }}
+            />
+          ) : (
+            /* Fallback full-bleed gradient with initials */
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(135deg, #1b1d24 0%, #2c2f3b 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 1,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: '5rem',
+                  fontWeight: '900',
+                  color: 'rgba(255, 255, 255, 0.03)',
+                  fontFamily: 'var(--font-sans)',
+                  letterSpacing: '8px',
+                  userSelect: 'none',
+                }}
+              >
+                {getInitials(act.band)}
+              </span>
+            </div>
+          )}
+
+          {/* Dark esmerilado gradient overlay for text readability */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '140px',
+              background: 'linear-gradient(to top, rgba(10, 11, 16, 0.98) 0%, rgba(10, 11, 16, 0.6) 50%, rgba(10, 11, 16, 0) 100%)',
+              zIndex: 2,
+            }}
+          />
+
+          {/* Close button overlaid on top right */}
           <button
             onClick={onClose}
             aria-label="Cerrar detalles"
@@ -165,68 +244,39 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
             <X size={18} />
           </button>
 
-          {/* Concentric relief circular avatar container */}
-          <div
-            className="avatar-neumorphic-3d neon-glow"
-            style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              zIndex: 5,
-              marginBottom: '14px',
-            }}
-          >
-            {!imgError ? (
-              <img
-                src={`./images/${imageName}.jpg`}
-                alt={act.band}
-                onError={() => setImgError(true)}
+          {/* Content (Title and Country/Genre) overlaid over the photo */}
+          <div style={{ position: 'relative', zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+            <h2
+              className="neon-text-glow"
+              style={{
+                fontSize: '1.75rem',
+                fontWeight: '800',
+                color: '#ffffff',
+                textAlign: 'center',
+                letterSpacing: '0.5px',
+                textShadow: '0 2px 10px rgba(0,0,0,0.85)',
+              }}
+            >
+              {act.band}
+            </h2>
+
+            {/* Country and Genre Subtitle */}
+            {(act.bio?.country || act.bio?.genre) && (
+              <span
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
-                }}
-              />
-            ) : (
-              <div
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  background: 'linear-gradient(135deg, #1b1d24 0%, #2c2f3b 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '1.85rem',
-                  fontWeight: '800',
-                  color: 'rgba(255, 255, 255, 0.35)',
-                  fontFamily: 'var(--font-sans)',
+                  fontSize: '0.85rem',
+                  fontWeight: '600',
+                  color: 'var(--text-secondary)',
+                  textAlign: 'center',
+                  textShadow: '0 1px 4px rgba(0,0,0,0.8)',
                 }}
               >
-                {getInitials(act.band)}
-              </div>
+                {act.bio.country && <span>{act.bio.country}</span>}
+                {act.bio.country && act.bio.genre && <span> • </span>}
+                {act.bio.genre && <span>{act.bio.genre}</span>}
+              </span>
             )}
           </div>
-
-          {/* Band Name at the bottom of avatar */}
-          <h2
-            className="neon-text-glow"
-            style={{
-              fontSize: '1.5rem',
-              fontWeight: '800',
-              color: '#ffffff',
-              textAlign: 'center',
-              zIndex: 6,
-              letterSpacing: '0.5px',
-            }}
-          >
-            {act.band}
-          </h2>
         </div>
 
         {/* 2. MODAL BODY */}
@@ -359,6 +409,48 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
               </p>
             )}
           </div>
+
+          {/* Youtube Video Embed */}
+          {act.bio?.youtubeUrl && (
+            <div>
+              <h3 style={{ fontSize: '0.88rem', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '10px' }}>
+                Vídeo Destacado
+              </h3>
+              {(() => {
+                const embedUrl = getYoutubeEmbedUrl(act.bio.youtubeUrl);
+                if (!embedUrl) return null;
+                return (
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      paddingBottom: '56.25%', /* 16:9 Aspect Ratio */
+                      height: 0,
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+                    }}
+                  >
+                    <iframe
+                      src={embedUrl}
+                      title={`Video de ${act.band}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    />
+                  </div>
+                );
+              })()}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -22,9 +22,13 @@ El quinteto Crowded - A Coruña vuelve al Resu con un segundo EP estrenado a pri
 
 **ANEUMA** - ¡MELODEATH DE PRIMERA DESDE ASTURIAS EN EL RESURRECTION FEST CON ANEUMA! 🔥 FB 3K SP 3K
 
+España - Death metal, Metalcore
+
 Desde Asturias, Aneuma se ha convertido en una de las bandas emergentes más potentes del metal nacional desde su creación hace un lustro. Su mezcla de death metal con metalcore intensa y fresca les llevó a tocar en el Wacken Open Air hace unos años, lugar en el que lograron un histórico segundo puesto en la competición internacional 🤘
 
 Con tres discos lanzados hasta la fecha, el quinteto de Puerto de Vega ha demostrado que la vigencia del sonido de Gotemburgo es atemporal, y que su fórmula incluso es renovar y traer al presente poniendo esmero y dedicación. Nos lo demostrarán como solamente ellxs saben el miércoles 1 de julio en el Ritual Stage 🙌
+
+https://www.youtube.com/watch?v=gLtbBsBGKxc
 
 
 
@@ -200,7 +204,7 @@ JUEVES 2
 
 
 
-**ARSON TIDES** 
+**ARSON TIDES**
 
 📌 La banda  Arson Tides, ha sido una de las tres elegidas para la gloria en el concurso de bandas del Resurrection Fest. La joven banda tiene entre sus filas a al vocalista cangués Orlando Soage, el guitarrista de Bueu Víctor Gómez y al benjamín del festival, Mateo, el joven baterista vigués de 16 años
 

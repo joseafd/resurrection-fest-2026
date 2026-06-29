@@ -4,6 +4,9 @@ export interface BandBio {
   name: string;
   title: string;
   description: string;
+  country?: string;
+  genre?: string;
+  youtubeUrl?: string;
 }
 
 export interface Act {
@@ -71,6 +74,45 @@ export function minutesToTime(minutes: number): string {
 }
 
 /**
+ * Secondary helper to parse properties of a band bio section (extracts country, genre, youtube).
+ */
+function buildBandBio(name: string, title: string, paragraphs: string[]): BandBio {
+  let country = '';
+  let genre = '';
+  let youtubeUrl = '';
+  const descriptionParagraphs = [...paragraphs];
+
+  // 1. Extract country & genre from the first line if it contains the " - " separator
+  if (descriptionParagraphs.length > 0) {
+    const firstLine = descriptionParagraphs[0];
+    if (firstLine.includes(' - ')) {
+      const parts = firstLine.split(' - ');
+      country = parts[0].trim();
+      genre = parts[1].trim();
+      descriptionParagraphs.shift(); // remove from description list
+    }
+  }
+
+  // 2. Extract youtubeUrl from the last line if it matches standard YouTube links
+  if (descriptionParagraphs.length > 0) {
+    const lastLine = descriptionParagraphs[descriptionParagraphs.length - 1];
+    if (lastLine.startsWith('http') && (lastLine.includes('youtube.com') || lastLine.includes('youtu.be'))) {
+      youtubeUrl = lastLine.trim();
+      descriptionParagraphs.pop(); // remove from description list
+    }
+  }
+
+  return {
+    name,
+    title: title.trim(),
+    description: descriptionParagraphs.join('\n\n').trim(),
+    country: country || undefined,
+    genre: genre || undefined,
+    youtubeUrl: youtubeUrl || undefined,
+  };
+}
+
+/**
  * Parses the markdown file to build a map of band names to their descriptions/titles.
  */
 export function parseBandBios(markdownText: string): Record<string, BandBio> {
@@ -88,11 +130,7 @@ export function parseBandBios(markdownText: string): Record<string, BandBio> {
     if (headerMatch) {
       // Save the previous band if we were accumulating
       if (currentBand) {
-        bios[currentBand.toUpperCase()] = {
-          name: currentBand,
-          title: currentTitle.trim(),
-          description: currentParagraphs.join('\n\n').trim(),
-        };
+        bios[currentBand.toUpperCase()] = buildBandBio(currentBand, currentTitle, currentParagraphs);
       }
 
       const rawName = headerMatch[1].trim();
@@ -116,11 +154,7 @@ export function parseBandBios(markdownText: string): Record<string, BandBio> {
     ) {
       // Day boundary: save and reset
       if (currentBand) {
-        bios[currentBand.toUpperCase()] = {
-          name: currentBand,
-          title: currentTitle.trim(),
-          description: currentParagraphs.join('\n\n').trim(),
-        };
+        bios[currentBand.toUpperCase()] = buildBandBio(currentBand, currentTitle, currentParagraphs);
         currentBand = null;
       }
     } else {
@@ -134,11 +168,7 @@ export function parseBandBios(markdownText: string): Record<string, BandBio> {
 
   // Save the last band
   if (currentBand) {
-    bios[currentBand.toUpperCase()] = {
-      name: currentBand,
-      title: currentTitle.trim(),
-      description: currentParagraphs.join('\n\n').trim(),
-    };
+    bios[currentBand.toUpperCase()] = buildBandBio(currentBand, currentTitle, currentParagraphs);
   }
 
   return bios;
