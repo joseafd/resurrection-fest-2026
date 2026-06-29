@@ -12,19 +12,27 @@ Error generating stack: `+e.message+`
 
 **ANNISOKAY** - ¡ANNISOKAY TRAERÁN SU POTENTE METALCORE AL RESURRECTION FEST EG 2026! 🔥 FB 71k SP 426k
 
+Alemania - Metalcore
+
 La formación alemana de metalcore annisokay llegará a Viveiro para liarla bien en nuestro Main Stage. Con una trayectoria de casi dos décadas y seis discos de estudio estrenados, Annisokay han ido perfeccionando su fórmula mezclando el metal alternativo, djent y metalcore con tintes electrónicos de manera impecable 🤘
 
 La elegancia de las guitarras y voces melódicas de Chris en perfecto equilibrio con la agresividad de los guturales de Rudi crean un combo perfecto del que podremos disfrutar en directo en el primer día de Resu. ¡Estamos segurxs de que os volarán la cabeza! 💥
+
+https://www.youtube.com/watch?v=6T4JAn4lFL0
 
 
 
 **CROWDED** - ¡CROWDED DAN EL SALTO DE LAS SALAS AL CHAOS STAGE DEL RESURRECTION FEST EG 2026! 🔥 FB 0 SP 1K
 
+España - Metal Alternativo
+
 Después de tocar en la carpa Red Bull en 2024, la joven banda coruñesa de metal formada en 2021 regresa al festi para abrir fuego en el Chaos Stage el próximo miércoles 1 de julio 🧨
 
-El quinteto Crowded - A Coruña vuelve al Resu con un segundo EP estrenado a principios de año titulado "Kindred Spirits" que releva a su debut "Underdogs" de 2023 forjando su sonido mezcla de metal alternativo y rock noventero e influencias del thrash y metalcore 🤘
+El quinteto Crowded vuelve al Resu con un segundo EP estrenado a principios de año titulado "Kindred Spirits" que releva a su debut "Underdogs" de 2023 forjando su sonido mezcla de metal alternativo y rock noventero e influencias del thrash y metalcore 🤘
 
 ¡No te pierdas a una de las propuestas más jóvenes y con más potencial de esta edición! ¡Venid a apoyarlos como merecen! 🙌
+
+https://www.youtube.com/watch?v=5LrDrFgDyl4
 
 
 
@@ -42,6 +50,8 @@ https://www.youtube.com/watch?v=gLtbBsBGKxc
 
 **MAN WITH A MISSION** - EL ÚNICO CONCIERTO EN ESPAÑA DE MAN WITH A MISSION EN 2026 SERÁ EN EL RESURRECTION FEST EG 2026! 🔥 FB 229K **SP 1.598K**
 
+Japón - Rock Alternativo, Rap Metal
+
 Tres años después, los japoneses MAN WITH A MISSION regresan a Viveiro y lo hacen por la puerta grande, consagrados como una de las grandes formaciones niponas de rock a día de hoy 🎵
 
 Aunque lo que seguro que te impactará será su puesta en escena 🤘🏼 Los lobos de Shibuya no dejan a nadie indiferente. Así que prepárate para un show sorprendente con una producción impactante como la que están exhibiendo en Asia estas semanas dentro de su tour mundial Howling Across 🙌
@@ -50,85 +60,125 @@ Aunque lo que seguro que te impactará será su puesta en escena 🤘🏼 Los lo
 
 ¡Man With A Mission están preparados para su segunda vez en el Resurrection Fest! 🐺✊
 
-La banda japonesa MAN WITH A MISSION nos envía este saludo para recordarnos que los tendremos de vuelta 3 años después para dar un concierto muy especial en el Main Stage el miércoles 3 de julio 👋
+https://www.youtube.com/watch?v=FrXAUcLWYZ4
 
 
 
 **GOD COMPLEX** ¡AGRESIVIDAD BRITÁNICA DIRECTA DESDE LIVERPOOL CON GOD COMPLEX EN EL RF2026! 🔥 FB 3K SP 32K
 
+Reino Unido - Metalcore, Metal Hardcore
+
 God Complex se crearon en 2017 y rápidamente se consolidaron como una de las formaciones de metalcore más feroz del Reino Unido. Tras debutar en 2021, hicieron una breve pausa para rearmarse y regresar más brutales y rabiosos que nunca coqueteando también con el mathcore y deathcore en sus singles más recientes 👊
 
 Tras arrasar en su regreso por Londres y su natal Liverpool, los tendremos en el Resurrection Fest listos para desatar el caos en, valga la redundancia, el Chaos Stage, que estarán golpeando con riffs gordos y groove hiperviolento el miércoles 1 de julio 🤘Violencia sonora sin filtro
+
+https://www.youtube.com/watch?v=uBU8\\_O8G9IM
 
 
 
 **TSS** - ¡TSS ESTARÁN EN EL RESURRECTION FEST EG 2026! 🖤🩸 SP 168k
 
+Francia - Metal Moderno, Emo, Metalcore
+
 Desde Burdeos, la banda originalmente conocida como TSS llega a Viveiro para demostrar por qué están obteniendo tantísimo reconocimiento a lo largo y ancho de Europa. Vienen a reventar el escenario con su fusión única de riffs pesados de metalcore moderno mezclado con pop oscuro, synth y rock electrónico 🌪️
 
 ¡Una experiencia sonora y estética retro, oscura e innovadora para disfrutar con intensidad desde nuestro Ritual Stage! ⚡ Estética oscura, vampírica. Atmósfera densa.
+
+https://www.youtube.com/watch?v=EBAdqbbioZ8
 
 
 
 **BLACK MARACAS** FB 1k SP 2K
 
-Garaje cavernícola psicodelicioso
+España - Garaje Rock, Psicodelia
+
+Black Maracas es una destacada banda madrileña de garage-rock, psicodelia y punk, liderada por Adrián "Dilly Child" Martín. El grupo ha logrado expandirse internacionalmente con giras por Europa, México y Estados Unidos (actuando en festivales de renombre como el Levitation y Freakout). Garaje cavernícola psicodelicioso
+
+https://www.youtube.com/watch?v=nUX-xW182EI
 
 
 
 **PRESIDENT** - ¡PRESIDENT TRAEN LA VANGUARDIA METALERA Y EL MISTERIO AL RF2026! 🏴 **SP 1316k**
 
+Reino Unido -  Hard Rock, Metal Alternativo
+
 PRESIDENT apareció de la nada en 2025, y en cuestión de semanas se convirtió en uno de los fenómenos virales más duros del metal moderno. El colectivo británico dirigido por su líder homónimo The President se suma a esta edición para captar devotos en su genial propuesta 🤫
 
 Con más de 50 millones de reproducciones en plataformas, es la nueva sensación que lo está petando entre curiosxs y fans de Dayseeker, Sleep Theory o Bad Omens. Metalcore y post-hardcore de primera con una chispa de R\\&B y pop que lo hace único 🙌 ¡No te puedes perder esta locura el primer día de festi en el Main Stage! 🔥
+
+https://www.youtube.com/watch?v=aczq-iCfFOk
 
 
 
 **IMMORTAL DISFIGUREMENT** - ¡DEATHCORE SIN PIEDAD CON IMMORTAL DISFIGUREMENT EN EL RESURRECTION FEST EG 2026! 🤘 FB 24K SP 118K
 
+EEUU - Deathcore
+
 No tenemos dudas de que el concierto de Immortal Disfigurement será uno de las más bestias de esta edición. Vienen de Pittsburgh y están liderados por CJ McCreery, un fuera de serie dentro del deathcore que ha formado parte de bandas como Lorna Shore y Signs Of The Swarm y que os dejará con la boca abierta desde el minuto 0 😱
 
 Guturales inhumanos, una agresividad al límite con breakdowns sin ningún sentido, y mucha técnica y sinfonías que os harán experimentar cómo suenan la violencia y oscuridad de verdad 👹
+
+https://www.youtube.com/watch?v=myEyI0gT6r8
 
 
 
 **THE PRETTY WILD** - ¡EL NÜ METALCORE EXPLOSIVO DE LAS HERMANAS WYLDE LLEGA AL RESURRECTION FEST EG 2026! ⚡ FB 293k  SP 698K
 
+EEUU - Metal Alternativo, Metalcore
+
 Desde Estados Unidos, The Pretty Wild desembarcan en Viveiro para demostrarnos que el metal moderno dosmilero corre por sus venas. Las hermanas y power duo Jyl y Jules Wylde llegan al Resu con su explosiva mezcla de tralla a dos voces, riffs pesados y una estética y actitud que marcan la diferencia 🔥
 
 Estarán en el Ritual Stage el miércoles 1 de julio tras girar con Sleep Theory y tocar en festis como el Download y Graspop. ¡Prometen no dar tregua y comerse el escenario como nadie! 🤘
+
+https://www.youtube.com/watch?v=3V9isTmCQRo
 
 
 
 **CARDIAC** - ¡LA CONTUNDENCIA DE LA BANDA HISPANO-SUIZA CARDIAC REVENTARÁ EL RESU EN JULIO! 💥 FB 4K SP 1K
 
+España - Hardcore, Groove Metal
+
 CardiaC llevan en las trincheras del hardcore, metal y rock europeo desde el año 2000. Se formaron en Suiza, aunque las raíces de su vocalista, Ricardo, están en Madrid. De ahí nace la iniciativa de que sus canciones sean en castellano, idioma en el que canalizan toda su rabia, ideas y experiencia a través de un estilo fuertemente influido por el hardcore neoyorkino 🔥
 
 Tras recorrer multitud de países europeos, además de pasar por Estados Unidos, Rusia o Cuba acompañando a bandas como Madball, Terror, Cypress Hill, Soziedad Alkohólika, Sepultura o Limp Bizkit, la banda pisará el Desert Stage del Resu el primer día de festi, miércoles 1 de julio, para demostrarnos por qué su groove es tan infeccioso 🤘
+
+https://www.youtube.com/watch?v=l-Rv5riBvc8\\&t=3s
 
 
 
 **THE SCRATCH** - ¡EL FOLKLORE ROCKERO DE THE SCRATCH TAMBIÉN SERÁ PARTE DEL RESURRECTION FEST EG 2026! 🍀 FB 55 SP 115K
 
+Irlanda - Folk Rock
+
 La banda dublinesa, conocida por su enfoque en el folklore tradicional irlandés, viene directa de las calles, de tocar delante de transeúntes mostrando a todxs su estilo celebratorio con dinámicas derivadas del rock y del metal progresivo que van de lo contemplativo a la explosión en cuestión de segundos ⚡️
 
 Viveiro será el punto ideal de reunión entre dos culturas hermanas en herencia como son la gallega y la irlandesa. ¡Será una cita imperdible para festejar la música en directo! Y, ¡OJO! ¡Vendrán con su nuevo y bestial disco "Pull Like A Dog" bajo el brazo! 🤘LET'S GO! 🙌
+
+https://www.youtube.com/watch?v=MfDZlUD\\_1WU
 
 
 
 **THROWN** - ¡THROWN ESTARÁN POR PRIMERA VEZ EN ESPAÑA EN EL RESURRECTION FEST EG! 💥 FB 26K  SP 888K
 
+Suecia - Hardcore Punk, Metalcore
+
 Thrown desembarcarán en Viveiro en 2026 para demostrar por qué son una de las bandas más explosivas del metalcore y hardcore actual. El cuarteto sueco liderado por Marcus Lundqvist vendrá a nuestro Main Stage dispuesto a arrasar con todo con su mezcla de rabia, riffs afilados y groove 🎸💣
 
 Activos desde 2019 y nacidos de las cenizas de Grieved, vienen de estrenar su LP debut "Excessive Guilt" hace un año. Un disco ansioso, oscuro y mecánico ideal para una buena descarga de adrenalina. Thrown darán un concierto en Madrid acompañados de House of Protection. ¡No te pierdas a estas dos bandas en acción el 2 de julio! 🤘
+
+https://www.youtube.com/watch?v=DqBzOVCmIdM
 
 
 
 **THE BROWNING** - ¡LA FUSIÓN EXTREMA DE METAL Y ELECTRÓNICA DE THE BROWNING ESTARÁ EN EL RESURRECTION FEST EG 2026! ⚡️FB 306K SP 309
 
+EEUU - Metalcore, Deathcore
+
 Reconocidos mundialmente por su mezcla de EDM y deathcore, The Browning llegan a Viveiro para redefinir los límites de la brutalidad desde el Ritual Stage. La formación estadounidense ha ido perfeccionado su deathcore demoledor con metalcore y djent añadiendo a su ecuación ritmos electrónicos sacados del hardstyle, house, techno o dance 🔥
 
 Jonny McBee, cerebro del proyecto, y su equipo han conseguido que sus conciertos sean como una pista de baile apocalíptica con moshpits. Tras reventarlo con "OMNI" en 2024, celebrar su legado con la regrabación de "Burn This World", o versionar el clásico de eurodance "Blue (Da Ba Dee)" de Eiffel 65, llegan en un estado de forma insuperable 🤘
+
+https://www.youtube.com/watch?v=\\_DEdsCEUpaI
 
 
 
@@ -183,6 +233,16 @@ https://www.youtube.com/watch?v=VcoSyfcqYSY
 
 
 **LAMPR3A FB 3K SP 2K**
+
+España - Metal Progresivo
+
+¡VIRTUOSISMO INSTRUMENTAL SIN LÍMITES CON LAMPR3A EN EL RF2026! 🪐
+
+Directos desde Euskadi y activos desde hace ya una década, Lampr3a vendrán a darnos una masterclass de prog instrumental el miércoles 1 de julio en el Desert Stage 🔥
+
+Aunque son un trío, hacen por un quinteto cuando empiezan a tocar. Sus instrumentos hablan por sí solos a base de polirritmias locas, una técnica milimetrada y experimentación que parece de otra galaxia. ¡No te los pierdas porque fijo que vas a flipar! 🧠✨
+
+https://www.youtube.com/watch?v=er6nWXylNHE
 
 
 
@@ -710,9 +770,13 @@ El power trío de Estocolmo no te fallará si lo que buscas es reencontrarte con
 
 **HAND OF JUNO** - 🤚 ¡HAND OF JUNO ESTARÁN ESTE AÑO EN EL RESU CON SU GENIAL Y OSCURA PROPUESTA! 🌘  SP 19K
 
+Italia - Metal Industrial
+
 Desde Italia, Hand Of Juno llevan ya unos años construyendo su propio espacio dentro del metal moderno, mezclando riffs pesados con industrial y post-hardcore lleno de detalles y capas, además de una estética inimitable que atrapa 🙌
 
 Antes de que digas nada: no, no son la típica banda de metalcore. Los originarios de Milán saben cuidar de sus atmósferas y de los contrastes entre lo agresivo y etéreo marcando una clara diferencia. ¡Están ya en el radar europeo, pero todo pinta a que pronto los veremos crecer como merecen! ❤️‍🔥
+
+https://www.youtube.com/watch?v=0fSoJaU6rTE
 
 
 
