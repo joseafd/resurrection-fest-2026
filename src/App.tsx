@@ -32,6 +32,7 @@ export default function App() {
   const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [pendingImport, setPendingImport] = useState<string[] | null>(null);
+  const [visitCount, setVisitCount] = useState<number | null>(null);
 
   // 4. Days list shortcut
   const days = festivalData.days;
@@ -51,6 +52,20 @@ export default function App() {
         }
       }
     }
+  }, []);
+
+  // 5b. Visitor Counter fetcher (CounterAPI.dev)
+  useEffect(() => {
+    fetch('https://api.counterapi.dev/v1/joseafd_resurrection_fest_2026/page_views/up')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && typeof data.value === 'number') {
+          setVisitCount(data.value);
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching visitor counter:', err);
+      });
   }, []);
 
   // 6. Current Festival Time Simulator Logic
@@ -434,6 +449,40 @@ export default function App() {
             <Share2 size={16} color="#ff2a85" />
             Compartir App con amigos
           </button>
+
+          {/* Visitor Counter Badge */}
+          {visitCount !== null && (
+            <div
+              style={{
+                marginTop: '16px',
+                fontSize: '0.78rem',
+                color: 'var(--text-muted)',
+                fontWeight: '600',
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                borderRadius: '8px',
+                padding: '6px 12px',
+                letterSpacing: '0.5px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                animation: 'fadeIn 0.5s ease-out forwards',
+              }}
+            >
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#ff2a85',
+                  boxShadow: '0 0 8px #ff2a85',
+                  animation: 'pulseYellow 2s infinite ease-in-out',
+                }}
+              />
+              <span>Visitas: {visitCount.toLocaleString()}</span>
+            </div>
+          )}
         </div>
       )}
 
