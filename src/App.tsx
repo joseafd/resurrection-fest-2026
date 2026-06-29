@@ -59,8 +59,8 @@ export default function App() {
     fetch('https://api.counterapi.dev/v1/joseafd_resurrection_fest_2026/page_views/up')
       .then((res) => res.json())
       .then((data) => {
-        if (data && typeof data.value === 'number') {
-          setVisitCount(data.value);
+        if (data && typeof data.count === 'number') {
+          setVisitCount(data.count);
         }
       })
       .catch((err) => {
