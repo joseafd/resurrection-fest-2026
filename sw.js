@@ -1,74 +1,117 @@
-const CACHE_NAME = 'resu-2026-cache-v1';
-const ASSETS_TO_CACHE = [
+const CACHE_NAME = 'resu2026-cache-v1';
+
+// Static assets to precache immediately
+const PRECACHE_ASSETS = [
   './',
   './index.html',
-  './icon.svg',
-  './manifest.json'
 ];
 
-// Install Event - Pre-cache core assets
+// 1. Install Event: Precaching core shell
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        // Attempt to pre-cache but don't fail if some dev-only files are missing
-        return cache.addAll(ASSETS_TO_CACHE).catch(err => {
-          console.warn('Pre-caching warning:', err);
-        });
-      })
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(PRECACHE_ASSETS);
+    }).then(() => {
+      return self.skipWaiting();
+    })
   );
 });
 
-// Activate Event - Clean up old caches
+// 2. Activate Event: Clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
           }
         })
       );
-    }).then(() => self.clients.claim())
+    }).then(() => {
+      return self.clients.claim();
+    })
   );
 });
 
-// Fetch Event - Stale-while-revalidate caching
+// 3. Fetch Event: Intelligent Caching Strategies
 self.addEventListener('fetch', (event) => {
-  // Only cache GET requests within our origin (exclude dev-server websockets, etc.)
-  if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
+  const requestUrl = new URL(event.request.url);
+
+  // We only cache GET requests from our origin
+  if (event.request.method !== 'GET') return;
+
+  // Strategy A: Image Caching -> Cache First (optimizes images and maps)
+  if (
+    requestUrl.pathname.includes('/images/') || 
+    requestUrl.pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|ico)$/)
+  ) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) => {
+        return cache.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            // Serve from cache and update in background in case image changed
+            fetch(event.request).then((networkResponse) => {
+              if (networkResponse.status === 200) {
+                cache.put(event.request, networkResponse);
+              }
+            }).catch(() => {/* Ignore network errors if offline */});
+            
+            return cachedResponse;
+          }
+
+          // Fetch from network and cache
+          return fetch(event.request).then((networkResponse) => {
+            if (networkResponse.status === 200) {
+              cache.put(event.request, networkResponse.clone());
+            }
+            return networkResponse;
+          }).catch(() => {
+            // Return fallback for images if offline and not cached
+            return new Response('Offline', { status: 503, statusText: 'Offline' });
+          });
+        });
+      })
+    );
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        // Stale-while-revalidate: return cached copy but update in background
-        fetch(event.request)
-          .then((networkResponse) => {
+  // Strategy B: JS / CSS Assets -> Stale While Revalidate
+  if (requestUrl.pathname.includes('/assets/') || requestUrl.pathname.match(/\.(js|css|woff2|woff|ttf)$/)) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then((cache) => {
+        return cache.match(event.request).then((cachedResponse) => {
+          const fetchPromise = fetch(event.request).then((networkResponse) => {
             if (networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
+              cache.put(event.request, networkResponse.clone());
             }
-          })
-          .catch(() => {/* ignore network failures */});
-        return cachedResponse;
-      }
+            return networkResponse;
+          }).catch(() => {/* Ignore offline errors */});
 
-      return fetch(event.request).then((networkResponse) => {
-        // Cache new successful requests dynamically
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-          return networkResponse;
-        }
-
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
+          return cachedResponse || fetchPromise;
         });
+      })
+    );
+    return;
+  }
 
+  // Strategy C: HTML Page and core routes -> Network First (so updates are visible immediately)
+  event.respondWith(
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
+        }
         return networkResponse;
-      });
-    })
+      })
+      .catch(() => {
+        // Offline: Serve cached page shell
+        return caches.match(event.request).then((cachedResponse) => {
+          return cachedResponse || caches.match('./index.html');
+        });
+      })
   );
 });
