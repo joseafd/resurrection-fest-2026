@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Zap, Clock, Calendar, MapPin } from 'lucide-react';
+import { X, Zap, Clock, Calendar, MapPin, Globe, Music } from 'lucide-react';
 import type { Act } from '../data/festivalData';
 
 import { festivalData } from '../data/festivalData';
@@ -244,8 +244,8 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
             <X size={18} />
           </button>
 
-          {/* Content (Title and Country/Genre) overlaid over the photo */}
-          <div style={{ position: 'relative', zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+          {/* Content (Title) overlaid over the photo */}
+          <div style={{ position: 'relative', zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2
               className="neon-text-glow"
               style={{
@@ -259,23 +259,6 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
             >
               {act.band}
             </h2>
-
-            {/* Country and Genre Subtitle */}
-            {(act.bio?.country || act.bio?.genre) && (
-              <span
-                style={{
-                  fontSize: '0.85rem',
-                  fontWeight: '600',
-                  color: 'var(--text-secondary)',
-                  textAlign: 'center',
-                  textShadow: '0 1px 4px rgba(0,0,0,0.8)',
-                }}
-              >
-                {act.bio.country && <span>{act.bio.country}</span>}
-                {act.bio.country && act.bio.genre && <span> • </span>}
-                {act.bio.genre && <span>{act.bio.genre}</span>}
-              </span>
-            )}
           </div>
         </div>
 
@@ -388,9 +371,76 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
 
           {/* Description Section */}
           <div>
-            <h3 style={{ fontSize: '0.88rem', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '10px' }}>
+            <h3 style={{ fontSize: '0.88rem', color: 'var(--text-muted)', fontWeight: '800', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '12px' }}>
               Información de la Banda
             </h3>
+
+            {/* Country and Genre sub-row (same style as details grid) */}
+            {(act.bio?.country || act.bio?.genre) && (
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '12px',
+                  marginBottom: '16px',
+                }}
+              >
+                {act.bio.country && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      fontSize: '0.90rem',
+                      background: 'rgba(255,255,255,0.02)',
+                      padding: '10px 14px',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                    }}
+                  >
+                    <Globe size={15} color="var(--accent-red)" />
+                    <div>
+                      <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: '600' }}>País</div>
+                      <div style={{ fontWeight: '800', color: '#fff' }}>{act.bio.country}</div>
+                    </div>
+                  </div>
+                )}
+
+                {act.bio.genre && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      fontSize: '0.90rem',
+                      background: 'rgba(255,255,255,0.02)',
+                      padding: '10px 14px',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <Music size={15} color="var(--accent-red)" />
+                    <div style={{ overflow: 'hidden' }}>
+                      <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: '600' }}>Género</div>
+                      <div
+                        style={{
+                          fontWeight: '800',
+                          color: '#fff',
+                          fontSize: '0.85rem',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                        title={act.bio.genre}
+                      >
+                        {act.bio.genre}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {act.bio ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
