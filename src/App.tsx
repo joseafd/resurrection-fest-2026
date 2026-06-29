@@ -150,6 +150,20 @@ export default function App() {
       });
   };
 
+  // 9. Share App Handler (General Diffusion)
+  const handleShareApp = () => {
+    const baseUrl = window.location.origin + window.location.pathname;
+    navigator.clipboard.writeText(baseUrl)
+      .then(() => {
+        setToastMessage('🔗 ¡Enlace de la app copiado! ¡Compártelo con tus amigos!');
+        setTimeout(() => setToastMessage(null), 3000);
+      })
+      .catch(() => {
+        setToastMessage('No se pudo copiar el enlace de la app');
+        setTimeout(() => setToastMessage(null), 2500);
+      });
+  };
+
   // 9. Time filtering / sorting helpers
   const handleToggleFavorite = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation(); // prevent opening details when favoriting
@@ -393,6 +407,36 @@ export default function App() {
             </button>
           </div>
         </div>
+
+        {/* Share App Button (Difusión) */}
+        <button
+          onClick={handleShareApp}
+          style={{
+            marginTop: '24px',
+            background: 'rgba(255, 255, 255, 0.03)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            color: '#ffffff',
+            borderRadius: '12px',
+            padding: '12px 24px',
+            fontSize: '0.92rem',
+            fontWeight: '700',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            transition: 'background 0.2s, transform 0.1s',
+            maxWidth: '320px',
+            width: '100%',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+          }}
+          className="btn-interactive"
+          onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+          onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+        >
+          <Share2 size={16} color="#ff2a85" />
+          Compartir App con amigos
+        </button>
       </div>
     );
   }

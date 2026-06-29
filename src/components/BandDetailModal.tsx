@@ -421,21 +421,25 @@ export const BandDetailModal: React.FC<BandDetailModalProps> = ({
                     }}
                   >
                     <Music size={15} color="var(--accent-red)" />
-                    <div style={{ overflow: 'hidden' }}>
-                      <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: '600' }}>Género</div>
-                      <div
-                        style={{
-                          fontWeight: '800',
-                          color: '#fff',
-                          fontSize: '0.85rem',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                        title={act.bio.genre}
-                      >
-                        {act.bio.genre}
-                      </div>
+                    <div style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: '600', marginBottom: '2px' }}>Género</div>
+                      {act.bio.genre.split(',').map((style, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            fontWeight: '800',
+                            color: '#fff',
+                            fontSize: '0.82rem',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            lineHeight: '1.25',
+                          }}
+                          title={style.trim()}
+                        >
+                          {style.trim()}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
