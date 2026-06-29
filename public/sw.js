@@ -1,9 +1,11 @@
-const CACHE_NAME = 'resu2026-cache-v1';
+const CACHE_NAME = 'resu2026-cache-v2';
 
 // Static assets to precache immediately
 const PRECACHE_ASSETS = [
   './',
   './index.html',
+  './manifest.json',
+  './icon.svg',
 ];
 
 // 1. Install Event: Precaching core shell
