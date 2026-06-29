@@ -708,7 +708,7 @@ export default function App() {
             onSearchGlobalToggle={setSearchGlobal}
           />
 
-          <main style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
+          <main style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative' }}>
             {renderView()}
           </main>
         </div>

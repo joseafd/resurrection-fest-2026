@@ -126,37 +126,51 @@ Jonny McBee, cerebro del proyecto, y su equipo han conseguido que sus conciertos
 
 **LAST TRAIN** - ¡LOS FRANCESES LAST TRAIN VISITARÁN EL RESU CON SU ROCK ALTERNATIVO FURIOSO E INTROSPECTIVO! ❤️‍🔥 FB 39 SP 93K
 
+Francia - Rock alternativo
+
 Last Train no son nuevos en esto. La banda originaria de Alsacia tiene una historia larga sobre sus espaldas y llevan casi una década girando sin parar y sacando música bajo su propio sello, algo bastante poco común hoy día en artistas de su talla ✊
 
 Su rollo es el rock alternativo con aires de los 90, pero detrás hay influencias claras que transitan también el industrial, hard rock, punk, garage o stoner 🎸
 
-¡Estamos seguro de que lo van a petar y sabemos que vais a salir de su concierto siendo fans! 🤘 Abrieron para Linkin Park en Lyon - Francia
+¡Estamos seguro de que lo van a petar y sabemos que vais a salir de su concierto siendo fans! 🤘 Recordaros que abrieron para Linkin Park en Lyon - Francia
+
+https://www.youtube.com/watch?v=UTwRqGlIaIs
 
 
 
 **A DAY TO REMEMBER** - ¡A DAY TO REMEMBER DARÁN SU ÚNICO CONCIERTO EN ESPAÑA EN 2026 EN EL RESURRECTION FEST EG! 🔥 FB 4100K **SP 5370K**
 
-La llegada de la banda americana @adtr al Resu se ha hecho esperar, pero... ¡por fin podemos celebrarlo como merece: en nuestro Main Stage el próximo verano! 🙌
+Estados Unidos - Metalcore
 
-A Day To Remember son ya un referente dentro del metalcore y desde siempre una de las bandas más votadas por el público. Preparaos porque se vienen temazos, baladas, mosh ¡y mucha fiesta! 🗣️ **A DAY TO REMEMBER** - ¡Por primera vez, A Day To Remember estarán en el Main Stage del Resurrection Fest EG 2026 con su único concierto en España en 2026! 🔥
+La llegada de la banda americana al Resu se ha hecho esperar, pero... ¡por fin podemos celebrarlo como merece: en nuestro Main Stage el próximo verano! 🙌
 
-Viendo cómo suenan, los bolazos que están dando en directo, y la forma en la que la gente lo está dando todísimo, os podéis hacer a la idea de lo que se viene 🥵
+A Day To Remember son ya un referente dentro del metalcore y desde siempre una de las bandas más votadas por el público. Preparaos porque se vienen temazos, baladas, mosh ¡y mucha fiesta! 🗣️ Viendo cómo suenan, los bolazos que están dando en directo, y la forma en la que la gente lo está dando todísimo, os podéis hacer a la idea de lo que se viene 🥵
+
+https://www.youtube.com/watch?v=jGxykN8cx7w
 
 
 
 **GET THE SHOT** - ¡GET THE SHOT LO REVENTARÁN EN EL RESURRECTION FEST 2026 CON SU HARDCORE METÁLICO! 🩸 FB 50K SP 153K
 
+Canada - Hardcore, Thrash
+
 Desde las frías calles de Quebec, Get The Shot llegan a Viveiro para demostrar que la fusión de la furia del hardcore más pesado, el thrash y el metalcore goza de mejor salud que nunca. Sin artificios, directos y con una fórmula infalible de riffs, velocidad y rabia 🔥
 
 El escuadrón canadiense no dejará títere con cabeza y hará temblar como mejor sabe el Chaos Stage el primer día de festi, el miércoles 1 de julio con una fecha única en España este año. ¡Nos vemos en el pit! 👊
+
+https://www.youtube.com/watch?v=UvncAul5sEI
 
 
 
 **SELF DECEPTION** - ¡EL METAL MODERNO DE SELF DECEPTION ESTARÁ EN EL RESURRECTION FEST EG 2026! 🔥 FB 14K SP 629K
 
+Suecia - Netalcore
+
 Desde Suecia, nos visitan Self Deception, maestros de la melodía rock y la contundencia del metalcore europeo. Formados en 2005 y reconocidos a nivel internacional, estarán en el Ritual Stage presentando su nuevo álbum "One Of Us", su séptimo disco que se estrenará en mayo de este año 🤘
 
 ¡Preparaos para una buena masterclass de potencia y estribillos gigantescos! 🙌
+
+https://www.youtube.com/watch?v=VcoSyfcqYSY
 
 
 
@@ -166,21 +180,31 @@ Desde Suecia, nos visitan Self Deception, maestros de la melodía rock y la cont
 
 **SABATON** - ¡EL BATALLÓN DE SABATON DESEMBARCA EN EL RESURRECTION FEST 2026! 🤘 FB  1200K **SP 3191K**
 
+Suecia - Power Metal
+
 Los suecos Sabaton regresan a Viveiro convertidos en una de las fuerzas más imponentes del heavy europeo. Lo que empezó como una banda apasionada por lo bélico se ha transformado en un fenómeno global capaz de unir a varias generaciones coreando sus himnos. La contundencia instrumental del power metal y la poderosa voz Joakim Brodén ha logrado redefinir el género con su identidad heroica con una propuesta escénica inconfundible 🪖
 
 Vuelven al Main Stage del Resu tras años de espera, y nos traerán su producción y escenografía más bestia además de un set repleto de temazos que son ya una lección de historia metalera. ¡Preparaos para la batalla! ⚔️
+
+https://www.youtube.com/watch?v=Dfh1aSdxr9U
 
 
 
 **HIGH-VIS** - ¡Los británicos High-Vis por fin estarán en Viveiro! Son una de las formaciones más esperadas en nuestro Chaos Stage 🙌 FB 7K SP 238K
 
+UK - Hardcore Punk
+
 Van a darlo todo en la jornada inaugural de nuestra edición 2026 en un miércoles 1 de julio en el que nos impresionarán con todo tipo de temazos, demostrando por qué se han posicionado por derecho propio como una de las grandes bandas en directo del circuito de salas y festivales de Reino Unido.
 
 ¡No te los pierdas en Resurrection Fest! ❤️‍🔥
 
+https://www.youtube.com/watch?v=147BrDp-XuA
+
 
 
 **FAETOOTH** - ¡FAIRY DOOM DESDE LOS ÁNGELES CON FAETOOTH EN EL RF2026! 🔥 FB 8K SP 83K
+
+EEUU - Doom
 
 Desde la soleada California, Faetooth nos traen una propuesta que contrasta drásticamente con su lugar de origen. El trío angelino integrado por Ari, Jenna y Rah ha acuñado su propio género, el "fairy doom", mezclando la lentitud y pesadez de doom clásico y sludge con armonías más etéreas del post-metal y shoegaze 🌑✨
 
@@ -188,15 +212,21 @@ Una mezcla cautivadora que combina los riffs lentos, pesados y aplastantes del d
 
 En sus 7 años de historia, las americanas han ido creciendo en la escena underground gracias a dos discos geniales que hiptonizan con su belleza oscura y un aura folklórica y espiritual que las hace únicas en sus presentaciones en vivo. Nos lo demostrarán el miércoles 1 de julio encabezando el Desert Stage 🤘
 
+https://www.youtube.com/watch?v=nytv1O2yvG8
+
 
 
 **TESTAMENT** - ¡THRASH LEGENDARIO DE LA BAY AREA EN EL RESU CON LOS GIGANTES TESTAMENT! ✊ FB 1600K SP 926
+
+EEUU - Thrash Metal
 
 El thrash metal no se entendería igual sin ellos. Con raíces en el corazón de California en los años 80, Testament son parte de la realeza absoluta del género y uno de los pilares que moldeó ese sonido más rápido, afilado y agresivo de la Costa Oeste americana 🤘
 
 Chuck Billy y la dupla insperable de Alex Skolnick y Eric Peterson a las guitarras nos hará perder el control con caña a saco, clásicos y repertorio de un nuevo disco en el que se han atrevido a tontear con el black y death metal saliendo implacables. 🌪️ ¡Un lujazo tenerlos de vuelta por Viveiro! 🙌
 
 ¡Venid con fuerzas, porque os iréis con agujetas FIJO! 🏃‍♂️
+
+https://www.youtube.com/watch?v=Gtw3lcQvyPU
 
 
 
