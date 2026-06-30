@@ -296,63 +296,103 @@ JUEVES 2
 
 **ARSON TIDES**
 
+España - Metalcore
+
 📌 La banda  Arson Tides, ha sido una de las tres elegidas para la gloria en el concurso de bandas del Resurrection Fest. La joven banda tiene entre sus filas a al vocalista cangués Orlando Soage, el guitarrista de Bueu Víctor Gómez y al benjamín del festival, Mateo, el joven baterista vigués de 16 años
+
+https://www.youtube.com/watch?v=x8Ku8xs3LJA\&list=RDEMx9F7gSD6CPp5z3JPCDu3FA\&start\_radio=1
 
 
 
 **FALLEN AT DAWN** - ¡LOS MADRILEÑOS FALLEN AT DAWN REGRESAN AL RESU ESTE 2026! 🔥 SP 5K
 
+España - Metalcore
+
 Con su estilo entre el post-hardcore y metalcore, la banda madrileña es un ejemplo de constancia y amor por la música. Desde su creación hace aproximadamente una década hasta hoy, y con dos discos por medio, su música ha llegado tanto a varios países de Europa como Latinoamérica gracias a dos álbumes top publicados en 2018 y 2025 🙌
 
-En 2025 estuvieron en el Hellfest, pero nosotros ya los tuvimos por nuestros escenarios en 2024. Este mismo año Fallen At Dawn nos volverán a visitar para darlo todo en el Ritual el jueves 2 de julio 🤘
+En 2025 estuvieron en el Hellfest, pero nosotros ya los tuvimos por nuestros escenarios en 2024. Este mismo año Fallen At Dawn nos volverán a visitar para darlo todo en el Ritual el jueves 2 de julio 
+
+https://www.youtube.com/watch?v=mmP3MmImXi0
 
 
 
 **FUET!** ¡TASTY HARDCORE CON FUET! EN EL RESURRECTION FEST EG 2026! 🔥 SP 4K
 
+España - Hardcore Melódico
+
 Te gusta o no el fuet, seguro que Fuet! te van a molar fijo. Si eres de disfrutar de la buena zapatilla hardcore, del screamo y de riffs tralleros forjados en metal y emoción, esta banda de colegas madrileña creada en el 2020 viene a darte lo que quieres y mucho más con su agresividad positiva y sudorosa 🌪️
 
 Fans de la fórmula de hardcore y punk más fresca y ecléctica, de Turnstile, Refused, Touché Amoré, IDLES o At The Drive-In, no os perdáis esta cita en el Chaos el jueves 2 de julio. Vienen a dar una de las primeras sesiones de cardio del día, así que ven preparadx 👟💥
+
+https://www.youtube.com/watch?v=735VrHSslAA
 
 
 
 **HER ANXIETY** - 💥 ¡HER ANXIETY VUELVEN AL RESURRECTION FEST ESTE AÑO PARA ROMPER CON TODO! 💣 SP 1K
 
+España - Metalcore, Death Melódico
+
 Jugando prácticamente en casa, Her Anxiety harán ruta de Vigo a Viveiro para reventarlo una vez más con nosotrxs. Fueron una de las revelaciones en del Resu en 2014 cuando todavía se hacían llamar His Anxiety, ganaron el Band Contest de 2024 abriendo el festi del mismo año, y este 2026 nos volverán a visitar el jueves 2 de julio para hacer temblar el Ritual Stage 🤘
 
 Con sede en La Ciudad Olívica desde su creación en 2012, la formación liderada por Aida Otero es uno de los secretos mejor guardados de las Rías Baixas gracias a esa particular combinación de death melódico moderno y metalcore que nos transporta al sonido que In Flames, Walls Of Jericho, Arch Enemy, e incluso a los inicios de Parkway Drive o Bring Me The Horizon moldearon a finales de los 90 y comienzos de los 2000 🔥
+
+https://www.youtube.com/watch?v=MQi07wk7xms
 
 
 
 **SILLY GOOSE** SP 117K
 
+EEUU - Nu Metal, Rap Rock
+
+¡NOSTALGIA, ENERGÍA JUVENIL Y REBELDÍA CON SILLY GOOSE EN EL RF2026! 🔥
+
+La banda de Atlanta Silly Goose, creada en 2017 como Student Driver, fue una de nuestras últimas incorporaciones. Silly Goose han reventado el panorama con un nu metal y rap rock que rinde homenaje a la actitud noventera de formaciones como Limp Bizkit o Rage Against The Machine, influenciándose también de gente como Gojira y recordando por momentos a artistas como UnityTX, Fox Lake o Hed PE 🤘
+
+Están aquí en parte gracias a sus particulares conciertos clandestinos en parkings, trenes, restaurantes de comida rápida o gasolineras. Estamos segurxs de que su actitud callejero, guerrillera y descarada a lo Beastie Boys o Joey Valence \& Brae unida a su sentido del humor y buen rollo os van a flipar 🫵
+
+https://www.youtube.com/watch?v=UuSXoG2ncME
+
 
 
 **CASKETS** - ¡LA MELODÍA EXPLOSIVA DE CASKETS ATERRIZA EN EL RESURRECTION FEST 2026! 🔥 SP 1.077K
+
+Reino Unido - PostHardcore
 
 Desde su irrupción en la escena británica en 2018, la banda Caskets ha sabido elevar el post-hardcore a una nueva dimensión, mezclando ganchos melódicos impecables con una carga emocional brutal en la que el metal y rock alternativo tienen mucho peso. A día de hoy, son una de las bandas de metal y rock alternativo más frescas, potentes y queridas del panorama 🙌
 
 Desde Leeds hasta Viveiro, el cuarteto promete regalarnos lo mejor de sí desde el Main Stage el próximo jueves 2 de julio ❤️‍🔥
 
+https://www.youtube.com/watch?v=kT36IN83gGI
+
 
 
 **BLOOD COMMAND** - ¡EL DEATH POP DE LA BANDA NORUEGA BLOOD COMMAND LLEGA A VIVEIRO ESTE VERANO! 👟 SP 86K
 
+Noruega - Punk Rock
+
 El cuarteto nacido en Bergen aprovechará la visita al Resurrection Fest EG 2026 para hacernos bailar y sudar como locxs con su mezcla de hardcore, pop, punk, post-hardcore e incluso metal. Con sus chándals Adidas como uniforme, la banda escandinava nos enseñará lo que es la energía el jueves 2 de julio en el Chaos Stage 🧨
 
-Divertida, sarcástica, apocalíptica e hipnótica, la propuesta de Blood Command hará que las suelas de tus zapas se gasten más que en una pista de skate. Si te molan Refused, Paramore, Scowl, Drug Church, The Armed o Hot Snakes...
+Divertida, sarcástica, apocalíptica e hipnótica, la propuesta de Blood Command hará que las suelas de tus zapas se gasten más que en una pista de skate. Si te molan Refused, Paramore, Scowl, Drug Church, The Armed o Hot Snakes…
+
+https://www.youtube.com/watch?v=hcDyDii-Low
 
 
 
 **BURNING WITCHES** - ¡LAS METALERAS CLÁSICAS BURNING WITCHES VISITARÁN EL RESURRECTION FEST ESTE AÑO! 🤘 SP 27K
 
+Suiza - Heavy Metal
+
 Desde las montañas de Suiza, el quinteto de heavy y power metal Burning Witches vendrá dispuesto a incendiar Viveiro con su energía indomable. Son una de las bandas más interesantes y enérgicas del heavy actual más agresivo y violento, y así lo demostrarán subidas al Ritual Stage el jueves 2 de julio 🔥
 
 Esa mezcla entre la actitud macarra de W.A.S.P., la épica de Iron Maiden, el dominio vocal de Rob de Judas Priest con la genial Laura Guldemond y esos riffs y solos imposibles os fliparán si os mola el metal clásico más oscuro, ocultista y poderoso ✊
 
+https://www.youtube.com/watch?v=RwomV4za97A
+
 
 
 **ANGELUS APATRIDA** - ¡LOS REYES DEL THRASH NACIONAL ANGELUS APATRIDA VUELVEN AL RESURRECTION FEST ESTE 2026! 🔥 SP 32K
+
+España - Thrash Metal
 
 No hacen falta presentaciones para una de las bandas más importantes de la historia del metal español y de las más queridas en el Resu. El grupo albaceteño fundado en el año 2000 estará una vez más en el Main Stage para petarlo con su thrash rápido, acelerado y furioso 🤘
 
@@ -360,109 +400,189 @@ Angelus Apatrida llevan afilando sus cuchillos desde hace casi tres décadas en 
 
 ¡Preparaos para agitar vuestras cabezas en lo que seguro será una comunión de circle pits y locura! 🏃‍♂️ YOU ARE NEXT! 🫵
 
+https://www.youtube.com/watch?v=xb50ooBETEc
+
 
 
 **BLUES PILLS** - SP 89K
+
+Suecia - Psicodelia
+
+✨ ¡ROCK, BLUES Y MAGIA SETENTERA CON BLUES PILLS EN EL RESURRECTION FEST EG 2026! 🎸
+
+El cuarteto sueco fundado en 2011 Blues Pills visitará Viveiro para hacernos viajar a la década de los años 70 con su rock revival. La banda liderada por Elin Larsson enamora allá por donde pasa con su propuesta vintage, psicodélica y sofisticada guiada por la pasión ❤️‍🔥
+
+Imagínate una mezcla de Janis Joplin o Aretha Franklin a las voces con Led Zeppelin, los Fleetwood Mac de Peter Green y Black Sabbath en la parte rítmica, y lo tienes. Mucho fuzz, mucho soul y mucha psicodelia para toda aquella persona que se anime a volar con su directazo encabezando el Desert Stage el jueves 🦋
+
+https://www.youtube.com/watch?v=lZK5xfbZXNw
 
 
 
 **THE FUNERAL PORTRAIT** - ¡LA CEREMONIA EMO DE THE FUNERAL PORTRAIT SERÁ PARTE DEL RESURRECTION FEST EG 2026! ❤️‍🔥 SP 569K
 
+EEUU - Post-Harcore
+
 Desde Atlanta (Georgia), el rock teatral de The Funeral Portrait inundará nuestro recinto de emo, post-hardcore y rock. Son una banda que vive por y para sus devotos, la Coffin Crew, ofreciendo espectáculos llenos de dramatismo, teatralidad y una actitud que atrapan desde el primer momento 🙌
 
 Tras el éxito de su segundo disco "Greetings From Suffocate City" y de arrasar por más de una docena de países, acaban de lanzar un nuevo trabajo en vivo titulado "Live From Suffocate City". ¡No os perdáis su debut en el Resu desde el Ritual Stage! 🔥
+
+https://www.youtube.com/watch?v=a8DP5vhiDTk
 
 
 
 **BELVEDERE** - SP 47K
 
+Canada - Punk Rock
+
+¡SKATE PUNK A TODO TRAPO CON LOS MÍTICOS BELVEDERE EN EL RF26! ⚡
+
+Los rápidos y técnicos canadienses Belvedere Band también serán parte de nuestro cartelón de este año. Son considerados un grupo de culto muy admirado entre fans de Strung Out, Satanic Surfers o Propaghandi, formaciones también míticas dentro del punk y hardcore melódico más veloz 🧨🛹
+
+Desde 1995 en el ruedo, salvando ese parón que hicieron del 2005 al 2011, sus dinámicas instrumentales y armonías vocales son algunas de sus señas de identidad más características y disfrutables. Estarán en el Chaos repartiendo mandanga el jueves 2 de julio 🔥
+
+https://www.youtube.com/watch?v=9SFlXVpZfsg
+
 
 
 **CICLONAUTAS** - ¡ROCK CRUDO, DIRECTO Y POLVORIENTO CON CICLONAUTAS EN EL RESURRECTION FEST EG 2026! 🔥🏇 SP 32
+
+España - Rock, Rock Urbano
 
 Creados en Pamplona en 2013 con el argentino Mai Madina al frente como vocalista y guitarrista, Ciclonautas llevan más de una década rockeando con su mezcla de rock duro urbano con toques sureños y stoner. Su propuesta áspera y llena de groove encaja como anillo al dedo en el Desert Stage, escenario en el que tocarán el jueves 2 de julio 🤘
 
 Doce años después de su debut con el ambicioso disco doble "¿Qué tal?" y un año después de su último LP "Ecdisis", el power trio completado Javier Pintor "Txo" al bajo y Alén Ayerdi (el mítico batería de Marea), el cual fue invitado por Slash y Myles Kennedy en su gira por España de 2015, vendrá por primera vez al Resu a demostrar por qué son un sello de garantía absoluta tanto dentro del rock latino como ibérico 🎸
 
+https://www.youtube.com/watch?v=nQlua3uDfts
+
 
 
 **IRON MAIDEN -** ¡IRON MAIDEN regresan al Resurrection Fest 10 años después con su gira 50 aniversario "Run For Your Lives"! 🤘 **SP 9621**
 
+Reino Unido - Heavy Metal
+
 El jueves 2 de julio nos espera una noche inolvidable con los reyes del heavy metal Iron Maiden. Darán un concierto de más de 2 horas en las que podremos disfrutar de todo su legado en estas más de cinco décadas. ¡No necesitan más presentaciones! 🔥
 
-Dentro de 1 mes celebraremos la cuarta visita de los Maiden a Galicia. Primera en una década. Los tuvimos por nuesta tierra por primera vez en 1998 en Ourense con Blaze Bayley a las voces, la segunda en A Coruña en 2003 con Bruce Dickinson de regreso al grupo, y la tercera en el Resu de 2016 ☝️🤓
+Los tuvimos por nuestra tierra por primera vez en 1998 en Ourense con Blaze Bayley a las voces, la segunda en A Coruña en 2003 con Bruce Dickinson de regreso al grupo, y la tercera en el Resu de 2016 ☝️🤓
 
 Las leyendas del heavy metal ya llevan casi un par de semanas con su gira europea celebrando sus 50 años de historia, y aunque os pueda sorprender a muchxs, están sonando más fuertes y contundentes que nunca. Damos fe de que el tiempo no pasa por los británicos
 
-¡La Dama de Hierro vuelve a casa! Ya ha pasado una década tras su última e inolvidable actuación en el festival, la banda más grande de la historia del heavy metal vuelve a Viveiro. ¡IRON MAIDEN serán el segundo cabeza de cartel para nuestra próxima edición!
-
-¡Y no vuelven de cualquier manera! Los británicos darán en el Resurrection Fest EG uno de los dos únicos conciertos en España en 2026 con su gira "Run For Your Lives" celebrando sus 50 años de historia con un setlist de locos en el que recorrerán todos los himnos de sus primeros 9 discos de estudios, desde "Iron Maiden" hasta "Fear Of The Dark", un “greatest hits” en toda regla.
+¡La Dama de Hierro vuelve a casa! Ya ha pasado una década tras su última e inolvidable actuación en el festival, la banda más grande de la historia del heavy metal vuelve a Viveiro. ¡Y no vuelven de cualquier manera! Los británicos darán en el Resurrection Fest EG uno de los dos únicos conciertos en España en 2026 con su gira "Run For Your Lives" celebrando sus 50 años de historia con un setlist de locos en el que recorrerán todos los himnos de sus primeros 9 discos de estudios, desde "Iron Maiden" hasta "Fear Of The Dark", un “greatest hits” en toda regla.
 
 Están agotando todos los estadios de Europa a meses vista, ¡así que no te lo puedes perder por nada del mundo!
+
+https://www.youtube.com/watch?v=aAsrFetnHzM
 
 
 
 **THE CALLOUS DAOBOYS** - SP 94
 
+EEUU - Metalcore
+
+¡CAOS MATEMÁTICO DESDE ATLANTA! THE CALLOUS DAOBOYS REVENTARÁN EL RF2026 🤯
+
+Si buscáis la locura y lo impredecible, vais a ir saciados con The Callous Daoboys, una de esas bandas modernas salvadoras del metalcore y mathcore actual. Los de Georgia son como un huracán, y por momentos recuerdan con sus rítmicas al salvajismo de The Dilllinger Escape Plan, Every Time I Die o SeeYouSpaceCowboy 💥
+
+Disonancias, breakdowns huracanados y violines esquizofrénicos en un cóctel explosivo y único que no tenemos duda alguna de que os volará la cabeza el próximo jueves 2 de julio en el Chaos Stage 🔥
+
+https://www.youtube.com/watch?v=4l5qLn2NrnE
+
 
 
 **VULVARINE** ¡LA HERMANDAD ROCKERA DE LAS VULVARINE HARÁ ARDER EL DESERT STAGE EN EL RESU! ⚡️ SP 4K
+
+Austria - Hard Rock
 
 La joven banda Vulvarine creada en 2019 es la definición perfecta de sororidad, actitud y energía sobre los escenarios. Su descaro y sus geniales riffs son su carta de presentación, y su compromiso con el rock y su actitud punk callejera, parte de su identidad ❤️‍🔥
 
 Si os gustan los himnos rebeldes y los guitarrazos, os flipará el "vulvarock" de las austríacas. Sus influencias del glam, hard rock, punk setentero, heavy metal y movimiento feminista americano riot grrrl las hacen únicas e imperdibles en directo 💪
 
+https://www.youtube.com/watch?v=6joGJzYX\_Rc
+
 
 
 **CALIBAN** - ¡CALIBAN LLEGAN AL RESURRECTION FEST EG 2026 PARA OFRECER SU ÚNICO CONCIERTO EN ESPAÑA EN 2026! 🔥 SP 114
+
+Alemania - Metalcore
 
 Referentes del metalcore europeo desde finales de los 90, Caliban ha construido una identidad feroz y auténtica que les ha mantenido en primera línea durante más de dos décadas. Con una mezcla de brutalidad, sensibilidad melódica y una puesta en escena arrolladora, la banda alemana sigue demostrando hoy en día por qué su nombre pesa tanto dentro del género 🤘🏼
 
 Tras el lanzamiento hace unos meses de "Back From Hell", su decimotercer álbum en el que han recuperado un sonido más crudo y directo, Caliban volverán a Viveiro para ofrecer una actuación exclusiva que solo podremos vivir en el Resu. Una oportunidad única para disfrutar de su energía y de temazos que conectan ya a varias generaciones 💥
 
+https://www.youtube.com/watch?v=z4DXIoWCr1Q
+
 
 
 **LIONHEART** - ¡EL HARDCORE Y METALCORE AMERICANO INVADIRÁ VIVEIRO CON LIONHEART EN EL RESU 2026! 🔥 SP 172K
+
+EEUU - Hardcore, Metalcore
 
 Los referentes del beatdown californiano regresan al Resu para demostrar por qué su trono sigue intacto. Directos desde la Bay Area, LIONHEART OFFICIAL han pasado de ser una promesa del hardcore a convertirse en una apisonadora de agresividad metalera y hardcore con actitud callejera que ya es historia viva del género 🤘
 
 Su vuelta a los escenarios de Viveiro será uno de los puntos álgidos del Chaos Stage. Por si fuera poco, vendrán con nuevo material recién salido del horno: su octavo LP "Valley Of Death II", secuela de una primera parte estrenada en 2019 que garantizará los moshpits y dolores de cuello. ¿Preparadxs para la carnicería? 👊
 
+https://www.youtube.com/watch?v=VeP1OmL5fNQ
+
 
 
 **ANTHRAX** - ¡LOS LEGENDARIOS ANTHRAX ESTARÁN EN EL RESURRECTION FEST EG 2026! 🔥 **SP 1272K**
 
+EEUU - Thrash Metal
+
 Como parte del clásico Big Four del thrash metal, Anthrax es junto a Metallica, Slayer y Megadeth una de las formaciones más importantes del género. Activos desde hace casi 45 años y con una larga sombra más allá del thrash y heavy, también han sido responsables de fusionar el rap y el metal antes que nadie, ayudando al nacimiento del nu metal 😎 Los americanos vendrán desde Nueva York hasta Viveiro para regresar al Resu tras el impecable directo que nos regalaron en la edición de 2017 para dar uno de los dos únicos conciertos que darán en España en 2026 🤘
+
+https://www.youtube.com/watch?v=Pj5u8OagODo
 
 
 
 **PSYCHONAUT** -¡PSYCHONAUT TRAEN LO MEJOR DEL POST-METAL EUROPEO AL RESURRECTION FEST EG 2026! 🔥
 
+Bélgica - Post Metal, Metal Progresivo
+
 Vienen desde Mechelen (Bélgica), y en la última década se han convertido en uno de los nombres más interesantes del post-metal y metal progresivo del Viejo Continente. Con influencias claras de Amenra, Tool, Gojira o Pink Floyd revoloteando el ambiente, el trío belga PSYCHONAUT es capaz de crear un sonido gigantesco y atmosférico lleno de riffs pesados, letras filosóficas y espirituales 🧘
 
 Vienen de fichar con Pelagic Records, el sello de Robin de The Ocean, con su último álbum "World Maker", y junto a los ya mencionados Amenra, Pothamus, Wiegedood y Brutus son una de las bandas belgas más queridas y aclamadas de los últimos años 🙌
+
+https://www.youtube.com/watch?v=x2lxwwzkLCM
 
 
 
 **WITCH CLUB SATAN** - ¡LAS COMBATIVAS WITCH CLUB SATAN LLEGAN AL RESURRECTION FEST 2026! 🔥 SP 55K
 
+Noruega - Black Metal
+
 Desde Noruega, WCS aterrizan por primera vez en Viveiro para demostrar que el black metal puede seguir provocando y sorprendiendo como en su época dorada. El trío ha sacudido la escena escandinava con una propuesta que va más allá de la música gracias a su actitud punk e increíble propuesta teatral 🕯️
 
 Lejos de los clichés habituales, Nikoline, Victoria y Johanna traen un directo que funciona como un ritual crudo e histriónico cargado de simbolismo. Vendrán al Resu a presentar su propia visión del caos 🤘 ¡IMPERDIBLES! ✊
+
+https://www.youtube.com/watch?v=WvgixsYAUvE
 
 
 
 **AUTHORITY ZERO** - SP 262
 
+EEUU - Punk Rock
+
+¡AUTHORITY ZERO TRAERÁN MÁS DE TRES DÉCADAS DE PUNK INCOMBUSTIBLE AL RF2026! 🛹
+
+Authority Zero son una de esas bandas por las que volverías a desempolvar tus zapas y tu skate. Vienen desde la calurosa ciudad de Mesa (Arizona) y llevan dando guerra desde los años 90 con su hardcore melódico y skate punk veloz con algunos toques rítmicos de ska y reggae 🕺
+
+Vente a gozar de esta bandaza míticas con miles de kilómetros a sus espaldas y la misma rabia y contundencia que el primer día. ¡La cita será en el Chaos Stage el jueves 2 de julio! 🏃‍♂️⚡
+
+https://www.youtube.com/watch?v=XmhN3t4wLFA
+
 
 
 **FEUERSCHWANZ** - ¡LOS FIESTEROS Y CONTUDENTES FEUERSCHWANZ DARÁN UN CONCIERTO EXCLUSIVO EN ESPAÑA EN 2026 EN EL RESURRECTION FEST! 🔥  SP SP 442
+
+Alemania - Folk Metal
 
 Desde su nacimiento en 2004 en Erlangen (Baviera, Alemania) como respuesta satírica y humorística al metal y rock "medieval" alemán del momento hasta hoy, Feuerschwanz han conseguido labrarse una carrera top con más de una docena de discos publicados en poco más de dos décadas donde el folk de sus comienzos ha ido mutando sin perder la esencia hacia el power y heavy metal más potente 🤘🏼
 
 El sexteto comandado por Peter Hanrici (Hauptmann Feuerschwanz) ha logrado pasar de pequeños recintos a grandes escenarios europeos gracias a su pedazo de despliegue sobre los escenarios, además de alcanzar las primeras posiciones de las listas musicales de su país con sus trabajos más recientes 🎸🎻
 
 ¡Os prometemos que os lo vais a pasas pipa con su directo en el Resu! 🙌🏼
+
+https://www.youtube.com/watch?v=-rKOoM7S6mw
 
 
 
